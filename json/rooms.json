@@ -1,10 +1,27 @@
 [
     {
-        "roomID": 101,
+        "roomID": 103,
         "roomName": "Evidence Room",
         "description": "We have Police officer that might be a criminal...find clues to sniff him out.",
-        "puzzles:"
+        "puzzles": [101, 102, 103, 104],
+        "isCleared": true,
+        "roomOrder": 3,
+        "prerequisiteRooms": [101, 102, 103]
+        
+
+    },
+
+    {
+        "roomID": 204,
+        "roomName": "Abandoned House",
+        "description": "This house has been abandoned for years, lets figured out what happend here.",
+        "puzzles": [201, 202, 203, 204],
+        "isCleared": false,
+        "roomOrder": 4,
+        "prerequisiteRooms": [201, 202, 203]
         
 
     }
+
+
 ]
