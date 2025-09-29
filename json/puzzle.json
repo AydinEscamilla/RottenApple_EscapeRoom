@@ -1,0 +1,27 @@
+[
+    {
+        "puuzleID": 101,
+        "question": "Picture: What could this picture mean? - 'I don't make U+00A2(cent symbol)",
+        "solution": "I don't make sense.",
+        "isSolved": true,
+        "attemps": 2,
+        "maxAttemps": 3,
+        "scoreValue": 25,
+        "hintUsedCount": 2,
+        "Difficulty": "EASY"
+        
+    },
+
+    {
+        "puuzleID": 202,
+        "question": "Logic: There are two ducks in front of a duck, two ducks behind a duck and a duck in the middle. How many ducks are there?",
+        "solution": "Three.",
+        "isSolved": false,
+        "attemps": 1,
+        "maxAttemps": 3,
+        "scoreValue": 50,
+        "hintUsedCount": 3,
+        "Difficulty": "MEDIUM"
+
+    }
+]

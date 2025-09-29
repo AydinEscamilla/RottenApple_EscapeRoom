@@ -7,9 +7,9 @@
         "dateAchieved": "2025-09-28",
         "rank": 5,
         "roomsCleared": [201, 202],
-        "puzzlesSolved": [201],
+        "puzzlesSolved": [201, 202],
         "currentGame": 1,
-        "currentRoom": 202,
+        "currentRoom": 203,
         "lastPuzzle": "Logic: There are two ducks in front of a duck, two ducks behind a duck and a duck in the middle. How many ducks are there?"
         
     },
@@ -41,7 +41,7 @@
         "roomsCleared": [101],
         "puzzlesSolved": [101],
         "currentGame": 0,
-        "currentRoom": 101,
+        "currentRoom": 102,
         "lastPuzzle": "Picture: What could this picture mean? - 'I don't make U+00A2(cent symbol)"
         
     }
