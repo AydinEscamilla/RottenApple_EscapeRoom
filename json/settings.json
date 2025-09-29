@@ -1,0 +1,14 @@
+[
+    {
+        "audioVolume": 65,
+        "musicOn": false,
+        "soundEffectsOn": false,
+        "textSize": 20
+    },
+    {
+        "audioVolume": 90,
+        "musicOn": true,
+        "soundEffectsOn": false,
+        "textSize": 18
+    }
+]
