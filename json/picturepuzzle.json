@@ -1,9 +1,12 @@
 [
 
     {
-        "hints":["What's change called?"]
+        "hints":["What's change called?"],
+        "imagePath": "images/i-dont-make-sense"
+        
     },
     {
-        "hints":["If someone is talking crazy they don't make...change?"]
+        "hints":["If someone is talking crazy they don't make...change?"],
+        "imagePath": "images/i-dont-make-sense"
     }
 ]
