@@ -1,24 +1,50 @@
 [
     {
-        "roomID": 103,
+        
+        "roomID": 101,
         "roomName": "Evidence Room",
         "description": "We have Police officer that might be a criminal...find clues to sniff him out.",
-        "puzzles": [101, 102, 103, 104],
-        "isCleared": true,
-        "roomOrder": 3,
-        "prerequisiteRooms": [101, 102, 103]
-        
+        "puzzles": [
+            {
+                "puzzleID": 201,
+                "puzzleType": "Picture",
+                "question": "What could this picture mean? - 'I don't make U+00A2(cent symbol)",
+                "solution": "I don't make sense.",
+                "isSolved": true,
+                "attemps": 2,
+                "maxAttemps": 3,
+                "scoreValue": 25,
+                "hintUsedCount": 2,
+                "Difficulty": "EASY"
+            }
+        ],
 
+        "isCleared": true,
+        "roomOrder": 1,
+        "prerequisiteRooms": []
     },
 
     {
-        "roomID": 204,
+        "roomID": 102,
         "roomName": "Abandoned House",
         "description": "This house has been abandoned for years, lets figured out what happend here.",
-        "puzzles": [201, 202, 203, 204],
+        "puzzles": [
+            {
+                "puzzleID": 202,
+                "puzzleType": "Logic",
+                "question": "There are two ducks in front of a duck, two ducks behind a duck and a duck in the middle. How many ducks are there?",
+                "solution": "Three.",
+                "isSolved": false,
+                "attemps": 1,
+                "maxAttemps": 3,
+                "scoreValue": 50,
+                "hintUsedCount": 3,
+                "Difficulty": "MEDIUM"
+            }
+        ],
         "isCleared": false,
-        "roomOrder": 4,
-        "prerequisiteRooms": [201, 202, 203]
+        "roomOrder": 2,
+        "prerequisiteRooms": [101]
         
 
     }
