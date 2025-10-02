@@ -36,12 +36,14 @@
         "username": "username2",
         "password": "password2",
         "userID": "1",
-        "preferences": {
-            "audioVolume": 40,
-            "musicOn": true,
-            "soundEffectsOn": true,
-            "textSize": 12
-        },
+        "preferences":[
+            {
+                "audioVolume": 40,
+                "musicOn": true,
+                "soundEffectsOn": true,
+                "textSize": 12
+            }
+        ],
 
         "progress": [
             {
