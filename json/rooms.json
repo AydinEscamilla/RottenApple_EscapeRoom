@@ -16,7 +16,7 @@
                 "attemps": 2,
                 "maxAttemps": 3,
                 "scoreValue": 25,
-                "hintUsedCount": 2,
+                "hintUsedCount": 0,
                 "Difficulty": "EASY"
             }
         ],
@@ -61,18 +61,19 @@
                 "puzzleID": 203,
                 "puzzleType": "Logic",
                 "question": "There are two ducks in front of a duck, two ducks behind a duck and a duck in the middle. How many ducks are there?",
-                "hints": ["Consider the amount of ducks that ACTUALLY exist.", "Consider every point of view."],
                 "solution": "Three.",
+                "hints": ["Consider the amount of ducks that ACTUALLY exist.", "Consider every point of view."],
                 "isSolved": false,
                 "attemps": 1,
                 "maxAttemps": 3,
                 "scoreValue": 50,
-                "hintUsedCount": 3,
+                "hintUsedCount": 1,
                 "Difficulty": "HARD"
             }
         ],
+
         "isCleared": false,
-        "roomOrder": 2,
+        "roomOrder": 3,
         "prerequisiteRooms": [101, 102]
         
 
