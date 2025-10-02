@@ -4,12 +4,29 @@
         "username": "username1",
         "password": "password1",
         "userID": "0",
-        "preferences": {
-            "audioVolume": 70,
-            "musicOn": false,
-            "soundEffectsOn": true,
-            "textSize": 16
-        }
+        "preferences": [
+            {
+                "audioVolume": 70,
+                "musicOn": false,
+                "soundEffectsOn": true,
+                "textSize": 16
+            }
+        ],
+
+        "progress": [ 
+            {
+                "score": 145,
+                "timeTaken": 3500,
+                "dateAchieved": "2025-09-28",
+                "rank": 3,
+                "roomsCleared": [101],
+                "puzzlesSolved": [201],
+                "currentGame": 1,
+                "currentRoom": 102,
+                "lastPuzzle": "What could this picture mean? - 'I don't make U+00A2(cent symbol)"
+            }
+        ]
+        
         
 
     }, 
@@ -24,7 +41,22 @@
             "musicOn": true,
             "soundEffectsOn": true,
             "textSize": 12
-        }
+        },
+
+        "progress": [
+            {
+                "score": 200,
+                "timeTaken": 6000,
+                "dateAchieved": "2025-09-28",
+                "rank": 2,
+                "roomsCleared": [101, 102],
+                "puzzlesSolved": [201, 202],
+                "currentGame": 2,
+                "currentRoom": 103,
+                "lastPuzzle": "Solve the problems to get in the lock. 18 / 3 - 7 + 2 * 5, 12^2 / 3 - 2 * 7, 4^2 * 3 * (11 - 9) "
+            }
+        ]
+
 
     },
 
@@ -33,26 +65,30 @@
         "username": "username3",
         "password": "password3",
         "userID": "2",
-        "preferences": {
-            "audioVolume": 65,
-            "musicOn": false,
-            "soundEffectsOn": false,
-            "textSize": 20
-        }
+        "preferences": [ 
+            {
+                "audioVolume": 65,
+                "musicOn": false,
+                "soundEffectsOn": false,
+                "textSize": 20
+            }
+        ],
 
-    },
-
-    {
-        "UUID" : "d97b74d3-def3-4e92-8141-b17259009c05",
-        "username": "username4",
-        "password": "password4",
-        "userID": "3",
-        "preferences": {
-            "audioVolume": 90,
-            "musicOn": true,
-            "soundEffectsOn": false,
-            "textSize": 18
-        }
+        "progress": [
+            {
+                "score": 500,
+                "timeTaken": 1000,
+                "dateAchieved": "2025-09-28",
+                "rank": 1,
+                "roomsCleared": [101,102, 103],
+                "puzzlesSolved": [201, 202, 203],
+                "currentGame": 3,
+                "currentRoom": 104,
+                "lastPuzzle": "There are two ducks in front of a duck, two ducks behind a duck and a duck in the middle. How many ducks are there?"
+        
+            }
+        ]
 
     }
+
 ]

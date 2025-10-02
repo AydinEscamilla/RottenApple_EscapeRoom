@@ -68,7 +68,7 @@
                 "maxAttemps": 3,
                 "scoreValue": 50,
                 "hintUsedCount": 3,
-                "Difficulty": "MEDIUM"
+                "Difficulty": "HARD"
             }
         ],
         "isCleared": false,
