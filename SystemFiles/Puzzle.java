@@ -1,4 +1,6 @@
-package example.model;
+package SystemFiles;
+
+import java.util.Scanner;
 
 public class Puzzle {
     private int puzzleID;

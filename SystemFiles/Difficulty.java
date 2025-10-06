@@ -1,4 +1,4 @@
-package example.model;
+package SystemFiles;
 
 public enum Difficulty {
     EASY,

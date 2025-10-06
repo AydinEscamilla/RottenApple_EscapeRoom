@@ -1,6 +1,9 @@
-package example.model;
+
 
 import java.util.List;
+import java.util.Scanner;
+
+import SystemFiles.Puzzle;
 
 public class MathPuzzle extends Puzzle {
     private List <String> hints;
@@ -16,6 +19,10 @@ public class MathPuzzle extends Puzzle {
     }
 
     public void addHint (String hint) {
+        Scanner scanner = new Scanner(System.in);
+        hint = scanner.nextLine();
+        System.out.println(hint);
+        scanner.close();
         
     }
 }
