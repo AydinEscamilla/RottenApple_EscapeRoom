@@ -1,6 +1,6 @@
 import java.util.List;
 
-public class GameSystemFACADE {
+public class GameSystemFacade {
     private User user;
 
 

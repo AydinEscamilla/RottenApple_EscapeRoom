@@ -6,7 +6,7 @@ public class GameDriver {
     private static Scanner scanner;
 
     public static void main(String[] args) {
-        facade = new GameSystemFACADE();
+        facade = new GameSystemFacade();
         scanner = new Scanner(System.in);
 
         boolean running = true;
@@ -39,7 +39,7 @@ public class GameDriver {
                     running = false;
                     break;
                 default:
-                    System.out.println("Invalid choice. Try again.");
+                    break;
             }
         }
 
@@ -105,6 +105,6 @@ public class GameDriver {
     private static void quitGame() {
         System.out.println("Quitting game... Progress saved.");
         // facade.saveGame(currentUser);
-        facade.quitGame();
+        // facade.quitGame();
     }
 }
