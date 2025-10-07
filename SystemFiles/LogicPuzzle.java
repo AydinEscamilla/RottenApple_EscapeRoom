@@ -3,9 +3,9 @@
 import java.util.List;
 import java.util.Scanner;
 
-import SystemFiles.Puzzle;
+//import SystemFiles.Puzzle;
 
-public class LogicPuzzle extends Puzzle {
+public  class LogicPuzzle extends Puzzle {
     
 
     private List <String> hints;
@@ -21,6 +21,7 @@ public class LogicPuzzle extends Puzzle {
     }
 
     public void addHint (String hint) {
+        System.out.println("Hint for Logic Puzzle");
         Scanner scanner = new Scanner(System.in);
         hint = scanner.nextLine();
         System.out.println(hint);

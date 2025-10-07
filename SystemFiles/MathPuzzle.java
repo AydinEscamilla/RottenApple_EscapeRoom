@@ -3,7 +3,7 @@
 import java.util.List;
 import java.util.Scanner;
 
-import SystemFiles.Puzzle;
+//import SystemFiles.Puzzle;
 
 public class MathPuzzle extends Puzzle {
     private List <String> hints;
@@ -19,6 +19,7 @@ public class MathPuzzle extends Puzzle {
     }
 
     public void addHint (String hint) {
+        System.out.println("Add a hint for Math Puzzle");
         Scanner scanner = new Scanner(System.in);
         hint = scanner.nextLine();
         System.out.println(hint);

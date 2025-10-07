@@ -1,8 +1,8 @@
-package SystemFiles;
+//package SystemFiles;
 
 import java.util.Scanner;
 
-public class Puzzle {
+public abstract class Puzzle {
     private int puzzleID;
     private String puzzleType;
     private String question;
@@ -26,6 +26,7 @@ public class Puzzle {
     //  Check
     public boolean attempt (String answer) {
         return false ;
+
 
     }
 
@@ -55,12 +56,14 @@ public class Puzzle {
     }
 
     public String getHint() {
-        return; 
+        return null; 
 
     }
 
     public void giveUp() {
 
     }
+
+    public abstract void addHint (String hint); //  abstract hint method to be overriden
 
 }

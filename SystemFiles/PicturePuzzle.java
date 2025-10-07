@@ -3,7 +3,7 @@
 import java.util.List;
 import java.util.Scanner;
 
-import SystemFiles.Puzzle;
+//import SystemFiles.Puzzle;
 
 public class PicturePuzzle extends Puzzle {
     private List <String> hints;
@@ -20,6 +20,7 @@ public class PicturePuzzle extends Puzzle {
     }
 
     public void addHint (String hint) {
+        System.out.println("Hint for Picture Puzzle");
         Scanner scanner = new Scanner(System.in);
         hint = scanner.nextLine();
         System.out.println(hint);
@@ -27,8 +28,5 @@ public class PicturePuzzle extends Puzzle {
         
     }
 
-    public <BufferdReader> String getImage() {
-        return imagePath;
-    }
     
 }
