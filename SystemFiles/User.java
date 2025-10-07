@@ -27,7 +27,7 @@ public void setPassword(String password){
 
     }
 
-public int getUserID(){
+public static int getUserID(){
         return 0;
     }
 
