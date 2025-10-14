@@ -3,7 +3,6 @@
         "UUID" : "3f794eb0-8f94-4499-8582-04f2a6b6d512",
         "username": "username1",
         "password": "password1",
-        "userID": "0",
         "preferences": [
             {
                 "audioVolume": 70,
@@ -35,7 +34,6 @@
         "UUID" : "015cbde9-8f3b-4dc5-91c8-968d8df389c8",
         "username": "username2",
         "password": "password2",
-        "userID": "1",
         "preferences":[
             {
                 "audioVolume": 40,
@@ -66,7 +64,6 @@
         "UUID" : "5781c5d1-0779-4c3e-ba2a-c471d604b063",
         "username": "username3",
         "password": "password3",
-        "userID": "2",
         "preferences": [ 
             {
                 "audioVolume": 65,
