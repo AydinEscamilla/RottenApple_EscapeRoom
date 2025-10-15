@@ -1,26 +1,47 @@
-import java.util.List;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.util.*;
+import org.json.simple.*;
+import org.json.simple.parser.*;
 
-public class DataWriter extends DataConstants {
+public class DataWriter {
+    private String usersFile;
 
-    public boolean saveUsers(List<Users> users) {
+    public DataWriter() {
+        this("user.json");
+    }
 
-        User users = User.getInstance(); // her idea of getting a User
-        //users.add(User.getUserID()); //  adding User to array list of Users with id
-        String filename = "save.txt"; //  the file to write to
+    public DataWriter(String usersFile) {
+        this.usersFile = usersFile;
+    }
 
-        try (FileWriter writer = new FileWriter("filename")) {
-            writer.write("New save file");
-            System.out.println("Overwritten: " + filename);
-            
-        } catch (Exception e) {
-            // TODO: handle exception
+    public boolean saveUsers(List<User> users) {
+        try (FileWriter writer = new FileWriter(this.usersFile, false)) {
+            JSONArray arr = new JSONArray();
+            for (User u : users) {
+                JSONObject o = new JSONObject();
+                o.put("username", u.getUsername());
+                o.put("password", u.getPassword());
+                JSONObject pref = new JSONObject();
+                pref.put("audioVolume", u.getPreferences() == null ? 50 : u.getPreferences().getAudioVolume());
+                o.put("preferences", pref);
+                arr.add(o);
+            }
+            writer.write(arr.toJSONString());
+            writer.flush();
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
         }
+    }
 
-
-
-        return false;
+    public boolean saveUser(User user) {
+        if (user == null) return false;
+        DataLoader loader = new DataLoader(this.usersFile);
+        List<User> users = loader.loadUsers();
+        if (users == null) users = new ArrayList<>();
+        users.add(user);
+        return saveUsers(users);
     }
 
     public boolean saveProgress(User user, Room roomID, Game gameID, Puzzle puzzleID) {
@@ -35,3 +56,4 @@ public class DataWriter extends DataConstants {
         return false;
     }
 }
+

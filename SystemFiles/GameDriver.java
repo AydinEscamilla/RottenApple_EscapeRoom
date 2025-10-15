@@ -2,13 +2,17 @@ import java.util.Scanner;
 import java.util.List;
 
 public class GameDriver {
-    private static GameSystemFacade facade;
     private static Scanner scanner;
+    private static GameSystemFacade facade;
+    private static User currentUser;
 
     public static void main(String[] args) {
-        facade = new GameSystemFacade();
-        scanner = new Scanner(System.in);
+        DataLoader loader = new DataLoader("user.json");
+        DataWriter writer = new DataWriter("user.json");
+        facade = new GameSystemFacade(loader, writer);
 
+        scanner = new Scanner(System.in);
+        currentUser = null;
         boolean running = true;
 
         while (running) {
@@ -39,10 +43,10 @@ public class GameDriver {
                     running = false;
                     break;
                 default:
+                    System.out.println("Invalid choice.");
                     break;
             }
         }
-
         scanner.close();
     }
 
@@ -66,12 +70,19 @@ public class GameDriver {
         }
     }
 
+
     private static void login() {
         System.out.print("Enter username: ");
         String username = scanner.nextLine();
         System.out.print("Enter password: ");
         String password = scanner.nextLine();
-        facade.login(username, password);
+        User user = facade.login(username, password);
+        if (user != null) {
+            currentUser = user;
+            System.out.println("Login successful. Welcome, " + user.getUsername() + "!");
+        } else {
+            System.out.println("Login failed. Invalid username or password.");
+        }
     }
 
     private static void signUp() {
@@ -79,7 +90,13 @@ public class GameDriver {
         String username = scanner.nextLine();
         System.out.print("Enter new password: ");
         String password = scanner.nextLine();
-        facade.signUp(username, password);
+        User newUser = facade.signUp(username, password);
+        if (newUser != null) {
+            currentUser = newUser;
+            System.out.println("Account created successfully for " + newUser.getUsername() + ".");
+        } else {
+            System.out.println("Sign up failed. An error has occurred or username taken.");
+        }
     }
 
     private static void startNewGame() {

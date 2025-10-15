@@ -4,21 +4,21 @@ public class Leaderboard {
     private int entryCount;
     private List<Score> entries;
 
+    public void addEntry(User user, Score score) {
 
-public void addEntry(User user, Score score) {
+    }
 
-}
+    public void removeEntry(User user) {
 
-public void removeEntry(User user) {
+    }
 
-}
+    public List<Score> getTopScores(int n) {
+        return null;
+    }
 
-public List<Score> getTopScores(int n) {
-    return null;
-}
-
-getUserScore (User user) {
-    return null;
-}
+    public int getUserScore(User user) {
+        // TODO: implement properly later
+        return 0;
+    }
 
 }

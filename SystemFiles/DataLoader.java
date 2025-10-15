@@ -1,46 +1,61 @@
-import java.util.List;
-import org.json.simple.*
+import java.util.*;
+import java.io.*;
+import org.json.simple.*;
+import org.json.simple.parser.*;
 
-public class DataLoader extends DataConstants {
+public class DataLoader {
+    private String filename;
 
-    public List<Users> getUsers() {
-        ArrayList<User> users = new ArrayList<User>();
+    public DataLoader() {
+        this("user.json");
+    }
 
-        try {
-            FileReader reader = new FileReader();
-            JSONParser parser = newJSONParser();
-            JSONArray userJSON = (JSONArray)new JSONParser().parse(reader);
+    public DataLoader(String filename) {
+        this.filename = filename;
+    }
 
-            for (int i=0; i<userJSON.size(); i++) {
-                JSONObject userJSON;
-                UUID userID;
-                String username;
-                String password;
-                
+    public List<User> loadUsers() {
+        List<User> users = new ArrayList<>();
+        File f = new File(this.filename);
+        if (!f.exists()) return users;
+        try (FileReader fr = new FileReader(f)) {
+            JSONParser parser = new JSONParser();
+            Object obj = parser.parse(fr);
+            if (obj instanceof JSONArray) {
+                JSONArray arr = (JSONArray) obj;
+                for (Object o : arr) {
+                    if (o instanceof JSONObject) {
+                        JSONObject jo = (JSONObject) o;
+                        String username = (String) jo.get("username");
+                        String password = (String) jo.get("password");
+                        User u = new User(username, password);
+                        users.add(u);
+                    }
+                }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-            catch {
-                // Exception
-        }
+        return users;
     }
 
     public List<Game> getGame() {
-        return null;
+        return new ArrayList<>();
     }
 
     public List<Rooms> getRoom() {
-        return null;
+        return new ArrayList<>();
     }
 
     public List<Puzzle> getPuzzle() {
-        return null;
+        return new ArrayList<>();
     }
 
     public Leaderboard getLeaderboard() {
-        return null;
+        return new Leaderboard();
     }
 
     public Settings getSettings() {
-        return null;
+        return new Settings();
     }
 }
