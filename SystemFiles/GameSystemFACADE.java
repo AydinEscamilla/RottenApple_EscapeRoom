@@ -1,7 +1,11 @@
-import java.util.List;
+import java.util.*;
+import java.util.stream.*;
 
 public class GameSystemFacade {
-    private User user;
+    private List<User> users;
+    private DataLoader dataLoader;
+    private DataWriter dataWriter;
+    private User currentUser;
 
 
 public User login(String username, String password) {
