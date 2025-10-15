@@ -1,14 +1,18 @@
+import org.json.simple.*;
+
 public class User {
-    private String UUID;
+    private String uuid;
     private String username;
     private String password;
     private int userID;
-    private Settings preferences; 
-    private User user; 
+    private Settings preferences;
 
-
-public User(String username, String password){
-
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+        this.uuid = java.util.UUID.randomUUID().toString();
+        this.userID = 0; 
+        this.preferences = new Settings();
     }
 
 public String getUsername(){
