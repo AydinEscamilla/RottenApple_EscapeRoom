@@ -1,3 +1,5 @@
+import java.io.File; //  to get audio file
+
 public class Settings {
     private int audioVolume;
     private boolean musicOn;
@@ -20,10 +22,12 @@ public class Settings {
     }
 
     public int getAudioVolume(){
+        File audioFile = new File ("audio/");
         return audioVolume;
     }
 
     public void setAudioVolume(int volume){
+
         this.audioVolume = volume;
     }
 
