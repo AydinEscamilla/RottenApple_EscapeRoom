@@ -4,7 +4,7 @@
 
 public abstract class Puzzle {
 
-    public enum PuzzleState {
+    public enum PuzzleStatus {
         NOT_STARTED, 
         IN_PROGRESS, 
         SOLVED, 
@@ -40,35 +40,73 @@ public abstract class Puzzle {
     }
 
 
-    //  Check
+    /*
+     * User attempts to answer, updates attempts and status and returns if it was correct
+     */
     public boolean attempt (String answer) {
 
-        if (answer.equals(getSolution(answer))) {
+        if (isSolved) return true;
+        if (attempts >= maxAttempts) return false;
+
+        attempts++;
+
+        boolean fixed = isCorrect(FixedString(answer));
+        if (fixed) {
+            isSolved = true;
             return true;
         }
-
-        return false ;
+        return false;
 
 
     }
 
-    public String getQuestion(String question) {
+    /*
+     * Checks if Answer is Correct
+     * @returns if user got answer correct
+     */
+    public boolean isCorrect (String FixedAnswer) {
+        return FixedAnswer.equals(FixedString(solution));
+    }
 
-        if (question != null) {
-            return question;
-        }
+    /*
+     * @returns a string trimed and lowercased
+     */
+    public String FixedString(String s) {
+       return s == null ? "" : s.trim().toLowerCase();
+    }
 
-        return "Question not found";
-        
+   
 
+    /*
+     * To better determine a Puzzle's Progress
+     * @returns status on Puzzle
+     */
+    public PuzzleStatus getStatus() {
+        if (isSolved) return PuzzleStatus.SOLVED;
+        if (attempts == 0) return PuzzleStatus.NOT_STARTED;
+        if (attempts >= maxAttempts) return PuzzleStatus.FAILED;
+        return PuzzleStatus.IN_PROGRESS;
+
+    }
+
+    public void giveUp() {
+        if (!isSolved) attempts = maxAttempts;
+    }
+
+     public int getPuzzleID() {
+        return puzzleID;
+    }
+
+    public PuzzleType getPuzzleType() {
+        return puzzleType;
+    }
+
+     public String getQuestion(String question) {
+        return question;
     }
 
     public String getSolution(String solution) {
-        if (solution != null) {
-            return solution;
-        } 
-
-        return "Solution to" + getQuestion(question) + " not found.";
+        return solution;
 
     }
 
@@ -77,9 +115,14 @@ public abstract class Puzzle {
 
     }
 
+
     public int getAttempts() {
         return attempts;
 
+    }
+
+    public int getMaxAttempts() {
+        return maxAttempts;
     }
 
     public int getScoreValue() {
@@ -87,14 +130,27 @@ public abstract class Puzzle {
 
     }
 
+    /*
+     * Overriden by subclasses
+     */
     public String getHint() {
         return null; 
 
     }
 
-    public void giveUp() {
-
+    public int getHintsUsed() {
+        return hintUsedCount;
     }
+
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty (Difficulty difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    
 
     public abstract void addHint (String hint); //  abstract hint method to be overriden
 
