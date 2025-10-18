@@ -1,21 +1,38 @@
 //package SystemFiles;
 
-import java.util.Scanner;
+
 
 public abstract class Puzzle {
+
+    public enum PuzzleState {
+        NOT_STARTED, 
+        IN_PROGRESS, 
+        SOLVED, 
+        FAILED
+    }
+
+    public enum PuzzleType {
+        LOGIC,
+        MATH,
+        PICTURE
+    }
+
     private int puzzleID;
-    private String puzzleType;
+    private PuzzleType puzzleType;
     private String question;
     private String solution;
-    private boolean isSolved;
-    private int attempts;
-    private int maxAttempts;
-    private int scoreValue;
-    private int hintUsedCount;
-    private Difficulty Difficulty;
+    private boolean isSolved = false;
+    private int attempts = 0;
+    private int maxAttempts = 3;
+    private int scoreValue = 0;
+    private int hintUsedCount = 0;
+    private Difficulty difficulty = Difficulty.EASY;
 
-    public Puzzle (int puzzleID, String question, String solution) {
+    
+
+    public Puzzle (int puzzleID, PuzzleType type, String question, String solution) {
         this.puzzleID = puzzleID;
+        this.puzzleType = type;
         this.question = question;
         this.solution = solution;
          
@@ -25,18 +42,33 @@ public abstract class Puzzle {
 
     //  Check
     public boolean attempt (String answer) {
+
+        if (answer.equals(getSolution(answer))) {
+            return true;
+        }
+
         return false ;
 
 
     }
 
-    public String getQuestion() {
-        return question;
+    public String getQuestion(String question) {
+
+        if (question != null) {
+            return question;
+        }
+
+        return "Question not found";
+        
 
     }
 
-    public String getSolution() {
-        return solution;
+    public String getSolution(String solution) {
+        if (solution != null) {
+            return solution;
+        } 
+
+        return "Solution to" + getQuestion(question) + " not found.";
 
     }
 
