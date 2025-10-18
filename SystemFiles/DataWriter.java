@@ -50,16 +50,19 @@ public class DataWriter {
     }
 
     // need to finish
+    // saveProgress saves the users puzzle progress
     public boolean saveProgress(User user, Object roomID, Object gameID, Object puzzleID) {
         return false;
     }
 
     // need to finish
+    // updateSettings updates the users settings 
     public boolean updateSettings(User user, Settings settings) {
         return false;
     }
 
     // need to finish
+    // addEntry needs to add an entry to the leaderboard
     public boolean addEntry(User user, Object score) {
         return false;
     }
