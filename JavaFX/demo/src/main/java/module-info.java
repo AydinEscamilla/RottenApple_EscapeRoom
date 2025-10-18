@@ -1,4 +1,6 @@
 module com.example {
+    
+    requires json.simple;
     requires javafx.controls;
     requires javafx.fxml;
 

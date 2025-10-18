@@ -1,3 +1,4 @@
+package SystemFiles;
 public class Settings {
     private int audioVolume;
     private boolean musicOn;

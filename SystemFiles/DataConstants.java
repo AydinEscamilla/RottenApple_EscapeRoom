@@ -1,3 +1,4 @@
+package SystemFiles;
 public abstract class DataConstants {
     public static final class User {
         protected static final String USER_FILE_NAME = "json/user.json";

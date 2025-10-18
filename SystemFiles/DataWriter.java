@@ -1,33 +1,47 @@
-import java.io.*;
-import java.util.*;
-import org.json.simple.*;
-import org.json.simple.parser.*;
+package SystemFiles;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.List;
 
 public class DataWriter {
-    private String usersFile;
+    private String userFile; // The user data is stored in userFile
 
-    public DataWriter() {
-        this("user.json");
+    public DataWriter(String userFile) {
+        this.userFile = userFile;
     }
 
-    public DataWriter(String usersFile) {
-        this.usersFile = usersFile;
-    }
-
+   // saveUsers saves users to JSON
     public boolean saveUsers(List<User> users) {
-        try (FileWriter writer = new FileWriter(this.usersFile, false)) {
-            JSONArray arr = new JSONArray();
-            for (User u : users) {
-                JSONObject o = new JSONObject();
-                o.put("username", u.getUsername());
-                o.put("password", u.getPassword());
-                JSONObject pref = new JSONObject();
-                pref.put("audioVolume", u.getPreferences() == null ? 50 : u.getPreferences().getAudioVolume());
-                o.put("preferences", pref);
-                arr.add(o);
-            }
-            writer.write(arr.toJSONString());
-            writer.flush();
+
+        // Creates the array to hold user objects
+        JSONArray jsonUsers = new JSONArray();
+
+        // Convert user to JSON object (portia said something like this in her vid)
+        for (User user : users) {
+            JSONObject jsonUser = new JSONObject();
+            jsonUser.put("username", user.getUsername());
+            jsonUser.put("password", user.getPassword());
+
+            // Converts settings to JSON
+            JSONObject jsonSettings = new JSONObject();
+            Settings s = user.getPreferences();
+            jsonSettings.put("audioVolume", s.getAudioVolume());
+            jsonSettings.put("musicOn", s.isMusicOn());
+            jsonSettings.put("soundEffectsOn", s.isSoundEffectsOn());
+            jsonSettings.put("textSize", s.getTextSize());
+
+            // Save users settings to the rest of their JSON data
+            jsonUser.put("preferences", jsonSettings);
+            jsonUsers.add(jsonUser); // Add the user to the array
+        }
+
+        // write the array to the userFile
+        try (FileWriter file = new FileWriter("SystemFiles/" + userFile)) {
+            file.write(jsonUsers.toJSONString());
+            file.flush();
             return true;
         } catch (IOException e) {
             e.printStackTrace();
@@ -35,25 +49,18 @@ public class DataWriter {
         }
     }
 
-    public boolean saveUser(User user) {
-        if (user == null) return false;
-        DataLoader loader = new DataLoader(this.usersFile);
-        List<User> users = loader.loadUsers();
-        if (users == null) users = new ArrayList<>();
-        users.add(user);
-        return saveUsers(users);
-    }
-
-    public boolean saveProgress(User user, Room roomID, Game gameID, Puzzle puzzleID) {
+    // need to finish
+    public boolean saveProgress(User user, Object roomID, Object gameID, Object puzzleID) {
         return false;
     }
 
+    // need to finish
     public boolean updateSettings(User user, Settings settings) {
         return false;
     }
 
-    public boolean addEntry(User user, Score score) {
+    // need to finish
+    public boolean addEntry(User user, Object score) {
         return false;
     }
 }
-
