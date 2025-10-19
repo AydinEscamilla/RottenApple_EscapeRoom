@@ -19,7 +19,7 @@ public abstract class DataConstants {
     public static final class Progress {
         protected static final String SCORE = "score";
         protected static final String TIME_TAKEN = "timeTaken";
-        protected static final String DATE_ACHEIEVED = "dateAchieved";
+        protected static final String DATE_ACHIEVED = "dateAchieved";
         protected static final String RANK = "rank";
         protected static final String ROOMS_CLEARED = "roomsCleared";
         protected static final String PUZZLES_SOLVED = "puzzlesSolved";
@@ -47,8 +47,8 @@ public abstract class DataConstants {
         protected static final String HINTS = "hints";
         protected static final String IMAGE_PATH= "imagePath";
         protected static final String IS_SOLVED = "isSolved";
-        protected static final String ATTEMPTS = "attemps";
-        protected static final String MAX_ATTEMPTS = "maxAttemps";
+        protected static final String ATTEMPS = "attemps";
+        protected static final String MAX_ATTEMPS = "maxAttemps";
         protected static final String SCORE_VALUE= "scoreValue";
         protected static final String HINT_USED_COUNT= "hintUsedCount";
         protected static final String DIFFICULTY = "Difficulty";
