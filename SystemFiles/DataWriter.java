@@ -11,14 +11,11 @@ import java.io.File;
 import java.util.List;
 
 public class DataWriter {
-    private String userFile; // The user data is stored in userFile
 
-    public DataWriter(String userFile) {
-        this.userFile = userFile;
-    }
+    private static final String USER_FILE = "SystemFiles/user.json"; // Always saves to this file
 
     // saveUsers saves users to JSON
-    public boolean saveUsers(List<User> users) {
+    public static boolean saveUsers(List<User> users) {
 
         // Creates the array to hold user objects
         JSONArray jsonUsers = new JSONArray();
@@ -43,13 +40,13 @@ public class DataWriter {
         }
 
         // write the array to the user file
-        return writeJSONArray(jsonUsers, "SystemFiles/" + userFile);
+        return writeJSONArray(jsonUsers, USER_FILE);
     }
 
     // saveProgress saves the users puzzle progress
-    public boolean saveProgress(User user, Object roomID, Object gameID, Object puzzleID) {
+    public static boolean saveProgress(User user, Object roomID, Object gameID, Object puzzleID) {
 
-        JSONArray usersArray = readJSONArray("SystemFiles/" + userFile); // Reads users from userFile
+        JSONArray usersArray = readJSONArray(USER_FILE); // Reads users from userFile
 
         // Find the specific user
         for (Object obj : usersArray) {
@@ -68,13 +65,13 @@ public class DataWriter {
         }
 
         // Write updated progress to the JSON file
-        return writeJSONArray(usersArray, "SystemFiles/" + userFile);
+        return writeJSONArray(usersArray, USER_FILE);
     }
 
     // updateSettings updates the users settings
-    public boolean updateSettings(User user, Settings settings) {
+    public static boolean updateSettings(User user, Settings settings) {
         
-        JSONArray usersArray = readJSONArray("SystemFiles/" + userFile); // Read from the userFile
+        JSONArray usersArray = readJSONArray(USER_FILE); // Read from the userFile
 
         // Find the specific user
         for (Object obj : usersArray) {
@@ -95,13 +92,13 @@ public class DataWriter {
         }
 
         // Write everything back to userFile
-        return writeJSONArray(usersArray, "SystemFiles/" + userFile);
+        return writeJSONArray(usersArray, USER_FILE);
     }
 
     // addEntry adds an entry to the leaderboard
-    public boolean addEntry(User user, Object score) {
+    public static boolean addEntry(User user, Object score) {
         // Read all users from the userFile
-        JSONArray usersArray = readJSONArray("SystemFiles/" + userFile);
+        JSONArray usersArray = readJSONArray(USER_FILE);
 
         // Find the user 
         for (Object obj : usersArray) {
@@ -114,11 +111,11 @@ public class DataWriter {
         }
 
         // Update the userFile
-        return writeJSONArray(usersArray, "SystemFiles/" + userFile);
+        return writeJSONArray(usersArray, USER_FILE);
     }
 
     // read JSON Array is a helper method that reads a JSON file and returns an array
-    private JSONArray readJSONArray(String path) {
+    private static JSONArray readJSONArray(String path) {
         JSONParser parser = new JSONParser();
         File file = new File(path);
 
@@ -136,7 +133,7 @@ public class DataWriter {
     }
 
     // writeJSONArray is a helper method to write a JSON array to a JSON file
-    private boolean writeJSONArray(JSONArray arr, String path) {
+    private static boolean writeJSONArray(JSONArray arr, String path) {
         try (FileWriter file = new FileWriter(path)) {
             file.write(arr.toJSONString());
             file.flush();
