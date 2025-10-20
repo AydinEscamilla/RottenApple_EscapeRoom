@@ -64,7 +64,7 @@ public abstract class Puzzle {
      * Checks if Answer is Correct
      * @returns if user got answer correct
      */
-    public boolean isCorrect (String FixedAnswer) {
+    protected boolean isCorrect (String FixedAnswer) {
         return FixedAnswer.equals(FixedString(solution));
     }
 
@@ -101,11 +101,11 @@ public abstract class Puzzle {
         return puzzleType;
     }
 
-     public String getQuestion(String question) {
+     public String getQuestion() {
         return question;
     }
 
-    public String getSolution(String solution) {
+    public String getSolution() {
         return solution;
 
     }
@@ -140,6 +140,10 @@ public abstract class Puzzle {
 
     public int getHintsUsed() {
         return hintUsedCount;
+    }
+
+    public void increaseHintUsed() {
+        hintUsedCount++;
     }
 
     public Difficulty getDifficulty() {
