@@ -13,17 +13,29 @@ public class MathPuzzle extends Puzzle {
        
     }
 
+    public void addHint (String hint) {
+         if (hint != null && !hint.isBlank()) 
+            hints.add(hint);
+    }
+
     public List<String> getHints () {
         return hints;
         
     }
 
-    public void addHint (String hint) {
-        System.out.println("Add a hint for Math Puzzle");
-        Scanner scanner = new Scanner(System.in);
-        hint = scanner.nextLine();
-        System.out.println(hint);
-        scanner.close();
-        
+    /*
+     * 
+     * @return the next hint based on how many user already used or null if there are no more
+     */
+    public String nextHint() {
+        if (hints.isEmpty()) return null;
+        int used = getHintsUsed();
+        if (used >= hints.size()) return null; //  checks to see if user didn't reach max hints
+
+        String h = hints.get(used); //  returns the hint at that value
+        super.increaseHintUsed(); //  increments the amount of hints used when user ask for hint
+        return h; //  returns hint
     }
+
+  
 }
