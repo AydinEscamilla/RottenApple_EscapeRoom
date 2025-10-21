@@ -23,6 +23,7 @@ public class DataWriter {
         // Convert user to JSON object (portia said something like this in her vid)
         for (User user : users) {
             JSONObject jsonUser = new JSONObject();
+            jsonUser.put("uuid", user.getUUID());  
             jsonUser.put("username", user.getUsername());
             jsonUser.put("password", user.getPassword());
 
@@ -52,7 +53,7 @@ public class DataWriter {
         for (Object obj : usersArray) {
             JSONObject jsonUser = (JSONObject) obj;
 
-            if (jsonUser.get("username").equals(user.getUsername())) {
+            if (jsonUser.get("uuid").equals(user.getUUID())) {
                 // Create the user's progress object
                 JSONObject progressData = new JSONObject();
                 progressData.put("roomID", roomID.toString());
@@ -77,8 +78,7 @@ public class DataWriter {
         for (Object obj : usersArray) {
             JSONObject jsonUser = (JSONObject) obj;
             
-            
-            if (jsonUser.get("username").equals(user.getUsername())) {
+            if (jsonUser.get("uuid").equals(user.getUUID())) {
                 // Create a settings object
                 JSONObject newSettings = new JSONObject();
                 newSettings.put("audioVolume", settings.getAudioVolume());
@@ -104,7 +104,7 @@ public class DataWriter {
         for (Object obj : usersArray) {
             JSONObject jsonUser = (JSONObject) obj;
 
-            if (jsonUser.get("username").equals(user.getUsername())) {
+            if (jsonUser.get("uuid").equals(user.getUUID())) {
                 // Add score for the user
                 jsonUser.put("score", score.toString());
             }
