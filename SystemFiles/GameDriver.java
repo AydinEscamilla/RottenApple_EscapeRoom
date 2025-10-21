@@ -4,15 +4,9 @@ import java.util.List;
 public class GameDriver {
     private static Scanner scanner;
     private static GameSystemFacade facade;
-    private static User currentUser;
-
     public static void main(String[] args) {
-        DataLoader loader = new DataLoader("user.json");
-        DataWriter writer = new DataWriter("user.json");
-        facade = new GameSystemFacade(loader, writer);
 
         scanner = new Scanner(System.in);
-        currentUser = null;
         boolean running = true;
 
         while (running) {
