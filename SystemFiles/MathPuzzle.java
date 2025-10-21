@@ -1,16 +1,19 @@
 
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-
-//import SystemFiles.Puzzle;
 
 public class MathPuzzle extends Puzzle {
-    private List <String> hints;
+private List <String> hints = new ArrayList<>();
 
     public MathPuzzle(int puzzleID, String question, String solution) {
-        super(puzzleID, question, solution);
+        super(puzzleID, PuzzleType.MATH, question, solution);
        
+    }
+
+    protected boolean isCorrect (String fixedAnswer) {
+        
+        return accepted.contains(fixedAnswer);
     }
 
     public void addHint (String hint) {
@@ -37,5 +40,27 @@ public class MathPuzzle extends Puzzle {
         return h; //  returns hint
     }
 
+   
+
   
+}
+
+class MathPuzzleTest {
+    public static void main(String[] args) {
+        var mp1 = new MathPuzzle(
+        102,
+        "Solve the problems to get in the lock. 18 / 3 - 7 + 2 * 5, 12^2 / 3 - 2 * 7, 4^2 * 3 * (11 - 9) ",
+        "93496"
+        );
+        
+        mp1.addHint("Remember PEMDAS");
+        mp1.addHint("The P in Pemdas stands for Parentheseas");
+        System.out.println(mp1.attempt("42"));
+        System.out.println(mp1.nextHint());
+        System.out.println(mp1.attempt("536"));
+        System.out.println(mp1.nextHint());
+        System.out.println(mp1.attempt("93496"));
+
+
+    }
 }
