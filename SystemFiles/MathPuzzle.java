@@ -11,8 +11,9 @@ private List <String> hints = new ArrayList<>();
        
     }
 
-    protected boolean isCorrect (String fixedAnswer) {
-        
+    protected boolean isCorrect (String soluton) {
+        int answer = Integer.parseInt(soluton); //  turning solution to integer
+
         return accepted.contains(fixedAnswer);
     }
 
