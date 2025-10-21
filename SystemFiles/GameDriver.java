@@ -1,9 +1,10 @@
 import java.util.Scanner;
 import java.util.List;
 
+
 public class GameDriver {
     private static Scanner scanner;
-    private static GameSystemFacade facade;
+    private static User currentUser;
     public static void main(String[] args) {
 
         scanner = new Scanner(System.in);
@@ -79,17 +80,19 @@ public class GameDriver {
         }
     }
 
+
     private static void signUp() {
         System.out.print("Enter new username: ");
         String username = scanner.nextLine();
         System.out.print("Enter new password: ");
         String password = scanner.nextLine();
-        User newUser = facade.signUp(username, password);
-        if (newUser != null) {
-            currentUser = newUser;
-            System.out.println("Account created successfully for " + newUser.getUsername() + ".");
+
+        boolean created = UserList.createUser(username, password);
+        if (created) {
+            currentUser = UserList.getUserByUsername(username);
+            System.out.println("Sign up successful. Logged in as " + currentUser.getUsername() + ".");
         } else {
-            System.out.println("Sign up failed. An error has occurred or username taken.");
+            System.out.println("Sign up failed. Username may already exist or input was invalid.");
         }
     }
 
