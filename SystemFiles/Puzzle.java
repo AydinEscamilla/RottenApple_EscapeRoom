@@ -20,7 +20,7 @@ public abstract class Puzzle {
     private int puzzleID;
     private PuzzleType puzzleType;
     private String question;
-    private String solution;
+    protected String solution;
     private boolean isSolved = false;
     private int attempts = 0;
     private int maxAttempts = 3;
