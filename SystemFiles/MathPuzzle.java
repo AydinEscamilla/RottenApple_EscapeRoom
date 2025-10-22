@@ -1,7 +1,7 @@
 
-
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -14,6 +14,8 @@ private List <String> hints = new ArrayList<>();
        
     }
 
+
+    @Override
     protected boolean isCorrect (String soluton) {
         int answer = Integer.parseInt(soluton); //  turning solution to integer
 
@@ -30,18 +32,21 @@ private List <String> hints = new ArrayList<>();
 
 
     //  Creates a Alphabet Decoder
-    public Map DecodePattern() {
+    public Map<Character, Integer> DecodePattern() {
         Map<Character, Integer> alphabetToNumber = new HashMap<>();
         Random random = new Random();
-        int x = random.nextInt(26);
+        int shift = random.nextInt(26);
 
         for (char ch = 'a'; ch <= 'z'; ch++) {
-            alphabetToNumber.put(ch, ch - 'a' + x);
+            int base1to26 = (ch - 'a' + 1);
+            int shifted1to26 = ((base1to26 - 1 + shift) % 26) +1;
+            alphabetToNumber.put(ch, shifted1to26);
         }
+        return alphabetToNumber;
     }
 
     //  Used for Clock Puzzles
-    public void generateTime() {
+    public  LocalTime generateTime() {
         Random random = new Random();
 
         //  Generate a random hour 
@@ -51,19 +56,12 @@ private List <String> hints = new ArrayList<>();
 
         int second = random.nextInt(60);
 
-        LocalTime randomTime = LocalTime.of(hour, minute, second);
+        return LocalTime.of(hour, minute, second);
 
 
     
 
     }
-
-
-
-
-
-
-
 
 
     public void addHint (String hint) {
