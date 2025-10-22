@@ -1,7 +1,10 @@
 
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
 public class MathPuzzle extends Puzzle {
 private List <String> hints = new ArrayList<>();
@@ -14,8 +17,54 @@ private List <String> hints = new ArrayList<>();
     protected boolean isCorrect (String soluton) {
         int answer = Integer.parseInt(soluton); //  turning solution to integer
 
-        return accepted.contains(fixedAnswer);
+        return solution.contains(answer);
     }
+
+    //  Universal Lock that'll show on UI
+    public int LockPuzzzle (String solution) {
+        int a; //  first spot in lock
+        int b; //  second spot
+        int c; //  third spot
+        return 0;
+    }
+
+
+    //  Creates a Alphabet Decoder
+    public Map DecodePattern() {
+        Map<Character, Integer> alphabetToNumber = new HashMap<>();
+        Random random = new Random();
+        int x = random.nextInt(26);
+
+        for (char ch = 'a'; ch <= 'z'; ch++) {
+            alphabetToNumber.put(ch, ch - 'a' + x);
+        }
+    }
+
+    //  Used for Clock Puzzles
+    public void generateTime() {
+        Random random = new Random();
+
+        //  Generate a random hour 
+        int hour = random.nextInt(24);
+
+        int minute = random.nextInt(60);
+
+        int second = random.nextInt(60);
+
+        LocalTime randomTime = LocalTime.of(hour, minute, second);
+
+
+    
+
+    }
+
+
+
+
+
+
+
+
 
     public void addHint (String hint) {
          if (hint != null && !hint.isBlank()) 
