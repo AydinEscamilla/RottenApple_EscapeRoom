@@ -1,34 +1,26 @@
 
-import java.awt.image.BufferedImage;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JFrame;
-
-
-//import SystemFiles.Puzzle;
-
 public class PicturePuzzle extends Puzzle {
-    private List <String> hints;
-    // private List <ImageIcon> images;
-    private String imagePath;
+    private List <String> hints = new ArrayList<>();
+    private List <String> imagePaths = new ArrayList<>();
 
-    public PicturePuzzle(int puzzleID, String question, String solution, String imagePath) {
+    public PicturePuzzle(int puzzleID, String question, String solution, List<String> images) {
         super(puzzleID, PuzzleType.PICTURE, question, solution);
+        if (images != null) imagePaths.addAll(images);
        
     }
 
     @Override
-    protected boolean isCorrect (String fixedAnswer) {
-        return solution.contains(fixedAnswer);
+    protected boolean isCorrect (String input) {
+        String playerAnswer = FixedString(input);
+        String correctAnswer = FixedString(getSolution());
+        return playerAnswer.equals(correctAnswer); //  compare the answers
     }
 
-    
+    @Override
     public void addHint (String hint) {
          if (hint != null && !hint.isBlank()) 
             hints.add(hint);
@@ -49,59 +41,56 @@ public class PicturePuzzle extends Puzzle {
         return h; //  returns hint
     }
 
-          
-
-      //  FingerPrint Game
-    public List<ImageIcon> fingerPrint () {
-        List <ImageIcon> fingerPrint = new ArrayList<>();
-        ImageIcon questionPrint = new ImageIcon("images/Question-Print.png");
-        ImageIcon correctPrint = new ImageIcon("images/Correct-Print.png");
-        ImageIcon incorrectPrint1 = new ImageIcon("images/Incorrect-Print1.png");
-        ImageIcon incorrectPrint2 = new ImageIcon("images/Incorrect-Print2.png");
-
-        fingerPrint.add(0, questionPrint); //  wrpng
-        fingerPrint.add(1, incorrectPrint1);
-        fingerPrint.add(2, incorrectPrint2);
-        fingerPrint.add(3, correctPrint);
-
-        return fingerPrint;
-
-
-        
+    public List<String> getImagePaths() {
+        return List.copyOf(imagePaths);
     }
 
-    //  Security Camera Game
-    public List<ImageIcon> CameraFootage () {
+    public static PicturePuzzle FingerPrintMatch() {
+    var p1 = new PicturePuzzle( 
+        301,
+        "Based on the sample print, which fingerprint mathces?",
+        "B",
+        List.of("images/Question-Print.png", "images/Incorrect-Print-1", "images/Correct-Print", "images/Incorrect-Print-2")
+    );
+    
+    p1.addHint("Look at the ridge patterns.");
+    p1.addHint("Focus on the center area of the prints.");
+    return p1;
+  
+}
 
-        question = "Officer Crook was driving a white car what is the license plate?";
-        solution = "395833";
+public static PicturePuzzle CameraPuzzle() {
+    var p2 = new PicturePuzzle(
+        302,
+        "Which color car has the plate 395833?",
+        "White",
+        List.of("images/Correct-Car.png", "Incorrect-Car-1.png", "Incorrect-Car-2.png")
 
-        List <ImageIcon> CameraFootage = new ArrayList<>();
-        ImageIcon correctCar = new ImageIcon("images/Correct-Car.png");
-        ImageIcon incorrectCar1 = new ImageIcon("images/Incorrect-Car1.png");
-        ImageIcon incorrectCar2 = new ImageIcon("images/Incorrect-Car2.png");
+    );
 
-        CameraFootage.add(0, correctCar); 
-        CameraFootage.add(1, incorrectCar1);
-        CameraFootage.add(2, incorrectCar2);
+    p2.addHint("Look closely at the license plates.");
+    p2.addHint("Focus on the numbers");
+    return p2;
+}
 
-        return CameraFootage;
+public static PicturePuzzle MissingBadge() {
+    var p3 = new PicturePuzzle(
+        303,
+        "Who's missing their badge?",
+        "Left",
+        List.of("images/cop-badge.png")
+    );
+
+    p3.addHint("Look towards the right side of the chest.");
+
+    return p3;
 
 
-        
-    }
-
-
-    public static void main (String[] args) {
-        JFrame frame = new JFrame("Image Display");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-    }
-
-   
-
+}
 
     
 }
+
+
 
 
