@@ -18,18 +18,16 @@ public class GameDriver {
         GameCompletion();
     } 
     
-    public void loginscenario() { 
+    public void DuplicateAccount() { 
         System.out.println(); 
         
         if (!facade.login("username1", "password1")) { 
             System.out.println("Login failed."); 
             return; 
         } 
-        
-        System.out.println("Login successful for username1");
     } 
     
-    public void signupscenario() { 
+    public void CreateAccount() { 
         System.out.println(); 
         if (facade.signup()) {
             System.out.println("Signup failed."); 
@@ -38,4 +36,20 @@ public class GameDriver {
         
         System.out.println("Login successful for username2"); 
     } 
+
+    public void EnterRoom() {
+        return;
+    }
+
+    public void ThreePuzzles() {
+        return;
+    }
+    
+    public void DataPersistence() {
+        return;
+    }
+
+    public void GameCompletion() {
+        return;
+    }
 }
