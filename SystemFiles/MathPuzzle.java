@@ -45,6 +45,30 @@ private List <String> hints = new ArrayList<>();
         return h; //  returns hint
     }
 
+    public static MathPuzzle PemdasLock() {
+        var mp1 = new MathPuzzle(
+        102,
+        "Solve the problems to get in the lock. 18 / 3 - 7 + 2 * 5, 12^2 / 3 - 2 * 7, 4^2 * 3 * (11 - 9) ",
+        "93496"
+        );
+        
+        mp1.addHint("Remember PEMDAS");
+        mp1.addHint("The P in Pemdas stands for Parentheseas");
+        return mp1;
+
+    }
+
+    public static MathPuzzle AmmoBox() {
+        var mp2 = new MathPuzzle(
+        102,
+        "Ammo log: boxes 10, 7, 12; report says 5 were used. Enter (10 + 7 + 12) − 5",
+        "6"
+        );
+
+        mp2.addHint("Add first, then subtract");
+        return mp2;
+    }
+
    
 
   

@@ -11,10 +11,24 @@ public class Rooms {
     private List<Rooms> prerequisiteRooms;
 
     public Rooms(int id, String name, String description) {
+        this.roomID = id;
+        this.roomName = name;
+        this.description = description;
 
     }
 
     public void addPuzzle(Puzzle puzzle) {
+        Puzzle PP1 = PicturePuzzle.FingerPrintMatch();
+        Puzzle PP2 = PicturePuzzle.CameraPuzzle();
+        Puzzle MP1 = MathPuzzle.PemdasLock();
+        Puzzle MP2 = MathPuzzle.AmmoBox();
+        Puzzle LP1 = LogicPuzzle.DuckPuzzle();
+        
+        puzzles.add(PP1);
+        puzzles.add(PP2);
+        puzzles.add(MP1);
+        puzzles.add(MP2);
+        puzzles.add(LP1);
 
     }
 

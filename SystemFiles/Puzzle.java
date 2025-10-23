@@ -158,4 +158,6 @@ public abstract class Puzzle {
 
     public abstract void addHint (String hint); //  abstract hint method to be overriden
 
+    // public abstract void addItem (String item);
+
 }
