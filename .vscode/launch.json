@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "UuidGenerator",
+            "request": "launch",
+            "mainClass": "UuidGenerator",
+            "projectName": ""
+        },
+        {
+            "type": "java",
+            "name": "DataLoader",
+            "request": "launch",
+            "mainClass": "DataLoader",
+            "projectName": ""
+        },
+        {
+            "type": "java",
             "name": "GameDriver",
             "request": "launch",
             "mainClass": "GameDriver"

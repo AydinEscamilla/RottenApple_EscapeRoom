@@ -3,38 +3,29 @@
         "UUID" : "3f794eb0-8f94-4499-8582-04f2a6b6d512",
         "username": "LRivers",
         "password": "password1",
-        "audioVolume": 70,
-        "musicOn": false,
-        "soundEffectsOn": true,
-        "textSize": 16,
-        "score": 25,
-        "timeTaken": 3500,
-        "dateAchieved": "2025-09-28",
-        "rank": 3,
-        "roomsCleared": [101],
-        "puzzlesSolved": [201],
         "currentGame": 1,
-        "currentRoom": 102,
-        "lastPuzzle": "What could this picture mean? - 'I don't make U+00A2(cent symbol)"
+        "currentRoom": 101,
+        "lastPuzzle": 101,
+        "items": ["key"]
     }, 
     
     {
         "UUID" : "015cbde9-8f3b-4dc5-91c8-968d8df389c8",
-        "username": "username2",
+        "username": "dummy2",
         "password": "password2",
-        "audioVolume": 40,
-        "musicOn": true,
-        "soundEffectsOn": true,
-        "textSize": 12,
-        "score": 75,
-        "timeTaken": 6000,
-        "dateAchieved": "2025-09-28",
-        "rank": 2,
-        "roomsCleared": [101, 102],
-        "puzzlesSolved": [201, 202],
-        "currentGame": 2,
-        "currentRoom": 103,
-        "lastPuzzle": "Solve the problems to get in the lock. 18 / 3 - 7 + 2 * 5, 12^2 / 3 - 2 * 7, 4^2 * 3 * (11 - 9) "
+        "currentGame": 1,
+        "currentRoom": 101,
+        "lastPuzzle": 102,
+        "items": ["key"]
+    },
 
+    {
+        "UUID" : "e944f6c2-7705-45dd-8f74-87e4868b4bf7",
+        "username": "dummy3",
+        "password": "password3",
+        "currentGame": 1,
+        "currentRoom": 102,
+        "lastPuzzle": 103,
+        "items": ["key", "rope"]
     }
 ]
