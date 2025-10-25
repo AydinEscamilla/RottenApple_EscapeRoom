@@ -52,7 +52,8 @@ public class Game {
     public void resume() {
         if (status == GameStatus.PAUSED) {
             if (pausedAt != null) {
-                accumlatedTime += Duration.between(pausedAt, Instant.now()).toMillis();
+                //  Calculate paused duration and add to accumlatedTime
+                accumlatedTime += Duration.between(pausedAt, Instant.now()).toMillis(); 
                 pausedAt = null;
             }
             status = GameStatus.RUNNING;
@@ -65,24 +66,60 @@ public class Game {
 
     }
 
+    
+    public GameStatus getStatus() {
+        return status;
+    }
+
     public double getElapsedTime() {
+
         return 0.0;
     }
 
+    /*
+     * @return the current room the player is in
+     */
     public Room getCurrentRoom() {
-        return currentRoom;
+        if (rooms.isEmpty()) {
+            return null;
+        }
+        return rooms.get(currentRoomIndex);
     }
 
-    public void goToRoom(Room room) {
+    public boolean goToRoom(int roomID) {
+        for (int i = 0; i < rooms.size(); i++) {
+            if (rooms.get(i).getRoomID() == roomID) {
+                currentRoomIndex = i;
+                return true;
+            }
+        }
+        return false;
 
     }
 
+    private void advanceIfCleared() {
+        Room currentRoom = getCurrentRoom();
+        if (currentRoom == null) return;
+        currentRoom.updatedClearedStatus();
+        if (!currentRoom.isRoomCleared()) return;
+
+        if (currentRoomIndex + 1 < rooms.size()) {
+            currentRoomIndex++;
+        } else {
+            end();
+        }
+    }
+
+    /*
+     * @return list of unsolved puzzles in the current room
+     */
     public List<Puzzle> getUnsolvedPuzzles() {
-        return null; 
+        Room r = getCurrentRoom();
+        return (r == null) ? List.of() : r.getUnsolvedPuzzles(); 
     }
 
     public boolean isFinished() {
-        return false; 
+        return status == GameStatus.COMPLETED; 
     }
 
     public int calculateScore() {
@@ -94,7 +131,18 @@ public class Game {
     }
 
     public void addRoom(Room room) {
+        if (room != null) {
+            rooms.add(room);
+        }
 
+    }
+
+    public int getGameID() {
+        return gameID;
+    }
+
+    public List<Room> getRooms() {
+        return List.copyOf(rooms);
     }
 
     public Progress saveProgress() {
