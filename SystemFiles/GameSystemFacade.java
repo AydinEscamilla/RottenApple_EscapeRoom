@@ -19,7 +19,7 @@ public class GameSystemFacade {
     }
 
     public void logout() {
-        currentUser = null;
+        users.saveUsers();
     }
 
     public List<String> getAllUsernames() {

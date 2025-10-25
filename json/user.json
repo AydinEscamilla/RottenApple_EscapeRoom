@@ -3,91 +3,38 @@
         "UUID" : "3f794eb0-8f94-4499-8582-04f2a6b6d512",
         "username": "LRivers",
         "password": "password1",
-        "preferences": [
-            {
-                "audioVolume": 70,
-                "musicOn": false,
-                "soundEffectsOn": true,
-                "textSize": 16
-            }
-        ],
-
-        "progress": [ 
-            {
-                "score": 25,
-                "timeTaken": 3500,
-                "dateAchieved": "2025-09-28",
-                "rank": 3,
-                "roomsCleared": [101],
-                "puzzlesSolved": [201],
-                "currentGame": 1,
-                "currentRoom": 102,
-                "lastPuzzle": "What could this picture mean? - 'I don't make U+00A2(cent symbol)"
-            }
-        ]
-        
-        
-
+        "audioVolume": 70,
+        "musicOn": false,
+        "soundEffectsOn": true,
+        "textSize": 16,
+        "score": 25,
+        "timeTaken": 3500,
+        "dateAchieved": "2025-09-28",
+        "rank": 3,
+        "roomsCleared": [101],
+        "puzzlesSolved": [201],
+        "currentGame": 1,
+        "currentRoom": 102,
+        "lastPuzzle": "What could this picture mean? - 'I don't make U+00A2(cent symbol)"
     }, 
     
     {
         "UUID" : "015cbde9-8f3b-4dc5-91c8-968d8df389c8",
         "username": "username2",
         "password": "password2",
-        "preferences":[
-            {
-                "audioVolume": 40,
-                "musicOn": true,
-                "soundEffectsOn": true,
-                "textSize": 12
-            }
-        ],
-
-        "progress": [
-            {
-                "score": 75,
-                "timeTaken": 6000,
-                "dateAchieved": "2025-09-28",
-                "rank": 2,
-                "roomsCleared": [101, 102],
-                "puzzlesSolved": [201, 202],
-                "currentGame": 2,
-                "currentRoom": 103,
-                "lastPuzzle": "Solve the problems to get in the lock. 18 / 3 - 7 + 2 * 5, 12^2 / 3 - 2 * 7, 4^2 * 3 * (11 - 9) "
-            }
-        ]
-
-
-    },
-
-    {
-        "UUID" : "5781c5d1-0779-4c3e-ba2a-c471d604b063",
-        "username": "username3",
-        "password": "password3",
-        "preferences": [ 
-            {
-                "audioVolume": 65,
-                "musicOn": false,
-                "soundEffectsOn": false,
-                "textSize": 20
-            }
-        ],
-
-        "progress": [
-            {
-                "score": 150,
-                "timeTaken": 1000,
-                "dateAchieved": "2025-09-28",
-                "rank": 1,
-                "roomsCleared": [101,102, 103],
-                "puzzlesSolved": [201, 202, 203],
-                "currentGame": 3,
-                "currentRoom": 104,
-                "lastPuzzle": "There are two ducks in front of a duck, two ducks behind a duck and a duck in the middle. How many ducks are there?"
-        
-            }
-        ]
+        "audioVolume": 40,
+        "musicOn": true,
+        "soundEffectsOn": true,
+        "textSize": 12,
+        "score": 75,
+        "timeTaken": 6000,
+        "dateAchieved": "2025-09-28",
+        "rank": 2,
+        "roomsCleared": [101, 102],
+        "puzzlesSolved": [201, 202],
+        "currentGame": 2,
+        "currentRoom": 103,
+        "lastPuzzle": "Solve the problems to get in the lock. 18 / 3 - 7 + 2 * 5, 12^2 / 3 - 2 * 7, 4^2 * 3 * (11 - 9) "
 
     }
-
 ]

@@ -1,6 +1,5 @@
 import java.util.List;
 
-
 public class Rooms {
     private int roomID;
     private String roomName;

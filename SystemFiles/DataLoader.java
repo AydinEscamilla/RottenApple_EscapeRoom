@@ -6,6 +6,14 @@ import org.json.simple.parser.*;
 public class DataLoader {
     private String filename;
 
+    public static void main(Stringp[] args) {
+        ArrayList<User> users = DataLoader.getUsers();
+
+        for (User user : users) {
+            System.out.println(user);
+        }
+    }
+
     public DataLoader() {
         this("user.json");
     }

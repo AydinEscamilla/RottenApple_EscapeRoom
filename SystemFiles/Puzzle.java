@@ -1,7 +1,3 @@
-//package SystemFiles;
-
-
-
 public abstract class Puzzle {
 
     public enum PuzzleStatus {
