@@ -18,19 +18,45 @@ public class Room {
 
     }
 
-    public void addPuzzle(Puzzle puzzle) {
-        Puzzle PP1 = PicturePuzzle.FingerPrintMatch();
-        Puzzle PP2 = PicturePuzzle.CameraPuzzle();
-        Puzzle MP1 = MathPuzzle.PemdasLock();
-        Puzzle MP2 = MathPuzzle.AmmoBox();
-        Puzzle LP1 = LogicPuzzle.DuckPuzzle();
-        
-        puzzles.add(PP1);
-        puzzles.add(PP2);
-        puzzles.add(MP1);
-        puzzles.add(MP2);
-        puzzles.add(LP1);
+    /*
+     * Sets the order of the room in the game
+     * @return the room with set order
+     */
+    public Room setOrder (int order) {
+        this.roomOrder = order;
+        return this;
+    }
 
+    /*
+     * Adds a prerequisite room to the room
+     * @return the room with added prerequisite
+     */
+    public Room addPrerequisitie (Room room) {
+        if (room != null)
+        prerequisiteRooms.add(room);
+        return this;
+    }
+
+    /*
+     * Adds a puzzle to the room
+     * @return the room with added puzzle
+     */
+    public Room addPuzzle(Puzzle puzzle) {
+        if (puzzle != null)
+        puzzles.add(puzzle);
+        return this;
+
+    }
+
+    /*
+     * Adds multiple puzzles to the room at once
+     * @return the room with added puzzles
+     */
+    public Room addPuzzles (Puzzle...list) {
+        for (Puzzle p : list) {
+            addPuzzle(p);
+        }
+        return this;
     }
 
     public List<Puzzle> getPuzzles() {
