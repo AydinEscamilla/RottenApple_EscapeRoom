@@ -1,3 +1,4 @@
+
 import java.net.http.WebSocket.Listener;
 import java.time.Instant; //  better for tracking time
 import java.util.List;
@@ -14,7 +15,7 @@ public class Game {
     //  Timing
     private Instant startTime;
     private Instant pausedAt;
-    private long accumlatedTime = 0;
+    private long accumlatedTime = 0; //  total time spent paused
     private int totalScore = 0;
 
     public Game (int gameID, List<Room> initialRooms) {
@@ -50,14 +51,15 @@ public class Game {
      * Resumes the game if it is paused
      */
     public void resume() {
-        if (status == GameStatus.PAUSED) {
-            if (pausedAt != null) {
-                //  Calculate paused duration and add to accumlatedTime
-                accumlatedTime += Duration.between(pausedAt, Instant.now()).toMillis(); 
-                pausedAt = null;
-            }
+      
+        if (status == GameStatus.PAUSED && pausedAt != null) {
+            //  Calculate paused duration and add to accumlatedTime
+            accumlatedTime += Duration.between(pausedAt, Instant.now()).toMillis(); 
+            pausedAt = null;
             status = GameStatus.RUNNING;
         }
+            
+        
  
     }
 
@@ -71,9 +73,26 @@ public class Game {
         return status;
     }
 
-    public double getElapsedTime() {
+    public long getElapsedTime() {
+        //  If game not started, elapsed time is 0
+        if (status == GameStatus.NOT_STARTED) {
+            return 0L;
+        }
 
-        return 0.0;
+        Instant now = Instant.now();
+
+        //  total time since starting
+        long sinceStart = Duration.between(startTime, now).toMillis(); 
+
+        //  the open pause, time between paused at to now
+        long currentPause = (status ==  GameStatus.PAUSED && pausedAt != null)
+                                ? Duration.between(pausedAt, now).toMillis()
+                                : 0L;
+        //  Elapsed time is total time minus the pauses in accumlated and current
+        long elapsed = sinceStart - accumlatedTime - currentPause;
+        //  Ensure non-negative
+        return Math.max(0L, elapsed);
+
     }
 
     /*
@@ -97,6 +116,25 @@ public class Game {
             }
         }
         return false;
+
+    }
+
+    /*
+     * User attempts to answer the puzzle in the current room at given index
+     * @return true if the attempt was correct, false otherwise
+     */
+    public boolean attemptCurrentRoomPuzzle (int index, String solution) {
+        Room currentRoom = getCurrentRoom(); 
+        if (currentRoom == null) return false; 
+        List<Puzzle> Puzzles = currentRoom.getPuzzles(); 
+        if (index < 0 || index >= Puzzles.size()) return false; 
+
+        boolean result = Puzzles.get(index).attempt(solution); 
+        currentRoom.updatedClearedStatus();
+        if (currentRoom.isRoomCleared()) {
+            advanceIfCleared();
+        }
+        return result;
 
     }
 
