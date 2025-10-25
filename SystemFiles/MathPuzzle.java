@@ -91,7 +91,7 @@ class MathPuzzleTest {
         System.out.println(mp1.attempt("93496"));
 
         var mp2 = new MathPuzzle(
-        102,
+        103,
         "Ammo log: boxes 10, 7, 12; report says 5 were used. Enter (10 + 7 + 12) − 5",
         "6"
         );

@@ -28,6 +28,11 @@ public abstract class Puzzle {
     private int hintUsedCount = 0;
     private Difficulty difficulty = Difficulty.EASY;
 
+    // Scoring
+    private int baseScore = 10;
+    private int perHintPenalty = 2;
+    private int perExtraAttempt = 1;
+
     
 
     public Puzzle (int puzzleID, PuzzleType type, String question, String solution) {
@@ -125,7 +130,32 @@ public abstract class Puzzle {
         return maxAttempts;
     }
 
+    public int getBaseScore() {
+        return baseScore;
+    }
+
+    public void setBaseScore(int baseScore) {
+        this.baseScore = baseScore;
+    }
+
+    public void setPerHintPenalty(int per) {
+        this.perHintPenalty = Math.max(0, per);
+    }
+
+    public void setPerExtraAttempt(int per) {
+        this.perExtraAttempt = Math.max(0, per);
+    }
+
+    /*
+     * @return the score value of the puzzle based on hints used and extra attempts
+     */
     public int getScoreValue() {
+        if(!solved()) return 0;
+        int extraAttempts = Math.max(0, getAttempts() - 1); 
+        int totalPenalty = (getHintsUsed() * perHintPenalty) + (extraAttempts * perExtraAttempt);
+        int scoreValue = Math.max(0, baseScore - totalPenalty);
+
+
         return scoreValue;
 
     }

@@ -167,8 +167,17 @@ public class Game {
     }
 
     public int calculateScore() {
-        return 0;
+        int score = 0;
+        for (Room room : rooms) {
+            for (Puzzle puzzle : room.getPuzzles()) {
+                if (puzzle.solved()) {
+                    score += puzzle.getScoreValue();
+                }
+            }
+        }
+        return score;
     }
+
 
     public void addPuzzle(Puzzle puzzle) {
 
@@ -201,3 +210,5 @@ public class Game {
 
    
  }
+
+ 
