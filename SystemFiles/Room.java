@@ -1,16 +1,17 @@
+import java.util.ArrayList;
 import java.util.List;
 
 
-public class Rooms {
+public class Room {
     private int roomID;
     private String roomName;
     private String description;
-    private List<Puzzle> puzzles;
-    private boolean isCleared; 
-    private int roomOrder;
-    private List<Rooms> prerequisiteRooms;
+    private List<Puzzle> puzzles = new ArrayList<>();
+    private boolean isCleared = false; 
+    private int roomOrder = 0;
+    private List<Room> prerequisiteRooms = new ArrayList();
 
-    public Rooms(int id, String name, String description) {
+    public Room(int id, String name, String description) {
         this.roomID = id;
         this.roomName = name;
         this.description = description;
@@ -48,15 +49,15 @@ public class Rooms {
         return null;
     }
 
-    public boolean hasAccess(List<Rooms> completedRooms){
+    public boolean hasAccess(List<Room> completedRooms){
         return false;
     }
 
-    public Rooms getNextRoom() {
+    public Room getNextRoom() {
         return null;
     }
 
-    public Rooms moveToRoom(int roomID) {
+    public Room moveToRoom(int roomID) {
         return null;
     }
 }

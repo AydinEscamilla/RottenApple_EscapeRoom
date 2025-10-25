@@ -43,7 +43,7 @@ public class DataLoader {
         return new ArrayList<>();
     }
 
-    public List<Rooms> getRoom() {
+    public List<Room> getRoom() {
         return new ArrayList<>();
     }
 

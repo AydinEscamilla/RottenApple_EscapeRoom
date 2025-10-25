@@ -73,6 +73,17 @@ public  class LogicPuzzle extends Puzzle {
         return h; //  returns hint
     }
 
+    public static LogicPuzzle DuckPuzzle() {
+        var lp1 = new LogicPuzzle(
+            101,
+            "There are two ducks in front of a duck, two ducks behind a duck and a duck in the middle. How many ducks are there?",
+            List.of("Three", "3")
+        );
+        
+        lp1.addHint("Consider the amount of ducks that ACTUALLY exist.");
+        return lp1;
+    }
+
    
 }
 

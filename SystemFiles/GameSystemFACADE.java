@@ -120,11 +120,11 @@ public class GameSystemFacade {
             return null;
         }
 
-    public Rooms getCurrentRoom() {
+    public Room getCurrentRoom() {
             return null;
         }
 
-    public Rooms moveToRoom(int roomID) {
+    public Room moveToRoom(int roomID) {
             return null;
         }
 
