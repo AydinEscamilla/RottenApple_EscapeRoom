@@ -86,6 +86,9 @@ public class Game {
         return rooms.get(currentRoomIndex);
     }
 
+    /*
+     * @return true if successfully moved to room with given ID, false otherwise
+     */
     public boolean goToRoom(int roomID) {
         for (int i = 0; i < rooms.size(); i++) {
             if (rooms.get(i).getRoomID() == roomID) {
@@ -97,6 +100,9 @@ public class Game {
 
     }
 
+    /*
+     * Advances to the next room if the current room is cleared, end game if none is left
+     */
     private void advanceIfCleared() {
         Room currentRoom = getCurrentRoom();
         if (currentRoom == null) return;
@@ -140,7 +146,9 @@ public class Game {
     public int getGameID() {
         return gameID;
     }
-
+    /*
+    * @return list of rooms in the game
+    */
     public List<Room> getRooms() {
         return List.copyOf(rooms);
     }
