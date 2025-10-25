@@ -1,4 +1,5 @@
 import java.net.http.WebSocket.Listener;
+import java.time.Instant; //  better for tracking time
 import java.util.List; 
 
 public class Game {
@@ -7,31 +8,50 @@ public class Game {
     private GameStatus status = GameStatus.NOT_STARTED;
     private int gameID;
     private List<Room> rooms;
-    private Room currentRoom; 
-    private boolean isCompleted;
-    private int totalScore;
-    private long timeLimit;
-    private boolean isPaused;
-    private Game game;
+    private int currentRoomIndex = 0;
 
-    public Game (int gameID, List<Room> rooms, Room currentRoom, boolean isCompleted, int totalScore, long timeLimit, boolean isPaused, Game game) {
+    //  Timing
+    private Instant startTime;
+    private Instant pausedAt;
+    private long accumlatedTime = 0;
+    private int totalScore = 0;
+
+    public Game (int gameID, List<Room> initialRooms) {
         this.gameID = gameID;
-        this.rooms = rooms;
-        this.currentRoom = currentRoom;
-        this.isCompleted = isCompleted;
-        this.totalScore = totalScore;
-        this.timeLimit = timeLimit;
-        this.isPaused = isPaused;
-        this.game = game;
+        if(initialRooms != null) {
+            rooms.addAll(initialRooms);
+        }
     }
 
 
     public void start() {
-        while 
+        if (rooms.isEmpty()) {
+            throw new IllegalStateException("Cannot start a game with no rooms.");
+        }
+        status = GameStatus.RUNNING;
+        currentRoom = rooms.get(0);
 
     }
 
+     public void pause() {
+      
+        if (status == GameStatus.RUNNING) {
+            isPaused = true;
+            status = GameStatus.PAUSED;
+        }
+
+    }
+
+    public void resume() {
+        if (status == GameStatus.PAUSED) {
+            isPaused = false;
+            status = GameStatus.RUNNING;
+        }
+ 
+    }
+
     public void end() {
+        status = GameStatus.COMPLETED;
 
     }
 
@@ -75,21 +95,5 @@ public class Game {
 
     }
 
-    public void pause() {
-      
-        while (isPaused = false) {
-
-        }
-
-
-    }
-
-    public void resume() {
-        
-        while (isPaused != false) {
-
-        }
-
-        
-    }
+   
  }
