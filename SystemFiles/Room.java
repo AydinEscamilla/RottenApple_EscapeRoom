@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class Room {
@@ -71,8 +72,19 @@ public class Room {
         return isCleared;
     }
 
+    /*
+     * 
+     * @return list of unsolved puzzles in the room
+     */
+
     public List<Puzzle> getUnsolvedPuzzles() {
-        return null;
+        List<Puzzle> unsolvedP = new ArrayList<>();
+        for (Puzzle p : puzzles) {
+            if (!p.solved()) {
+                unsolvedP.add(p);
+            }
+        }
+        return unsolvedP;
     }
 
     public boolean hasAccess(List<Room> completedRooms){
