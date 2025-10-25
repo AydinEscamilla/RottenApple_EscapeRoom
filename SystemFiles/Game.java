@@ -1,6 +1,7 @@
 import java.net.http.WebSocket.Listener;
 import java.time.Instant; //  better for tracking time
-import java.util.List; 
+import java.util.List;
+import java.time.Duration; 
 
 public class Game {
     public enum GameStatus { NOT_STARTED, RUNNING, PAUSED, COMPLETED}
@@ -29,22 +30,31 @@ public class Game {
             throw new IllegalStateException("Cannot start a game with no rooms.");
         }
         status = GameStatus.RUNNING;
-        currentRoom = rooms.get(0);
+       currentRoomIndex = 0;
+        startTime = Instant.now();
+        pausedAt = null;
+        accumlatedTime = 0;
 
     }
 
      public void pause() {
       
         if (status == GameStatus.RUNNING) {
-            isPaused = true;
             status = GameStatus.PAUSED;
+            pausedAt = Instant.now();
         }
 
     }
 
+    /*
+     * Resumes the game if it is paused
+     */
     public void resume() {
         if (status == GameStatus.PAUSED) {
-            isPaused = false;
+            if (pausedAt != null) {
+                accumlatedTime += Duration.between(pausedAt, Instant.now()).toMillis();
+                pausedAt = null;
+            }
             status = GameStatus.RUNNING;
         }
  
