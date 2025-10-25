@@ -2,29 +2,29 @@ import java.net.http.WebSocket.Listener;
 import java.util.List; 
 
 public class Game {
+    public enum GameStatus { NOT_STARTED, RUNNING, PAUSED, COMPLETED}
+
+    private GameStatus status = GameStatus.NOT_STARTED;
     private int gameID;
-    private List<Rooms> rooms;
-    private Rooms currentRoom; 
+    private List<Room> rooms;
+    private Room currentRoom; 
     private boolean isCompleted;
     private int totalScore;
     private long timeLimit;
     private boolean isPaused;
     private Game game;
 
-    public Game (int gameID)
-
-    public Game() {
-        gameID = 0;
-        //rooms =
-        currentRoom = 101; //  per JSON this is the first room
-        isCompleted = false;
-        totalScore = 0;
-        //timeLimit = 
-        isPaused = false;
-        game = 0; //  don't know what to store the Game itself as
-
-
+    public Game (int gameID, List<Room> rooms, Room currentRoom, boolean isCompleted, int totalScore, long timeLimit, boolean isPaused, Game game) {
+        this.gameID = gameID;
+        this.rooms = rooms;
+        this.currentRoom = currentRoom;
+        this.isCompleted = isCompleted;
+        this.totalScore = totalScore;
+        this.timeLimit = timeLimit;
+        this.isPaused = isPaused;
+        this.game = game;
     }
+
 
     public void start() {
         while 
@@ -39,11 +39,11 @@ public class Game {
         return 0.0;
     }
 
-    public Rooms getCurrentRoom() {
+    public Room getCurrentRoom() {
         return currentRoom;
     }
 
-    public void goToRoom(Rooms room) {
+    public void goToRoom(Room room) {
 
     }
 
@@ -63,7 +63,7 @@ public class Game {
 
     }
 
-    public void addRoom(Rooms room) {
+    public void addRoom(Room room) {
 
     }
 

@@ -1,3 +1,4 @@
+import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -73,6 +74,13 @@ public class Room {
     }
 
     /*
+     * Updates the cleared status of the room based on its puzzles
+     */
+    public void updatedClearedStatus() {
+        this.isCleared = puzzles.stream().allMatch(Puzzle::solved);
+    }
+
+    /*
      * 
      * @return list of unsolved puzzles in the room
      */
@@ -87,8 +95,33 @@ public class Room {
         return unsolvedP;
     }
 
+    /*
+     * Checks if the room can be accessed based on completed rooms
+     * @return true if all prerequisite rooms are cleared, false otherwise
+     */
     public boolean hasAccess(List<Room> completedRooms){
-        return false;
+        if(prerequisiteRooms.isEmpty()) return true;
+        return prerequisiteRooms.stream().allMatch(Room::isRoomCleared);
+    }
+
+    public int getRoomID() {
+        return roomID;
+    }
+
+    public String getRoomName() {
+        return roomName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public int getRoomOrder() {
+        return roomOrder;
+    }
+
+    public List<Room> getPrerequisiteRooms() {
+        return prerequisiteRooms;
     }
 
     public Room getNextRoom() {
@@ -97,5 +130,28 @@ public class Room {
 
     public Room moveToRoom(int roomID) {
         return null;
+    }
+}
+
+ class RoomTest {
+    public static void main (String[] args) {
+        Room r1 = new Room(1, "Entrance Hall", "The starting point of your escape room adventure.");
+        Room r2 = new Room(2, "Library", "A room filled with ancient books and puzzles.");
+        Room r3 = new Room(3, "Laboratory", "A high-tech room with scientific equipment.");
+
+        r2.addPrerequisitie(r1);
+        r3.addPrerequisitie(r2);
+
+        Puzzle p1 = new LogicPuzzle(101, "What has keys but can't open locks?", List.of("Piano", "A piano"));
+        Puzzle p2 = new LogicPuzzle(102, "What comes once in a minute, twice in a moment, but never in a thousand years?", List.of("The letter M", "M"));
+
+        r1.addPuzzles(p1);
+        r2.addPuzzles(p2);
+
+        System.out.println("Room 1 ID: " + r1.getRoomID());
+        System.out.println("Room 2 Name: " + r2.getRoomName());
+        System.out.println("Room 3 Description: " + r3.getDescription());
+
+        System.out.println("Room 2 Prerequisites: " + r2.getPrerequisiteRooms().stream().map(Room::getRoomName).collect(Collectors.joining(", ")));
     }
 }
