@@ -1,6 +1,5 @@
-package SystemFiles;
-import java.util.List;
 
+import java.util.List;
 
 public class Rooms {
     private int roomID;

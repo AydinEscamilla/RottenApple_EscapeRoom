@@ -1,21 +1,36 @@
-package SystemFiles;
 
-import java.util.Scanner;
 
 public abstract class Puzzle {
+
+    public enum PuzzleStatus {
+        NOT_STARTED, 
+        IN_PROGRESS, 
+        SOLVED, 
+        FAILED
+    }
+
+    public enum PuzzleType {
+        LOGIC,
+        MATH,
+        PICTURE
+    }
+
     private int puzzleID;
-    private String puzzleType;
+    private PuzzleType puzzleType;
     private String question;
     private String solution;
-    private boolean isSolved;
-    private int attempts;
-    private int maxAttempts;
-    private int scoreValue;
-    private int hintUsedCount;
-    private Difficulty Difficulty;
+    private boolean isSolved = false;
+    private int attempts = 0;
+    private int maxAttempts = 3;
+    private int scoreValue = 0;
+    private int hintUsedCount = 0;
+    private Difficulty difficulty = Difficulty.EASY;
 
-    public Puzzle (int puzzleID, String question, String solution) {
+    
+
+    public Puzzle (int puzzleID, PuzzleType type, String question, String solution) {
         this.puzzleID = puzzleID;
+        this.puzzleType = type;
         this.question = question;
         this.solution = solution;
          
@@ -23,16 +38,69 @@ public abstract class Puzzle {
     }
 
 
-    //  Check
+    /*
+     * User attempts to answer, updates attempts and status and returns if it was correct
+     */
     public boolean attempt (String answer) {
-        return false ;
+
+        if (isSolved) return true;
+        if (attempts >= maxAttempts) return false;
+
+        attempts++;
+
+        boolean fixed = isCorrect(FixedString(answer));
+        if (fixed) {
+            isSolved = true;
+            return true;
+        }
+        return false;
 
 
     }
 
-    public String getQuestion() {
-        return question;
+    /*
+     * Checks if Answer is Correct
+     * @returns if user got answer correct
+     */
+    protected boolean isCorrect (String FixedAnswer) {
+        return FixedAnswer.equals(FixedString(solution));
+    }
 
+    /*
+     * @returns a string trimed and lowercased
+     */
+    public String FixedString(String s) {
+       return s == null ? "" : s.trim().toLowerCase();
+    }
+
+   
+
+    /*
+     * To better determine a Puzzle's Progress
+     * @returns status on Puzzle
+     */
+    public PuzzleStatus getStatus() {
+        if (isSolved) return PuzzleStatus.SOLVED;
+        if (attempts == 0) return PuzzleStatus.NOT_STARTED;
+        if (attempts >= maxAttempts) return PuzzleStatus.FAILED;
+        return PuzzleStatus.IN_PROGRESS;
+
+    }
+
+    public void giveUp() {
+        if (!isSolved) attempts = maxAttempts;
+    }
+
+     public int getPuzzleID() {
+        return puzzleID;
+    }
+
+    public PuzzleType getPuzzleType() {
+        return puzzleType;
+    }
+
+     public String getQuestion() {
+        return question;
     }
 
     public String getSolution() {
@@ -45,9 +113,14 @@ public abstract class Puzzle {
 
     }
 
+
     public int getAttempts() {
         return attempts;
 
+    }
+
+    public int getMaxAttempts() {
+        return maxAttempts;
     }
 
     public int getScoreValue() {
@@ -55,14 +128,31 @@ public abstract class Puzzle {
 
     }
 
+    /*
+     * Overriden by subclasses
+     */
     public String getHint() {
         return null; 
 
     }
 
-    public void giveUp() {
-
+    public int getHintsUsed() {
+        return hintUsedCount;
     }
+
+    public void increaseHintUsed() {
+        hintUsedCount++;
+    }
+
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty (Difficulty difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    
 
     public abstract void addHint (String hint); //  abstract hint method to be overriden
 

@@ -1,128 +1,103 @@
-package SystemFiles;
+
+
 import java.util.Scanner;
-import java.util.List;
 
-public class GameDriver {
-    private static Scanner scanner;
-    private static GameSystemFacade facade;
-    private static User currentUser;
+public class GameDriver {     
+    
+    public GameSystemFacade facade;
 
-    public static void main(String[] args) {
-        DataLoader loader = new DataLoader("user.json");
-        DataWriter writer = new DataWriter("user.json");
-        facade = new GameSystemFacade(loader, writer);
-
-        scanner = new Scanner(System.in);
-        currentUser = null;
-        boolean running = true;
-
-        while (running) {
-            printMainMenu();
-            int choice = getUserChoice();
-
-            switch (choice) {
-                case 1:
-                    login();
-                    break;
-                case 2:
-                    signUp();
-                    break;
-                case 3:
-                    startNewGame();
-                    break;
-                case 4:
-                    resumeGame();
-                    break;
-                case 5:
-                    viewLeaderboard();
-                    break;
-                case 6:
-                    changeSettings();
-                    break;
-                case 7:
-                    quitGame();
-                    running = false;
-                    break;
-                default:
-                    System.out.println("Invalid choice.");
-                    break;
-            }
-        }
-        scanner.close();
+    public GameDriver() {
+        this.facade = new GameSystemFacade();
     }
 
-    private static void printMainMenu() {
-        System.out.println("\n=== Escape Room Game ===");
-        System.out.println("1. Login");
-        System.out.println("2. Sign Up");
-        System.out.println("3. Start New Game");
-        System.out.println("4. Resume Game");
-        System.out.println("5. View Leaderboard");
-        System.out.println("6. Change Settings");
-        System.out.println("7. Quit");
-        System.out.print("Choose an option: ");
+    public static void main(String[] args) { 
+        GameDriver driver = new GameDriver(); 
+        driver.run(); 
+    } 
+    
+    public void run() { 
+        DuplicateAccount(); 
+        CreateAccount(); 
+        //EnterRoom();
+        //ThreePuzzles();
+        //DataPersistence();
+        //GameCompletion();
+
+        System.out.println("Thank you for watching our backend presentation!");
+    } 
+    
+    public void DuplicateAccount() { 
+        String username = "LRivers";
+        String password = "password1";
+        
+        System.out.println("Leni is attempting to create an account with username LRivers.");
+
+        User result = facade.signup(username, password);
+
+        System.out.println(result + "; account creation failed due to existing LRivers.");
+        System.out.println("Account creation failed due to duplicate user (1/6)\n");      
+    } 
+    
+    public void CreateAccount() { 
+        String username = "LeniRivers";
+        String password = "password4";
+
+        System.out.println("Leni is attempting to create an account with username LeniRivers.");
+
+        User newUser = facade.signup(username, password);
+        System.out.println("Unique username used; account creation succeeded: " + newUser);
+        System.out.println("Account creation succeeded (2/6)\n"); 
+        
+    } 
+
+    public void EnterRoom() {
+        System.out.println("Leni is entering an escape room for the first time.");
+
+        /*
+        facade.startGame();
+        */
+
+        System.out.println("Leni has listened to the story's opening.");
+        System.out.println("Starting story heard (3/6)\n");
+        return;
     }
 
-    private static int getUserChoice() {
-        try {
-            return Integer.parseInt(scanner.nextLine());
-        } catch (NumberFormatException e) {
-            return -1;
-        }
+    public void ThreePuzzles() {
+        System.out.println("Leni is attempting three puzzles within the escape room.");
+                
+        /*
+        facade.getPuzzle();
+        facade.answerPuzzle();
+        */
+
+        System.out.println("Leni has completed three puzzles.");
+        System.out.println("Three puzzles demonstrated (4/6)\n");
+        return;
+    }
+    
+    public void DataPersistence() {
+        System.out.println("Leni will now log out and back in, resuming progress.");
+        
+        /*
+        facade.saveData(LeniRivers, password1);
+        facade.logout(LeniRivers, password1);
+        facade.login(LeniRivers, password1);
+        */
+
+        System.out.println("Leni has logged out and maintained progress.");
+        System.out.println("Data persistence shown (5/6)\n");
+        return;
     }
 
+    public void GameCompletion() {
+        System.out.println("Leni will now complete the last puzzle and therefore the game.");
+        
+        /*
+        facade.completeGame(LeniRivers, password1);
+        */
 
-    private static void login() {
-        System.out.print("Enter username: ");
-        String username = scanner.nextLine();
-        System.out.print("Enter password: ");
-        String password = scanner.nextLine();
-        User user = facade.login(username, password);
-        if (user != null) {
-            currentUser = user;
-            System.out.println("Login successful. Welcome, " + user.getUsername() + "!");
-        } else {
-            System.out.println("Login failed. Invalid username or password.");
-        }
-    }
-
-    private static void signUp() {
-        System.out.print("Enter new username: ");
-        String username = scanner.nextLine();
-        System.out.print("Enter new password: ");
-        String password = scanner.nextLine();
-        User newUser = facade.signUp(username, password);
-        if (newUser != null) {
-            currentUser = newUser;
-            System.out.println("Account created successfully for " + newUser.getUsername() + ".");
-        } else {
-            System.out.println("Sign up failed. An error has occurred or username taken.");
-        }
-    }
-
-    private static void startNewGame() {
-        System.out.println("Starting a new game...");
-        // facade.startNewGame(currentUser);
-    }
-
-    private static void resumeGame() {
-        System.out.println("Resuming saved game...");
-        // facade.resumeGame(currentUser);
-    }
-
-    private static void viewLeaderboard() {
-        System.out.println("Displaying leaderboard...");
-        // Leaderboard lb = facade.getLeaderboard();
-    }
-
-    private static void changeSettings() {
-        System.out.println("Opening settings...");
-        // facade.changeSetting(currentUser);
-    }
-
-    private static void quitGame() {
-        System.out.println("Quitting game... Progress saved.");
-        // facade.saveGame(currentUser);
-        // facade.quitGame();
+        System.out.println("Leni has finished the game and been given her certificate.");
+        System.out.println("Game completed (6/6)\n");
+        return;
     }
 }

@@ -1,54 +1,66 @@
-package SystemFiles;
 
+import java.util.*;
 
 public class User {
-    private String UUID;          
-    private String username;      
-    private String password;      
-    private int userID;           
-    private Settings preferences; 
-    private User user;            
+    private UUID uuid;
+    private String username;
+    private String password;
+    private int currentGame;
+    private int currentRoom;
+    private int lastPuzzle;
+    private List<String> items;
 
-    // Constructor used when creating a new user (sign-up)
+    // Creates a user
     public User(String username, String password) {
+        this.uuid = UUID.randomUUID();
         this.username = username;
         this.password = password;
-        this.UUID = java.util.UUID.randomUUID().toString();
-        this.userID = 0;
-        this.preferences = new Settings();
-        this.user = this;
+        this.currentGame = 0;
+        this.currentRoom = 0;
+        this.lastPuzzle = 0;
+        this.items = new ArrayList<>(); 
     }
 
-    
-    public String getUsername() {
-        return this.username;
-    }
-
-    public void setUsername(String username) {
+    // Fetches a user
+    public User(UUID uuid, String username, String password, int currentGame, int currentRoom, int lastPuzzle, List<String> items) {
+        this.uuid = uuid;
         this.username = username;
+        this.password = password;
+        this.currentGame = currentGame;
+        this.currentRoom = currentRoom;
+        this.lastPuzzle = lastPuzzle;
+        this.items = items != null ? items : new ArrayList<>();
+    }
+
+    public boolean userMatch(String username, String password) {
+        return this.username.equals(username) && this.password.equals(password);
+    }
+
+    public UUID getID() {
+        return uuid;
+    }
+
+    public String getUsername() {
+        return username;
     }
 
     public String getPassword() {
-        return this.password;
+        return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public int getGame() {
+        return currentGame;
     }
 
-    public int getUserID() {
-        return this.userID;
+    public int getRoom() {
+        return currentRoom;
+    }
+    
+    public int getPuzzle() {
+        return lastPuzzle;
     }
 
-    public void setUserID(int id) {
-        this.userID = id;
-    }
-
-    public Settings getPreferences() {
-        return this.preferences;
-    }
-
-    public void setPreferences(Settings settings) {
-        this.preferences = settings;
+    public List<String> getItems() {
+        return items;
     }
 }

@@ -1,4 +1,5 @@
-package SystemFiles;
+package com.systemfiles;
+
 import java.util.List;
 
 public class Leaderboard {

@@ -1,146 +1,51 @@
-package SystemFiles;
 
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-import java.io.FileWriter;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.File;
-import java.util.List;
 
-public class DataWriter {
+public class DataWriter extends DataConstants {
 
-    private static final String USER_FILE = "SystemFiles/user.json"; // Always saves to this file
+    public static void saveUsers() {
+        UserList userList = UserList.getInstance();
+        ArrayList<User> users = userList.getAllUsers();
 
-    // saveUsers saves users to JSON
-    public static boolean saveUsers(List<User> users) {
-
-        // Creates the array to hold user objects
         JSONArray jsonUsers = new JSONArray();
 
-        // Convert user to JSON object (portia said something like this in her vid)
         for (User user : users) {
-            JSONObject jsonUser = new JSONObject();
-            jsonUser.put("uuid", user.getUUID());  
-            jsonUser.put("username", user.getUsername());
-            jsonUser.put("password", user.getPassword());
-
-            // Converts settings to JSON
-            JSONObject jsonSettings = new JSONObject();
-            Settings s = user.getPreferences();
-            jsonSettings.put("audioVolume", s.getAudioVolume());
-            jsonSettings.put("musicOn", s.isMusicOn());
-            jsonSettings.put("soundEffectsOn", s.isSoundEffectsOn());
-            jsonSettings.put("textSize", s.getTextSize());
-
-            // Save users settings to the rest of their JSON data
-            jsonUser.put("preferences", jsonSettings);
-            jsonUsers.add(jsonUser);
+            jsonUsers.add(getUserJSON(user));
         }
 
-        // write the array to the user file
-        return writeJSONArray(jsonUsers, USER_FILE);
-    }
-
-    // saveProgress saves the users puzzle progress
-    public static boolean saveProgress(User user, Object roomID, Object gameID, Object puzzleID) {
-
-        JSONArray usersArray = readJSONArray(USER_FILE); // Reads users from userFile
-
-        // Find the specific user
-        for (Object obj : usersArray) {
-            JSONObject jsonUser = (JSONObject) obj;
-
-            if (jsonUser.get("uuid").equals(user.getUUID())) {
-                // Create the user's progress object
-                JSONObject progressData = new JSONObject();
-                progressData.put("roomID", roomID.toString());
-                progressData.put("gameID", gameID.toString());
-                progressData.put("puzzleID", puzzleID.toString());
-
-                // add the users progress 
-                jsonUser.put("progress", progressData);
-            }
-        }
-
-        // Write updated progress to the JSON file
-        return writeJSONArray(usersArray, USER_FILE);
-    }
-
-    // updateSettings updates the users settings
-    public static boolean updateSettings(User user, Settings settings) {
-        
-        JSONArray usersArray = readJSONArray(USER_FILE); // Read from the userFile
-
-        // Find the specific user
-        for (Object obj : usersArray) {
-            JSONObject jsonUser = (JSONObject) obj;
-            
-            if (jsonUser.get("uuid").equals(user.getUUID())) {
-                // Create a settings object
-                JSONObject newSettings = new JSONObject();
-                newSettings.put("audioVolume", settings.getAudioVolume());
-                newSettings.put("musicOn", settings.isMusicOn());
-                newSettings.put("soundEffectsOn", settings.isSoundEffectsOn());
-                newSettings.put("textSize", settings.getTextSize());
-
-                // Replace the old settings with the new ones
-                jsonUser.put("preferences", newSettings);
-            }
-        }
-
-        // Write everything back to userFile
-        return writeJSONArray(usersArray, USER_FILE);
-    }
-
-    // addEntry adds an entry to the leaderboard
-    public static boolean addEntry(User user, Object score) {
-        // Read all users from the userFile
-        JSONArray usersArray = readJSONArray(USER_FILE);
-
-        // Find the user 
-        for (Object obj : usersArray) {
-            JSONObject jsonUser = (JSONObject) obj;
-
-            if (jsonUser.get("uuid").equals(user.getUUID())) {
-                // Add score for the user
-                jsonUser.put("score", score.toString());
-            }
-        }
-
-        // Update the userFile
-        return writeJSONArray(usersArray, USER_FILE);
-    }
-
-    // read JSON Array is a helper method that reads a JSON file and returns an array
-    private static JSONArray readJSONArray(String path) {
-        JSONParser parser = new JSONParser();
-        File file = new File(path);
-
-        if (!file.exists()) {
-            return new JSONArray(); // Return empty list if file not found
-        }
-
-        try (FileReader reader = new FileReader(file)) {
-            Object obj = parser.parse(reader);
-            return (JSONArray) obj;
-        } catch (IOException | ParseException e) {
-            e.printStackTrace();
-            return new JSONArray();
-        }
-    }
-
-    // writeJSONArray is a helper method to write a JSON array to a JSON file
-    private static boolean writeJSONArray(JSONArray arr, String path) {
-        try (FileWriter file = new FileWriter(path)) {
-            file.write(arr.toJSONString());
+        try (FileWriter file = new FileWriter(USER_TEMP_FILE_NAME)) {
+            file.write(jsonUsers.toJSONString());
             file.flush();
-            return true;
         } catch (IOException e) {
             e.printStackTrace();
-            return false;
         }
+    }
+
+    private static JSONObject getUserJSON(User user) {
+        JSONObject userDetails = new JSONObject();
+
+        userDetails.put("UUID", user.getId().toString());
+        userDetails.put("username", user.getUsername());
+        userDetails.put("password", user.getPassword());
+        userDetails.put("currentGame", user.getCurrentGame());
+        userDetails.put("currentRoom", user.getCurrentRoom());
+        userDetails.put("lastPuzzle", user.getLastPuzzle());
+
+        JSONArray itemsArray = new JSONArray();
+        for (String item : user.getItems()) {
+            itemsArray.add(item);
+        }
+        userDetails.put("items", itemsArray);
+
+        return userDetails;
+    }
+
+    public static void main(String[] args) {
+        DataWriter.saveUsers();
     }
 }

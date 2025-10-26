@@ -1,4 +1,5 @@
-package SystemFiles;
+
+import java.net.http.WebSocket.Listener;
 import java.util.List; 
 
 public class Game {
@@ -11,7 +12,20 @@ public class Game {
     private boolean isPaused;
     private Game game;
 
+    public Game (int gameID) {
+        return Game;
+    }
+
     public Game() {
+        gameID = 0;
+        //rooms =
+        currentRoom = 101; //  per JSON this is the first room
+        isCompleted = false;
+        totalScore = 0;
+        //timeLimit = 
+        isPaused = false;
+        game = 0; //  don't know what to store the Game itself as
+
 
     }
 
@@ -64,10 +78,20 @@ public class Game {
     }
 
     public void pause() {
+      
+        while (isPaused = false) {
+
+        }
+
 
     }
 
     public void resume() {
+        
+        while (isPaused != false) {
 
+        }
+
+        
     }
  }
