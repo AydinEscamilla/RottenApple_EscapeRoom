@@ -10,10 +10,10 @@ public class Progress {
     private long timeTaken;
     private Date dateAchieved;
     private int rank;
-    private List<Rooms> roomsCleared;
+    private List<Room> roomsCleared;
     private List<Puzzle> puzzlesSolved;
     private Game currentGame;
-    private Rooms currentRoom;
+    private Room currentRoom;
     private String lastPuzzle;
 
     public Progress(User user, int score, double timeTaken, Date date) {
@@ -50,11 +50,11 @@ public class Progress {
 
     public void setRank(int rank) {}
 
-    public List<Rooms> getRoomsCleared() {
+    public List<Room> getRoomsCleared() {
         return null;
     }
 
-    public void addRoomCleared(Rooms room) {}
+    public void addRoomCleared(Room room) {}
 
     public List<Puzzle> getPuzzlesSolved() {
         return null;
@@ -68,11 +68,11 @@ public class Progress {
 
     public void setCurrentGame(Game game) {}
 
-    public Rooms getCurrentRoom() {
+    public Room getCurrentRoom() {
         return null;
     }
 
-    public void setCurrentRoom(Rooms room) {}
+    public void setCurrentRoom(Room room) {}
 
     public void resetProgress() {}
 

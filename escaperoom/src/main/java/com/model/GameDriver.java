@@ -6,6 +6,7 @@ public class GameDriver {
     
     public GameSystemFacade facade;
     public User user;
+    public Room room;
 
     public GameDriver() {
         this.facade = new GameSystemFacade();
@@ -19,7 +20,7 @@ public class GameDriver {
     public void run() { 
         //DuplicateAccount(); 
         
-        //CreateAccount(); 
+        CreateAccount(); 
 
         EnterRoom();
 
@@ -59,12 +60,14 @@ public class GameDriver {
     public void EnterRoom() {
         System.out.println("Leni is entering an escape room for the first time.");
 
-        facade.startNewGame((user.getUsername()));
+        Room roomChoice = facade.getRoom();
+
+        System.out.println(roomChoice);
+
+        facade.startNewGame(roomChoice);
 
         System.out.println("Leni has listened to the story's opening.");
         System.out.println("Starting story heard (3/6)\n");
-
-        AwaitEnter();
     }
 
     public void ThreePuzzles() {

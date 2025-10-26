@@ -2,17 +2,19 @@ package com.model;
 
 import java.util.List;
 
-public class Rooms {
+public class Room {
     private int roomID;
     private String roomName;
     private String description;
     private List<Puzzle> puzzles;
     private boolean isCleared; 
     private int roomOrder;
-    private List<Rooms> prerequisiteRooms;
+    private List<Room> prerequisiteRooms;
 
-    public Rooms(int id, String name, String description) {
-
+    public Room(int roomID, String name, String description) {
+        this.roomID = roomID;
+        this.name = name;
+        this.description = description;
     }
 
     public void addPuzzle(Puzzle puzzle) {
@@ -35,15 +37,15 @@ public class Rooms {
         return null;
     }
 
-    public boolean hasAccess(List<Rooms> completedRooms){
+    public boolean hasAccess(List<Room> completedRooms){
         return false;
     }
 
-    public Rooms getNextRoom() {
+    public Room getNextRoom() {
         return null;
     }
 
-    public Rooms moveToRoom(int roomID) {
+    public Room moveToRoom(int roomID) {
         return null;
     }
 }

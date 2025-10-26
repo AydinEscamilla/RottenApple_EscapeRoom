@@ -32,6 +32,7 @@ public abstract class DataConstants {
     }
 
     public static final class Room {
+        protected static final String ROOM_FILE = "rooms.json";
         protected static final String ROOM_ID = "roomID";
         protected static final String ROOM_NAME = "roomName";
         protected static final String DESCRIPTION= "description";

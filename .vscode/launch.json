@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "GameSystemFacade",
+            "request": "launch",
+            "mainClass": "com.model.GameSystemFacade",
+            "projectName": "com.example-demo"
+        },
+        {
+            "type": "java",
             "name": "GameDriver",
             "request": "launch",
             "mainClass": "com.model.GameDriver",

@@ -5,8 +5,8 @@ import java.util.List;
 
 public class Game {
     private int gameID;
-    private List<Rooms> rooms;
-    private Rooms currentRoom; 
+    private List<Room> rooms;
+    private Room currentRoom; 
     private boolean isCompleted;
     private int totalScore;
     private long timeLimit;
@@ -42,11 +42,11 @@ public class Game {
         return 0.0;
     }
 
-    public Rooms getCurrentRoom() {
+    public Room getCurrentRoom() {
         return currentRoom;
     }
 
-    public void goToRoom(Rooms room) {
+    public void goToRoom(Room room) {
 
     }
 
@@ -66,7 +66,7 @@ public class Game {
 
     }
 
-    public void addRoom(Rooms room) {
+    public void addRoom(Room room) {
 
     }
 

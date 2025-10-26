@@ -6,7 +6,8 @@ import java.util.Objects;
 
 public class GameSystemFacade {
 
-    private GameSystemFacade facade;
+    private Users users = Users.getInstance();
+    private User currentUser;
 
     public static void main(String[] args) { 
         GameSystemFacade facade = new GameSystemFacade(); 
@@ -14,34 +15,34 @@ public class GameSystemFacade {
 
     public User signup(String username, String password) {
         User newUser = new User(username, password);
-        boolean added = true;
-        added = Users.getInstance().addUser(newUser);
+        boolean added = Users.getInstance().addUser(newUser);
 
         if (added == true) {
+            this.currentUser = newUser;
             return newUser;
         } else {
             return null;
         }
     }
 
-    public User startNewGame(User user) {
-        System.out.print(user.getUsername());
-        return null;
+    public Room getRoom() {
     }
 
-    public User loadUser(String username) {return null;}
-    
-    public User getCurrentUser() {
-        return null;
+    public User startNewGame(Room room) {
+        if (this.currentUser != null) {
+            System.out.println(this.currentUser.getUsername());
+            return this.currentUser;
+        } else {
+            System.out.println("No user loaded.");
+            return null;
+        }
     }
 
-    public void logout() {
-        users.saveUsers();
+    public Room getRoomByName(String name) {
+        return DataLoader.getRoomByName(name);
     }
 
-    public List<String> getAllUsernames() {
-        return null;
-    }
+
     /*
     public Settings changeSetting(User user) { return null; }
     public Game startNewGame(User user) { return null; }
