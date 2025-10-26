@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -8,14 +9,22 @@ public class Progress {
     private long timeTaken;
     private Date dateAchieved;
     private int rank;
-    private List<Room> roomsCleared;
-    private List<Puzzle> puzzlesSolved;
+    private List<Room> roomsCleared = new ArrayList<>();
+    private List<Puzzle> puzzlesSolved = new ArrayList<>();
     private Game currentGame;
     private Room currentRoom;
     private String lastPuzzle;
 
+    Game game = new Game();
+
+    // constructor stub
     public Progress(User user, int score, double timeTaken, Date date) {
-        // constructor stub
+        this.user = user;
+        this.score = score;
+        this.timeTaken = (long) timeTaken;
+        this.dateAchieved = date;
+
+        
     }
 
     public User getUser() {
@@ -31,7 +40,7 @@ public class Progress {
     public void setScore(int score) {}
 
     public long getTimeTaken() {
-        return 0;
+        return currentGame.getElapsedTime();
     }
 
     public void setTimeTaken(long time) {}
@@ -49,25 +58,36 @@ public class Progress {
     public void setRank(int rank) {}
 
     public List<Room> getRoomsCleared() {
+        if (currentRoom.isRoomCleared()) {
+            roomsCleared.add(currentRoom);
+            return roomsCleared;
+        }
         return null;
     }
 
-    public void addRoomCleared(Room room) {}
+    public void addRoomCleared(Room room) {
+        List <Room> cleared = getRoomsCleared();
+
+    }
 
     public List<Puzzle> getPuzzlesSolved() {
+        Puzzle p = roomsCleared.get(i.get)
+
         return null;
     }
 
     public void addPuzzleSolved(Puzzle puzzle) {}
 
     public Game getCurrentGame() {
-        return null;
+        
+        return game.getCurrentGame();
+        
     }
 
     public void setCurrentGame(Game game) {}
 
     public Room getCurrentRoom() {
-        return null;
+        return game.getCurrentRoom();
     }
 
     public void setCurrentRoom(Room room) {}
