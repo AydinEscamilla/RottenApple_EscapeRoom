@@ -22,38 +22,41 @@ public abstract class Puzzle {
     private String question;
     private String solution;
     private List<String> hints;
-    private String imagePath;
+    private List<String> imagePaths;
     private boolean isSolved = false;
     private int attempts = 0;
     private int maxAttempts = 3;
     private int scoreValue = 0;
     private int hintUsedCount = 0;
     private Difficulty difficulty = Difficulty.EASY;
+    private String item;
         
     public Puzzle(int puzzleID,
                   PuzzleType puzzleType,
                   String question,
                   String solution,
                   List<String> hints,
-                  String imagePath,
+                  List<String> imagePaths,
                   boolean isSolved,
                   int attempts,
                   int maxAttempts,
                   int scoreValue,
                   int hintUsedCount,
-                  Difficulty difficulty) {
+                  Difficulty difficulty,
+                  String item) {
         this.puzzleID = puzzleID;
         this.puzzleType = puzzleType;
         this.question = question;
         this.solution = solution;
         this.hints = hints;
-        this.imagePath = imagePath;
+        this.imagePaths = imagePaths;
         this.isSolved = isSolved;
         this.attempts = attempts;
         this.maxAttempts = maxAttempts;
         this.scoreValue = scoreValue;
         this.hintUsedCount = hintUsedCount;
         this.difficulty = difficulty;
+        this.item = item;
     }
 
     // Scoring
@@ -62,8 +65,8 @@ public abstract class Puzzle {
     private int perExtraAttempt = 1;
 
     //  Items
-    private final List <Integer> itemsRequired = new ArrayList<>();
-    private final List <Integer> itemsGranted = new ArrayList<>();
+    private final List <String> itemsRequired = new ArrayList<>();
+    private final List <String> itemsGranted = new ArrayList<>();
 
     
 
@@ -95,6 +98,10 @@ public abstract class Puzzle {
         return false;
 
 
+    }
+
+    public List<String> getHints() {
+        return hints;
     }
 
     /*
@@ -199,31 +206,40 @@ public abstract class Puzzle {
 
     
 
-    public Puzzle requireItem (int itemID) {
-        itemsRequired.add(itemID);
+    public Puzzle grantItem(String item) {
+        if (item != null && !item.isBlank()) {
+            itemsGranted.add(item);
+        }
         return this;
     }
 
-
-    public Puzzle grantItem (int itemID) {
-        itemsGranted.add(itemID);
+    public Puzzle requireItem(String itemID) {
+        if (itemID != null && !itemID.isBlank()) {
+            itemsRequired.add(itemID);
+        }
         return this;
     }
 
-    public List<Integer> getRequiredItems() {
+    public List<String> getRequiredItems() {
         return itemsRequired;
     }
 
-    public List<Integer> getGrantedItems() {
+    public List<String> getGrantedItems() {
         return itemsGranted;
+    }
+
+    public String getItem() {
+        return item;
     }
 
     /*
      * Checks if the player can attempt the given puzzle based on their inventory
      * @return true if the player has all required items, false otherwise
      */
-    public boolean canAttempt (Inventory inventory) {
-        for (int id : itemsRequired) {
+    public boolean canAttempt(Inventory inventory) {
+        if (itemsRequired == null || itemsRequired.isEmpty()) return true;
+        if (inventory == null) return false;
+        for (String id : itemsRequired) {
             if (!inventory.hasItem(id)) {
                 return false;
             }
@@ -231,8 +247,9 @@ public abstract class Puzzle {
         return true;
     }
 
-    public void reward (Inventory inventory) {
-        for (int id : itemsGranted) {
+    public void reward(Inventory inventory) {
+        if (inventory == null || itemsGranted == null) return;
+        for (String id : itemsGranted) {
             inventory.addItem(id);
         }
     }

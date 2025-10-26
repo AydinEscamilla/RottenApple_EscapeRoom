@@ -6,7 +6,8 @@
         "currentGame": 1,
         "currentRoom": 101,
         "lastPuzzle": 101,
-        "items": ["key"]
+        "puzzlesComplete": [],
+        "items": ["date"]
     }, 
     
     {
@@ -16,7 +17,8 @@
         "currentGame": 1,
         "currentRoom": 101,
         "lastPuzzle": 102,
-        "items": ["key"]
+        "puzzlesComplete": [101],
+        "items": ["date"]
     },
 
     {
@@ -24,8 +26,9 @@
         "username": "dummy3",
         "password": "password3",
         "currentGame": 1,
-        "currentRoom": 102,
+        "currentRoom": 101,
         "lastPuzzle": 103,
-        "items": ["key", "rope"]
+        "puzzlesComplete": [101, 102],
+        "items": ["date", "magnifying glass"]
     }
 ]

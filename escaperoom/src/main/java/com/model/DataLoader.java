@@ -30,6 +30,15 @@ public class DataLoader extends DataConstants {
                 int currentRoom = ((Long)personJSON.get(UserFields.CURRENT_ROOM)).intValue();
                 int lastPuzzle = ((Long)personJSON.get(UserFields.LAST_PUZZLE)).intValue();
 
+                JSONArray puzzlesJSON = (JSONArray) personJSON.get(UserFields.COMPLETED);
+                ArrayList<Integer> puzzlesComplete = new ArrayList<>();
+
+                if (puzzlesJSON != null) {
+                    for (Object puzzleObj : puzzlesJSON) {
+                        puzzlesComplete.add(((Number) puzzleObj).intValue());
+                    }
+                }
+
                 JSONArray itemsJSON = (JSONArray) personJSON.get(UserFields.ITEMS);
                 ArrayList<String> items = new ArrayList<>();
 
@@ -40,7 +49,7 @@ public class DataLoader extends DataConstants {
                 }
 
                 // Requires a User constructor that accepts all these fields
-                userList.add(new User(uuid, username, password, currentGame, currentRoom, lastPuzzle, items));
+                userList.add(new User(uuid, username, password, currentGame, currentRoom, lastPuzzle, puzzlesComplete, items));
 
             }
 
@@ -87,30 +96,47 @@ public class DataLoader extends DataConstants {
                             }
                         }
 
-                        String imagePath = (String) pJSON.get("imagePath");
+                        ArrayList<String> imagePaths = new ArrayList<>();
+                        JSONArray imagePathJSON = (JSONArray) pJSON.get("imagePath");
+                        if (imagePathJSON != null) {
+                            for (Object ip : imagePathJSON) {
+                                imagePaths.add((String) ip);
+                            }
+                        }                        
+
                         boolean isSolved = pJSON.get("isSolved") != null && (Boolean) pJSON.get("isSolved");
                         int attempts = pJSON.get("attempts") != null ? ((Long) pJSON.get("attempts")).intValue() : 0;
                         int maxAttempts = pJSON.get("maxAttempts") != null ? ((Long) pJSON.get("maxAttempts")).intValue() : 0;
                         int scoreValue = pJSON.get("scoreValue") != null ? ((Long) pJSON.get("scoreValue")).intValue() : 0;
                         int hintUsedCount = pJSON.get("hintUsedCount") != null ? ((Long) pJSON.get("hintUsedCount")).intValue() : 0;
+                        String item = (String) pJSON.get("item");
+                        String itemNeeded = (String) pJSON.get("itemNeeded");
 
                         // Convert difficulty string to enum
                         Difficulty difficulty = Difficulty.valueOf(((String) pJSON.get("difficulty")).toUpperCase());
 
-                        puzzles.add(new BasicPuzzle(
+                        
+                        BasicPuzzle bp = new BasicPuzzle(
                             puzzleID,
                             puzzleType,
                             question,
                             solution,
                             hints,
-                            imagePath,
+                            imagePaths,
                             isSolved,
                             attempts,
                             maxAttempts,
                             scoreValue,
                             hintUsedCount,
-                            difficulty
-                        ));
+                            difficulty,
+                            item
+                        );
+
+                        if (itemNeeded != null && !itemNeeded.isBlank()) {
+                            bp.requireItem(itemNeeded);
+                        }
+                        
+                        puzzles.add(bp);
                     }
                 }
 

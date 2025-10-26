@@ -35,6 +35,12 @@ public class DataWriter extends DataConstants {
         userDetails.put("currentGame", user.getCurrentGame());
         userDetails.put("currentRoom", user.getCurrentRoom());
         userDetails.put("lastPuzzle", user.getLastPuzzle());
+        
+        JSONArray puzzlesArray = new JSONArray();
+        for (Integer puzzle : user.getPuzzlesComplete()) {
+            puzzlesArray.add(puzzle);
+        }
+        userDetails.put("puzzlesComplete", puzzlesArray);
 
         JSONArray itemsArray = new JSONArray();
         for (String item : user.getItems()) {

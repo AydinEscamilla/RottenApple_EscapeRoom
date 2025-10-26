@@ -18,6 +18,19 @@ public class Room {
         this.puzzles = puzzles;
     }
 
+    public int getRoomID() {
+        return roomID;
+    }
+
+    public String getRoomName() {
+        return roomName;
+    }
+
+    public String getDescription(Room room) {
+        return description;
+    }
+
+
     public void addPuzzle(Puzzle puzzle) {
 
     }
@@ -48,5 +61,11 @@ public class Room {
 
     public Room moveToRoom(int roomID) {
         return null;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Room[id=%d, name=\"%s\"]",
+                            roomID, roomName);
     }
 }

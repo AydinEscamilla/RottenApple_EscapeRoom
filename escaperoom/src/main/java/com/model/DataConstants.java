@@ -10,6 +10,7 @@ public abstract class DataConstants {
         protected static final String CURRENT_GAME = "currentGame";
         protected static final String CURRENT_ROOM = "currentRoom";
         protected static final String LAST_PUZZLE = "lastPuzzle";
+        protected static final String COMPLETED = "puzzlesComplete";
         protected static final String ITEMS = "items";
     }
     

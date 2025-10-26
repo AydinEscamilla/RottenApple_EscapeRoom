@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import Puzzle;
-import Puzzle.PuzzleType;
+import com.model.Puzzle;
+import com.model.Puzzle.PuzzleType;
 
 public class MathPuzzle extends Puzzle {
 private List <String> hints = new ArrayList<>();
