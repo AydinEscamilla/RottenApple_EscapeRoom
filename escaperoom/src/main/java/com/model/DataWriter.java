@@ -6,19 +6,20 @@ import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+@SuppressWarnings("unchecked")
 public class DataWriter extends DataConstants {
 
     public static void saveUsers() {
-        UserList userList = UserList.getInstance();
-        ArrayList<User> users = userList.getAllUsers();
+        Users users = Users.getInstance();
+        ArrayList<User> userList = users.getUsers();
 
         JSONArray jsonUsers = new JSONArray();
 
-        for (User user : users) {
-            jsonUsers.add(getUserJSON(user));
+        for (int i = 0; i < userList.size(); i++) {
+            jsonUsers.add(getUserJSON(userList.get(i)));
         }
 
-        try (FileWriter file = new FileWriter(USER_TEMP_FILE_NAME)) {
+        try (FileWriter file = new FileWriter(UserFields.USER_TEMP_FILE_NAME)) {
             file.write(jsonUsers.toJSONString());
             file.flush();
         } catch (IOException e) {
@@ -26,10 +27,9 @@ public class DataWriter extends DataConstants {
         }
     }
 
-    private static JSONObject getUserJSON(User user) {
+    public static JSONObject getUserJSON(User user) {
         JSONObject userDetails = new JSONObject();
-
-        userDetails.put("UUID", user.getId().toString());
+        userDetails.put("UUID", user.getUUID().toString());
         userDetails.put("username", user.getUsername());
         userDetails.put("password", user.getPassword());
         userDetails.put("currentGame", user.getCurrentGame());
@@ -43,9 +43,5 @@ public class DataWriter extends DataConstants {
         userDetails.put("items", itemsArray);
 
         return userDetails;
-    }
-
-    public static void main(String[] args) {
-        DataWriter.saveUsers();
     }
 }

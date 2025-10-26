@@ -42,7 +42,6 @@ public class DataLoader extends DataConstants {
                 // Requires a User constructor that accepts all these fields
                 userList.add(new User(uuid, username, password, currentGame, currentRoom, lastPuzzle, items));
 
-                return userList;
             }
 
         } catch (Exception e) {
@@ -57,19 +56,19 @@ public class DataLoader extends DataConstants {
         ArrayList<Room> roomList = new ArrayList<>();
 
         try {
-            FileReader reader = new FileReader(Room.ROOM_FILE);
+            FileReader reader = new FileReader(RoomFields.ROOM_FILE);
             JSONArray roomJSON = (JSONArray) new JSONParser().parse(reader);
 
             for (int i = 0; i < roomJSON.size(); i++) {
                 JSONObject roomsJSON = (JSONObject) roomJSON.get(i);
 
-                int roomID = ((Long) roomsJSON.get(Room.ROOM_ID)).intValue();
-                String roomName = (String) roomsJSON.get(Room.ROOM_NAME);
-                String description = (String) roomsJSON.get(Room.DESCRIPTION);
+                int roomID = ((Long) roomsJSON.get(RoomFields.ROOM_ID)).intValue();
+                String roomName = (String) roomsJSON.get(RoomFields.ROOM_NAME);
+                String description = (String) roomsJSON.get(RoomFields.DESCRIPTION);
 
                 // Parse puzzles array
                 ArrayList<Puzzle> puzzles = new ArrayList<>();
-                JSONArray puzzlesJSON = (JSONArray) roomsJSON.get(Room.PUZZLES);
+                JSONArray puzzlesJSON = (JSONArray) roomsJSON.get(RoomFields.PUZZLES);
                 if (puzzlesJSON != null) {
                     for (Object pObj : puzzlesJSON) {
                         JSONObject pJSON = (JSONObject) pObj;
@@ -98,19 +97,19 @@ public class DataLoader extends DataConstants {
                         // Convert difficulty string to enum
                         Difficulty difficulty = Difficulty.valueOf(((String) pJSON.get("difficulty")).toUpperCase());
 
-                        puzzles.add(new Puzzle(
-                                puzzleID,
-                                puzzleType,
-                                question,
-                                solution,
-                                hints,
-                                imagePath,
-                                isSolved,
-                                attempts,
-                                maxAttempts,
-                                scoreValue,
-                                hintUsedCount,
-                                difficulty
+                        puzzles.add(new BasicPuzzle(
+                            puzzleID,
+                            puzzleType,
+                            question,
+                            solution,
+                            hints,
+                            imagePath,
+                            isSolved,
+                            attempts,
+                            maxAttempts,
+                            scoreValue,
+                            hintUsedCount,
+                            difficulty
                         ));
                     }
                 }

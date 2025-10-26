@@ -18,7 +18,7 @@ public class GameDriver {
     } 
     
     public void run() { 
-        //DuplicateAccount(); 
+        DuplicateAccount(); 
         
         CreateAccount(); 
 

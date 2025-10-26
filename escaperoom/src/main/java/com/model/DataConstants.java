@@ -2,13 +2,15 @@ package com.model;
 
 public abstract class DataConstants {
     public static final class UserFields {
-        protected static final String USER_FILE_NAME = "user.json";
+        protected static final String USER_FILE_NAME = "json/user.json";
+        protected static final String USER_TEMP_FILE_NAME = "json/user_temp.json";
         protected static final String UUID = "UUID";
         protected static final String USERNAME = "username";
         protected static final String PASSWORD = "password";
-        protected static final String USER_ID = "userID";
-        protected static final String PREFERENCES = "preferences";
-        protected static final String PROGRESS = "progress";
+        protected static final String CURRENT_GAME = "currentGame";
+        protected static final String CURRENT_ROOM = "currentRoom";
+        protected static final String LAST_PUZZLE = "lastPuzzle";
+        protected static final String ITEMS = "items";
     }
     
     public static final class Preferences {
@@ -31,8 +33,8 @@ public abstract class DataConstants {
         
     }
 
-    public static final class Room {
-        protected static final String ROOM_FILE = "rooms.json";
+    public static final class RoomFields {
+        protected static final String ROOM_FILE = "json/rooms.json";
         protected static final String ROOM_ID = "roomID";
         protected static final String ROOM_NAME = "roomName";
         protected static final String DESCRIPTION= "description";

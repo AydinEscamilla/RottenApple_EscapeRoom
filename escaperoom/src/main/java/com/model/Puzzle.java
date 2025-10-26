@@ -20,13 +20,41 @@ public abstract class Puzzle {
     private int puzzleID;
     private PuzzleType puzzleType;
     private String question;
-    protected String solution;
+    private String solution;
+    private List<String> hints;
+    private String imagePath;
     private boolean isSolved = false;
     private int attempts = 0;
     private int maxAttempts = 3;
     private int scoreValue = 0;
     private int hintUsedCount = 0;
     private Difficulty difficulty = Difficulty.EASY;
+        
+    public Puzzle(int puzzleID,
+                  PuzzleType puzzleType,
+                  String question,
+                  String solution,
+                  List<String> hints,
+                  String imagePath,
+                  boolean isSolved,
+                  int attempts,
+                  int maxAttempts,
+                  int scoreValue,
+                  int hintUsedCount,
+                  Difficulty difficulty) {
+        this.puzzleID = puzzleID;
+        this.puzzleType = puzzleType;
+        this.question = question;
+        this.solution = solution;
+        this.hints = hints;
+        this.imagePath = imagePath;
+        this.isSolved = isSolved;
+        this.attempts = attempts;
+        this.maxAttempts = maxAttempts;
+        this.scoreValue = scoreValue;
+        this.hintUsedCount = hintUsedCount;
+        this.difficulty = difficulty;
+    }
 
     // Scoring
     private int baseScore = 10;

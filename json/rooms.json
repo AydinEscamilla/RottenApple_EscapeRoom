@@ -11,16 +11,14 @@
                 "question": "What could this picture mean? - 'I don't make U+00A2(cent symbol)",
                 "solution": "I don't make sense.",
                 "hints":["What's change called?", "If someone is talking crazy they don't make...change?"],
-                "isSolved": true,
+                "imagePath": "images/i-dont-make-sense",
+                "isSolved": false,
                 "attempts": 0,
                 "maxAttempts": 3,
                 "scoreValue": 25,
                 "hintUsedCount": 0,
                 "difficulty": "EASY"
             }
-        ],
-
-        "isCleared": false,
-        "roomOrder": 1
+        ]
     }
 ]

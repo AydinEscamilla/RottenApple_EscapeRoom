@@ -37,7 +37,7 @@ public class User {
         return this.username.equals(username) && this.password.equals(password);
     }
 
-    public UUID getID() {
+    public UUID getUUID() {
         return uuid;
     }
 
@@ -49,15 +49,15 @@ public class User {
         return password;
     }
 
-    public int getGame() {
+    public int getCurrentGame() {
         return currentGame;
     }
 
-    public int getRoom() {
+    public int getCurrentRoom() {
         return currentRoom;
     }
     
-    public int getPuzzle() {
+    public int getLastPuzzle() {
         return lastPuzzle;
     }
 

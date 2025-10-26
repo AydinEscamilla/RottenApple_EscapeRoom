@@ -11,10 +11,11 @@ public class Room {
     private int roomOrder;
     private List<Room> prerequisiteRooms;
 
-    public Room(int roomID, String name, String description) {
+    public Room(int roomID, String roomName, String description, List<Puzzle> puzzles) {
         this.roomID = roomID;
-        this.name = name;
+        this.roomName = roomName;
         this.description = description;
+        this.puzzles = puzzles;
     }
 
     public void addPuzzle(Puzzle puzzle) {
