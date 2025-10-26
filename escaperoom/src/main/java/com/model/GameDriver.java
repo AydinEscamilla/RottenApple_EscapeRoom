@@ -171,9 +171,8 @@ public class GameDriver {
             : (logicMathAnswered.size() / (double) logicMathTotal) * 100.0;
 
         
-        // Presentation output (short, simple)
         System.out.println();
-        System.out.println("Leni’s progress so far:");
+        System.out.println("Lenis progress so far:");
         System.out.printf(" - %.0f%% complete (%d of %d puzzles solved)%n",
                 percent, logicMathAnswered.size(), logicMathTotal);
 
@@ -184,7 +183,7 @@ public class GameDriver {
             System.out.println(logicMathAnswered);
         }
 
-        System.out.print(" - Hints used on: ");
+        System.out.print(" - Hints used on puzzles of ID: ");
         if (logicMathHintsUsed.isEmpty()) {
             System.out.println("(none)");
         } else {

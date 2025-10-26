@@ -17,8 +17,7 @@
                 "hintUsedCount": 0,
                 "difficulty": "EASY",
                 "item": "key",
-                "itemNeeded": ""
-                
+                "itemNeeded": ""                
             },
             {
                 "puzzleID": 102,
@@ -114,7 +113,6 @@
                 "item": "",
                 "itemNeeded": ""
             }
-
         ]
     }
 ]

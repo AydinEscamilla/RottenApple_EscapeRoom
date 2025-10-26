@@ -12,6 +12,8 @@ public class User {
     private List<Integer> puzzlesComplete;
     private List<String> items;
 
+    private Map<Integer, Integer> hintsUsedMap = new HashMap<>();
+
     // Creates a user
     public User(String username, String password) {
         this.uuid = UUID.randomUUID();
@@ -87,9 +89,22 @@ public class User {
     public void addItem(String item) {
         items.add(item);
     }
-    @Override
-    public String toString() {
-        return username + " (" + uuid + ")";
+
+    public Map<Integer, Integer> getHintsUsedMap() {
+        return hintsUsedMap;
     }
 
+    public void setHintsUsedMap(Map<Integer, Integer> map) {
+        this.hintsUsedMap = map != null ? map : new HashMap<>();
+    }
+
+    public void incrementHintUsed(int puzzleID) {
+        if (hintsUsedMap == null) hintsUsedMap = new HashMap<>();
+        hintsUsedMap.put(puzzleID, hintsUsedMap.getOrDefault(puzzleID, 0) + 1);
+    }
+
+    public int getHintsUsedForPuzzle(int puzzleID) {
+        if (hintsUsedMap == null) return 0;
+        return hintsUsedMap.getOrDefault(puzzleID, 0);
+    }
 }

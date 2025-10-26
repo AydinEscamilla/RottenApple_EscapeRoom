@@ -89,19 +89,17 @@ public class GameSystemFacade {
             return false;
         }
 
-        // If puzzle requires items, make sure current user has them
         if (currentUser == null) {
             return false;
         }
 
-        // If you want facade to enforce requirements, use Inventory or user's items:
+        // check requirements...
         List<String> reqs = puzzle.getRequiredItems();
         if (reqs != null && !reqs.isEmpty()) {
             List<String> userItems = currentUser.getItems();
             if (userItems == null) userItems = new ArrayList<>();
             for (String r : reqs) {
                 if (!userItems.contains(r)) {
-                    // user missing required item -> do not attempt
                     return false;
                 }
             }
@@ -110,20 +108,28 @@ public class GameSystemFacade {
         boolean correct = puzzle.attempt(userAnswer);
 
         if (correct) {
+            // record puzzle as completed on user (avoid duplicates)
+            List<Integer> completed = currentUser.getPuzzlesComplete();
+            if (completed == null) {
+                completed = new ArrayList<>();
+                // if you had a setItemsComplete setter, use it; otherwise your constructor set non-null list
+            }
+            if (!completed.contains(puzzleID)) {
+                completed.add(puzzleID);
+            }
+            currentUser.setLastPuzzle(puzzleID);
+
             // grant attached item to current user (once)
             String item = puzzle.getItem();
-            if (item != null && !item.isBlank() && currentUser != null) {
-                List<String> items = currentUser.getItems();
-                if (items == null) {
-                    items = new ArrayList<>();
-                    // User has addItem method, use it below
-                }
-                if (!items.contains(item)) {
+            if (item != null && !item.isBlank()) {
+                if (!currentUser.getItems().contains(item)) {
                     currentUser.addItem(item);
                     puzzle.grantItem(item);
-                    Users.getInstance().saveUsers();
                 }
             }
+
+            // persist user changes so json shows progress/items
+            Users.getInstance().saveUsers();
         }
 
         return correct;
@@ -142,8 +148,10 @@ public class GameSystemFacade {
         String hint = hints.get(used);
         puzzle.increaseHintUsed();
 
-        // Persist hint usage if you want (optional)
-        // Users.getInstance().saveUsers();
+        if (currentUser != null) {
+            currentUser.incrementHintUsed(puzzleID);
+            Users.getInstance().saveUsers();
+        }
 
         return hint;
     }
@@ -219,17 +227,18 @@ public class GameSystemFacade {
         int totalPuzzles = 0;
         Map<Integer, Integer> hintsUsedMap = new HashMap<>();
 
-        if (rooms != null) {
-            for (Room r : rooms) {
-                if (r == null) continue;
-                List<Puzzle> puzzles = r.getPuzzles();
-                if (puzzles == null) continue;
-                for (Puzzle p : puzzles) {
-                    if (p == null) continue;
-                    totalPuzzles++;
-                    int used = p.getHintsUsed();
-                    if (used > 0) {
-                        hintsUsedMap.put(p.getPuzzleID(), used);
+        if (currentUser != null && currentUser.getHintsUsedMap() != null) {
+            hintsUsedMap.putAll(currentUser.getHintsUsedMap());
+        } else {
+            if (rooms != null) {
+                for (Room r : rooms) {
+                    if (r == null) continue;
+                    List<Puzzle> puzzles = r.getPuzzles();
+                    if (puzzles == null) continue;
+                    for (Puzzle p : puzzles) {
+                        if (p == null) continue;
+                        int used = p.getHintsUsed();
+                        if (used > 0) hintsUsedMap.put(p.getPuzzleID(), used);
                     }
                 }
             }
