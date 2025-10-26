@@ -1,6 +1,7 @@
 
 import java.net.http.WebSocket.Listener;
 import java.time.Instant; //  better for tracking time
+import java.util.ArrayList;
 import java.util.List;
 import java.time.Duration; 
 
@@ -9,7 +10,7 @@ public class Game {
 
     private GameStatus status = GameStatus.NOT_STARTED;
     private int gameID;
-    private List<Room> rooms;
+    private final List<Room> rooms = new ArrayList<>();
     private int currentRoomIndex = 0;
 
     //  Timing
@@ -18,12 +19,46 @@ public class Game {
     private long accumlatedTime = 0; //  total time spent paused
     private int totalScore = 0;
 
+    private Inventory inventory = new Inventory();
+
+    public Game() {
+        this (1, List.of(Room.EvidenceRoom()));
+    }
+
     public Game (int gameID, List<Room> initialRooms) {
         this.gameID = gameID;
         if(initialRooms != null) {
             rooms.addAll(initialRooms);
         }
     }
+
+    //  Initializes the game with default rooms
+    public void initRooms() {
+        rooms.clear();
+        rooms.add(Room.EvidenceRoom());
+    }
+
+    public void roomSelection () {
+        if (rooms.isEmpty()) {
+            System.out.println("Cannot start a game with no rooms.");
+            return;
+        }
+
+        for (int i = 0; i < rooms.size(); i++) {
+            Room r = rooms.get(i);
+            System.out.println((i + 1) + ". " + r.getRoomName());
+        }
+
+        int choice = 1; //  Simulated user choice
+        Room chosen = rooms.get( choice - 1);
+        goToRoom(chosen.getRoomID());
+        System.out.println("Moved to room: " + chosen.getRoomName());
+
+
+
+    }
+
+
 
 
     public void start() {
@@ -119,6 +154,13 @@ public class Game {
 
     }
 
+    //  Inventory Methods
+
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    
     /*
      * User attempts to answer the puzzle in the current room at given index
      * @return true if the attempt was correct, false otherwise
@@ -126,10 +168,20 @@ public class Game {
     public boolean attemptCurrentRoomPuzzle (int index, String solution) {
         Room currentRoom = getCurrentRoom(); 
         if (currentRoom == null) return false; 
-        List<Puzzle> Puzzles = currentRoom.getPuzzles(); 
-        if (index < 0 || index >= Puzzles.size()) return false; 
 
-        boolean result = Puzzles.get(index).attempt(solution); 
+        List<Puzzle> Puzzles = currentRoom.getPuzzles(); 
+        if (index < 0 || index >= Puzzles.size()) return false;
+
+        Puzzle p = Puzzles.get(index);
+        
+        // if (!canAttempt(p)) {
+        //     System.out.println("Cannot attempt puzzle, missing required items.");
+        //     return false;
+
+        // } 
+
+        
+        boolean result = p.attempt(solution); 
         currentRoom.updatedClearedStatus();
         if (currentRoom.isRoomCleared()) {
             advanceIfCleared();
@@ -178,8 +230,11 @@ public class Game {
         return totalScore;
     }
 
+    
+
 
     public void addPuzzle(Puzzle puzzle) {
+
 
     }
 
@@ -208,7 +263,22 @@ public class Game {
 
     }
 
+    
+
    
+ }
+
+ class GameTest {
+    public static void main(String[] args) {
+        Game g = new Game();
+        g.initRooms();
+        g.roomSelection();
+
+        g.start();
+        System.out.println("Game started. Current room: " + g.getCurrentRoom().getRoomName());
+        
+    }
+
  }
 
  

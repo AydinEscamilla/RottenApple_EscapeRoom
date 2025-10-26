@@ -29,7 +29,7 @@ public class Inventory {
     }
 
     /*
-     * @return an unmodifiable set of saved items when saves
+     * @return an unmodifiable set of saved items
      */
     public Set <Integer> savedItems () {
         return Collections.unmodifiableSet(bag);

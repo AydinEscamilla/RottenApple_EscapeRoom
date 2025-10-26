@@ -14,6 +14,13 @@ private List <String> hints = new ArrayList<>();
        
     }
 
+    public MathPuzzle requires (int... ids) {
+       for (int id : ids) {
+            requireItem(id);
+       }
+       return this;
+    }
+
 
     @Override
     protected boolean isCorrect (String fixedAnswer) {
@@ -51,6 +58,7 @@ private List <String> hints = new ArrayList<>();
         "Solve the problems to get in the lock. 18 / 3 - 7 + 2 * 5, 12^2 / 3 - 2 * 7, 4^2 * 3 * (11 - 9) ",
         "93496"
         );
+        // .grants(ItemRegistry.Magnifying_Glass.getItemID());
         
         mp1.addHint("Remember PEMDAS");
         mp1.addHint("The P in Pemdas stands for Parentheseas");
@@ -64,6 +72,7 @@ private List <String> hints = new ArrayList<>();
         "Ammo log: boxes 10, 7, 12; report says 5 were used. Enter (10 + 7 + 12) − 5",
         "6"
         );
+        // .requires(ItemRegistry.Magnifying_Glass.getItemID());
 
         mp2.addHint("Add first, then subtract");
         return mp2;

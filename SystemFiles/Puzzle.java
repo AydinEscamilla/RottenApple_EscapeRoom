@@ -1,6 +1,6 @@
 //package SystemFiles;
 
-
+import java.util.*;
 
 public abstract class Puzzle {
 
@@ -32,6 +32,10 @@ public abstract class Puzzle {
     private int baseScore = 10;
     private int perHintPenalty = 2;
     private int perExtraAttempt = 1;
+
+    //  Items
+    private final List <Integer> itemsRequired = new ArrayList<>();
+    private final List <Integer> itemsGranted = new ArrayList<>();
 
     
 
@@ -130,6 +134,8 @@ public abstract class Puzzle {
         return maxAttempts;
     }
 
+    //  Scoring Methods
+
     public int getBaseScore() {
         return baseScore;
     }
@@ -159,6 +165,51 @@ public abstract class Puzzle {
         return scoreValue;
 
     }
+
+    //  Inventory/Item Methods
+
+
+    
+
+    public Puzzle requireItem (int itemID) {
+        itemsRequired.add(itemID);
+        return this;
+    }
+
+
+    public Puzzle grantItem (int itemID) {
+        itemsGranted.add(itemID);
+        return this;
+    }
+
+    public List<Integer> getRequiredItems() {
+        return itemsRequired;
+    }
+
+    public List<Integer> getGrantedItems() {
+        return itemsGranted;
+    }
+
+    /*
+     * Checks if the player can attempt the given puzzle based on their inventory
+     * @return true if the player has all required items, false otherwise
+     */
+    public boolean canAttempt (Inventory inventory) {
+        for (int id : itemsRequired) {
+            if (!inventory.hasItem(id)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void reward (Inventory inventory) {
+        for (int id : itemsGranted) {
+            inventory.addItem(id);
+        }
+    }
+
+
 
     /*
      * Overriden by subclasses

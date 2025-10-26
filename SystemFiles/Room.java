@@ -131,6 +131,16 @@ public class Room {
     public Room moveToRoom(int roomID) {
         return null;
     }
+
+    public static Room EvidenceRoom() {
+        Room r = new Room(1, "Evidence Room", "A special room to store collected evidence items.");
+        r.addPuzzle(LogicPuzzle.DayPuzzle());
+        r.addPuzzle(LogicPuzzle.DuckPuzzle());
+        r.addPuzzle(MathPuzzle.PemdasLock()); //  grants magnifying glass
+        r.addPuzzle(MathPuzzle.AmmoBox()); //  requires magnifying glass
+        
+        return r;
+    }
 }
 
  class RoomTest {
