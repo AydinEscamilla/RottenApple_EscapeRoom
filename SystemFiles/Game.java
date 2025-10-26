@@ -167,15 +167,15 @@ public class Game {
     }
 
     public int calculateScore() {
-        int score = 0;
+        int totalScore = 0;
         for (Room room : rooms) {
             for (Puzzle puzzle : room.getPuzzles()) {
                 if (puzzle.solved()) {
-                    score += puzzle.getScoreValue();
+                    totalScore += puzzle.getScoreValue();
                 }
             }
         }
-        return score;
+        return totalScore;
     }
 
 
