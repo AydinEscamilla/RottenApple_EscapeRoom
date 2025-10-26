@@ -24,14 +24,15 @@ public class GameSystemFacade {
         }
     }
 
+    public User startNewGame(User user) {
+        System.out.print(user.getUsername());
+        return null;
+    }
+
     public User loadUser(String username) {return null;}
     
     public User getCurrentUser() {
-        return currentUser;
-    }
-
-    public boolean isUserLoggedIn() {
-        return currentUser != null;
+        return null;
     }
 
     public void logout() {
@@ -41,17 +42,6 @@ public class GameSystemFacade {
     public List<String> getAllUsernames() {
         return null;
     }
-
-    /* ----- small helpers that call DataWriter where appropriate ----- */
-
-    public boolean updateSettings(User user, Settings settings) {
-        return false;
-    }
-
-    public boolean saveProgress(User user, Object roomID, Object gameID, Object puzzleID) {
-        return false;
-    }
-
     /*
     public Settings changeSetting(User user) { return null; }
     public Game startNewGame(User user) { return null; }

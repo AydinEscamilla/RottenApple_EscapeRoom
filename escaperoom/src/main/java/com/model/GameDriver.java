@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class GameDriver {     
     
     public GameSystemFacade facade;
+    public User user;
 
     public GameDriver() {
         this.facade = new GameSystemFacade();
@@ -16,11 +17,16 @@ public class GameDriver {
     } 
     
     public void run() { 
-        DuplicateAccount(); 
-        CreateAccount(); 
-        //EnterRoom();
+        //DuplicateAccount(); 
+        
+        //CreateAccount(); 
+
+        EnterRoom();
+
         //ThreePuzzles();
+
         //DataPersistence();
+        
         //GameCompletion();
 
         System.out.println("Thank you for watching our backend presentation!");
@@ -35,7 +41,7 @@ public class GameDriver {
         User result = facade.signup(username, password);
 
         System.out.println(result + "; account creation failed due to existing LRivers.");
-        System.out.println("Account creation failed due to duplicate user (1/6)\n");      
+        System.out.println("Account creation failed due to duplicate user (1/6)\n");   
     } 
     
     public void CreateAccount() { 
@@ -45,21 +51,20 @@ public class GameDriver {
         System.out.println("Leni is attempting to create an account with username LeniRivers.");
 
         User newUser = facade.signup(username, password);
+
         System.out.println("Unique username used; account creation succeeded: " + newUser);
         System.out.println("Account creation succeeded (2/6)\n"); 
-        
     } 
 
     public void EnterRoom() {
         System.out.println("Leni is entering an escape room for the first time.");
 
-        /*
-        facade.startGame();
-        */
+        facade.startNewGame((user.getUsername()));
 
         System.out.println("Leni has listened to the story's opening.");
         System.out.println("Starting story heard (3/6)\n");
-        return;
+
+        AwaitEnter();
     }
 
     public void ThreePuzzles() {
@@ -79,9 +84,10 @@ public class GameDriver {
         System.out.println("Leni will now log out and back in, resuming progress.");
         
         /*
-        facade.saveData(LeniRivers, password1);
-        facade.logout(LeniRivers, password1);
-        facade.login(LeniRivers, password1);
+        facade.saveData(LeniRivers, password4);
+        facade.logout(LeniRivers, password4);
+        facade.login(LeniRivers, password4);
+        facade.showProgress(LeniRivers, password4);
         */
 
         System.out.println("Leni has logged out and maintained progress.");
@@ -93,11 +99,23 @@ public class GameDriver {
         System.out.println("Leni will now complete the last puzzle and therefore the game.");
         
         /*
-        facade.completeGame(LeniRivers, password1);
+        facade.openGame();
+        facade.answerPuzzle();
+        facade.completeGame(LeniRivers, password4);
+        facade.showLeaderboard();
+        facade.printCertificate();
         */
 
         System.out.println("Leni has finished the game and been given her certificate.");
         System.out.println("Game completed (6/6)\n");
         return;
+    }
+
+    public void AwaitEnter() {
+        try {
+            System.in.read();
+        } catch (java.io.IOException e) {
+            e.printStackTrace();
+        }
     }
 }
