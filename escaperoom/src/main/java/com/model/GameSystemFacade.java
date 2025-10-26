@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 public class GameSystemFacade {
 
@@ -112,7 +111,7 @@ public class GameSystemFacade {
             List<Integer> completed = currentUser.getPuzzlesComplete();
             if (completed == null) {
                 completed = new ArrayList<>();
-                // if you had a setItemsComplete setter, use it; otherwise your constructor set non-null list
+
             }
             if (!completed.contains(puzzleID)) {
                 completed.add(puzzleID);
@@ -251,23 +250,53 @@ public class GameSystemFacade {
         return new ProgressSummary(totalPuzzles, answered, hintsUsedMap, percent);
     }
 
+    public boolean completeGame() {
+        if (currentUser == null) return false;
 
-    /*
-    public Settings changeSetting(User user) { return null; }
-    public Game startNewGame(User user) { return null; }
-    public Game resumeGame(User user) { return null; }
-    public Game pauseGame(User user) { return null; }
-    public void saveGame(User user) {}
-    public void quitGame() {}
-    public Game getCurrentGame() { return null; }
-    public Rooms getCurrentRoom() { return null; }
-    public Rooms moveToRoom(int roomID) { return null; }
-    public boolean attemptPuzzle(int puzzleID, String solution) { return false; }
-    public String getHint(int puzzleID) { return null; }
-    public List<Progress> getProgress() { return null; }
-    public long getTimeTaken() { return 0L; }
-    public Leaderboard getLeaderboard() { return null; }
-    public Settings getSettings(User user) { return null; }
-    public void updateSettings(User user, Settings settings) { }
-    */
+        int roomId = currentUser.getCurrentRoom();
+        if (roomId <= 0) return false;
+
+        Room room = getRoomByID(roomId);
+        if (room == null) return false;
+
+        List<Puzzle> puzzles = room.getPuzzles();
+        if (puzzles == null) puzzles = List.of();
+
+        // Count required puzzles for completion (ignore PICTURE puzzles if you prefer)
+        List<Integer> requiredPuzzleIds = new ArrayList<>();
+        for (Puzzle p : puzzles) {
+            if (p == null) continue;
+            // Decide which puzzles count toward completion. We will count LOGIC and MATH only.
+            Puzzle.PuzzleType t = p.getPuzzleType();
+            if (t == Puzzle.PuzzleType.LOGIC || t == Puzzle.PuzzleType.MATH) {
+                requiredPuzzleIds.add(p.getPuzzleID());
+            }
+        }
+
+        // Compare with user's completed list
+        List<Integer> completed = currentUser.getPuzzlesComplete() != null
+                ? currentUser.getPuzzlesComplete() : new ArrayList<>();
+
+        for (Integer req : requiredPuzzleIds) {
+            if (!completed.contains(req)) {
+                // Not complete yet
+                return false;
+            }
+        }
+
+        // All required puzzles solved -> mark game complete
+        // For demo purposes: clear current game & room, keep lastPuzzle as the last solved
+        currentUser.setCurrentGame(0);
+        currentUser.setCurrentRoom(0);
+        if (!requiredPuzzleIds.isEmpty()) {
+            // set lastPuzzle to the highest solved id among required ones that user completed
+            int last = completed.stream().filter(requiredPuzzleIds::contains).mapToInt(i -> i).max().orElse(currentUser.getLastPuzzle());
+            currentUser.setLastPuzzle(last);
+        }
+
+        // Persist user update
+        Users.getInstance().saveUsers();
+
+        return true;
+    }
 }

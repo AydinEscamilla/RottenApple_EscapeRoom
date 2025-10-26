@@ -87,7 +87,6 @@ public class DataLoader extends DataConstants {
             }
 
         } catch (Exception e) {
-            System.out.println("ERROR loading users from " + UserFields.USER_FILE_NAME + ": " + e.getMessage());
             e.printStackTrace();
         }
 
@@ -186,7 +185,6 @@ public class DataLoader extends DataConstants {
             }
 
         } catch (Exception e) {
-            System.out.println("ERROR loading rooms from " + RoomFields.ROOM_FILE + ": " + e.getMessage());
             e.printStackTrace();
         }
 

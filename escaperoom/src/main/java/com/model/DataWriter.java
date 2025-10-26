@@ -24,8 +24,6 @@ public class DataWriter extends DataConstants {
         try (FileWriter file = new FileWriter(UserFields.USER_FILE_NAME)) {
             file.write(jsonUsers.toJSONString());
             file.flush();
-            System.out.println("DEBUG: Users written to " + UserFields.USER_FILE_NAME +
-                            " (total: " + userList.size() + ")");
         } catch (IOException e) {
             e.printStackTrace();
         }

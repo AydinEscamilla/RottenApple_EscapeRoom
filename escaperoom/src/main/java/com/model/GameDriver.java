@@ -1,8 +1,14 @@
 package com.model;
 
+import java.lang.reflect.Method;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class GameDriver {     
     
@@ -21,17 +27,27 @@ public class GameDriver {
     
     public void run() { 
         DuplicateAccount(); 
-        
+        AwaitEnter();
+
         CreateAccount(); 
+        AwaitEnter();
+        AwaitEnter();
 
         EnterRoom();
-
-        ThreePuzzles();
-
-        DataPersistence();
+        AwaitEnter();
+        AwaitEnter();
         
-        //GameCompletion();
-
+        ThreePuzzles();
+        AwaitEnter();
+        AwaitEnter();
+        
+        DataPersistence();
+        AwaitEnter();
+        AwaitEnter();
+        
+        GameCompletion();
+        AwaitEnter();
+        AwaitEnter();
         System.out.println("Thank you for watching our backend presentation!");
     } 
     
@@ -55,7 +71,6 @@ public class GameDriver {
 
         User newUser = facade.signup(username, password);
         System.out.println("signup returned: " + newUser);
-        System.out.println("All users after signup: " + Users.getInstance().getUsers());
 
         System.out.println("Unique username used; account creation succeeded: " + newUser);
         System.out.println("Account creation succeeded (2/6)\n"); 
@@ -67,8 +82,13 @@ public class GameDriver {
         Room roomChoice = facade.getRoomByID(101);
 
         System.out.println("Leni has chosen " + roomChoice);
+
         // USE TTS HERE
-        System.out.println(roomChoice.getDescription(roomChoice));
+        if (roomChoice != null) {
+            System.out.println(roomChoice.getDescription(roomChoice));
+        } else {
+            System.out.println("(no room description available)");
+        }
 
         facade.startNewGame(roomChoice);
 
@@ -211,16 +231,130 @@ public class GameDriver {
     }
 
     public void GameCompletion() {
+        String userAnswer = "24";
+        Integer currentPuzzle = 202;
+        boolean hint = false;
+
         System.out.println("Leni will now complete the last puzzle and therefore the game.");
-        
-        /*
-        facade.openGame();
-        facade.getPuzzle(202);
-        facade.answerPuzzle();
-        facade.completeGame(LeniRivers, password4);
-        facade.showLeaderboard();
-        facade.printCertificate();
-        */
+
+        // Puzzle 202 (final puzzle)
+        playPuzzle(currentPuzzle, userAnswer, hint);
+
+        boolean completed = facade.completeGame();
+        if (completed) {
+            System.out.println("The clues are starting to come together but what could it mean...");
+            System.out.println("\"That's it! I know what to check next!\"");
+            System.out.println("The room fades to black as you run towards the computer to verify your theory...");
+            System.out.println("Leni has completed the demo!\n");
+            
+            System.out.println();
+        } else {
+            System.out.println("Fatal error; not completed as expected");
+            return;
+        }
+
+        // --- build certificate variables from facade/user/rooms ---
+        User cu = facade.getCurrentUser();
+        String username = (cu != null) ? cu.getUsername() : "Player";
+
+        // Find room: prefer currentRoom, otherwise fallback to find by lastPuzzle
+        Room room = null;
+        if (cu != null) {
+            room = facade.getRoomByID(cu.getCurrentRoom());
+            if (room == null) {
+                int lastPid = cu.getLastPuzzle();
+                List<Room> allRooms = DataLoader.getRooms();
+                if (allRooms != null) {
+                    for (Room r : allRooms) {
+                        if (r == null) continue;
+                        List<Puzzle> ps = r.getPuzzles();
+                        if (ps == null) continue;
+                        for (Puzzle p : ps) {
+                            if (p != null && p.getPuzzleID() == lastPid) {
+                                room = r;
+                                break;
+                            }
+                        }
+                        if (room != null) break;
+                    }
+                }
+            }
+        }
+
+        String roomName = (room != null) ? room.getRoomName() : "Unknown Room";
+
+        // Build list of required puzzle IDs (Logic + Math)
+        List<Integer> requiredPuzzleIds = new ArrayList<>();
+        if (room != null && room.getPuzzles() != null) {
+            for (Puzzle p : room.getPuzzles()) {
+                if (p == null) continue;
+                Puzzle.PuzzleType t = p.getPuzzleType();
+                if (t == Puzzle.PuzzleType.LOGIC || t == Puzzle.PuzzleType.MATH) {
+                    requiredPuzzleIds.add(p.getPuzzleID());
+                }
+            }
+        }
+
+        // Count how many of those the user has completed
+        List<Integer> userCompleted = (cu != null && cu.getPuzzlesComplete() != null) ? cu.getPuzzlesComplete() : List.of();
+        int completedCount = 0;
+        List<Integer> completedInRoom = new ArrayList<>();
+        for (Integer pid : requiredPuzzleIds) {
+            if (userCompleted.contains(pid)) {
+                completedCount++;
+                completedInRoom.add(pid);
+            }
+        }
+
+        // Get persisted hints-used map from facade progress summary
+        GameSystemFacade.ProgressSummary progress = facade.getProgressCurrent();
+        Map<Integer, Integer> hintsMap = (progress != null && progress.hintsUsedByPuzzle != null)
+                ? progress.hintsUsedByPuzzle : Map.of();
+
+        // Sum hints used for the relevant puzzles (in the room)
+        int hintsUsedTotal = 0;
+        for (Integer pid : requiredPuzzleIds) {
+            hintsUsedTotal += hintsMap.getOrDefault(pid, 0);
+        }
+
+        // Determine difficulty and multiplier (Hard -> multiplier 2)
+        String difficultyLabel = "Easy";
+        int multiplier = 1;
+        if (room != null && room.getPuzzles() != null) {
+            for (Puzzle p : room.getPuzzles()) {
+                if (p == null) continue;
+                if (p.getDifficulty() == Difficulty.HARD) {
+                    difficultyLabel = "Hard";
+                    multiplier = 2;
+                    break;
+                }
+            }
+        }
+
+        // Score formula: (#puzzles completed * 250 * multiplier) - (#hints used * 125)
+        int basePerPuzzle = 250;
+        int hintPenalty = 125;
+        int rawScore = (completedCount * basePerPuzzle * multiplier) - (hintsUsedTotal * hintPenalty);
+        int finalScore = Math.max(0, rawScore);
+
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+        System.out.println("**********************************************");
+        System.out.println("          CERTIFICATE OF COMPLETION");
+        System.out.println("**********************************************");
+        System.out.printf("%-25s %s%n", "For", username);
+        System.out.printf("%-25s %s%n", "Completion of", roomName);
+        System.out.printf("%-25s %s%n", "On date", now.format(formatter));
+        System.out.println();
+        System.out.printf("%-25s %s%n", "On difficulty", difficultyLabel);
+        System.out.printf("%-25s %d%n", "With hints used", hintsUsedTotal);
+        System.out.printf("%-25s %d%n", "Granting final score", finalScore);
+        System.out.println();
+        System.out.println("Congratulations on stomping out corruption!");
+        System.out.println("**********************************************");
+
+        printLeaderboard();
 
         System.out.println("Leni has finished the game and been given her certificate.");
         System.out.println("Game completed (6/6)\n");
@@ -299,6 +433,7 @@ public class GameDriver {
 
 
     private boolean canAttemptCurrent(Puzzle puzzle) {
+
         if (puzzle == null) return false;
 
         User cu = facade.getCurrentUser();
@@ -329,5 +464,141 @@ public class GameDriver {
 
         return hasAll;
     }
+    
+    private void printLeaderboard() {
+        List<User> allUsers = Users.getInstance().getUsers();
+        if (allUsers == null || allUsers.isEmpty()) {
+            System.out.println("Leaderboard: (no users)");
+            return;
+        }
 
+        class Entry {
+            final String username;
+            final int score;
+            Entry(String u, int s) { username = u; score = s; }
+        }
+
+        List<Entry> entries = new ArrayList<>();
+
+        // Prepare room list once
+        List<Room> allRooms = DataLoader.getRooms();
+
+        for (User u : allUsers) {
+            if (u == null) continue;
+            String username = u.getUsername();
+
+            // 1) Find the room for this user (prefer currentRoom, fallback by lastPuzzle)
+            Room room = null;
+            try {
+                int roomId = u.getCurrentRoom();
+                if (roomId > 0) {
+                room = facade.getRoomByID(roomId);
+            }
+            } catch (Exception ignored) {}
+
+        if (room == null) {
+            int lastPid = u.getLastPuzzle();
+            if (allRooms != null) {
+                outer:
+                for (Room r : allRooms) {
+                    if (r == null) continue;
+                    List<Puzzle> ps = r.getPuzzles();
+                    if (ps == null) continue;
+                    for (Puzzle p : ps) {
+                        if (p != null && p.getPuzzleID() == lastPid) {
+                            room = r;
+                            break outer;
+                        }
+                    }
+                }
+            }
+        }
+
+        // 2) Build the set of logic+math puzzle IDs in that room
+        List<Integer> roomLogicMathIds = new ArrayList<>();
+        if (room != null && room.getPuzzles() != null) {
+            for (Puzzle p : room.getPuzzles()) {
+                if (p == null) continue;
+                Puzzle.PuzzleType t = p.getPuzzleType();
+                if (t == Puzzle.PuzzleType.LOGIC || t == Puzzle.PuzzleType.MATH) {
+                    roomLogicMathIds.add(p.getPuzzleID());
+                }
+            }
+        }
+
+        // 3) Count how many of those puzzles this user has completed
+        List<Integer> userCompleted = u.getPuzzlesComplete() == null ? List.of() : u.getPuzzlesComplete();
+        int completedCount = 0;
+        for (Integer pid : roomLogicMathIds) {
+            if (userCompleted.contains(pid)) completedCount++;
+        }
+
+        // 4) Read hints used for this user (if available) via reflection to support your JSON shape
+        int hintsUsedForUser = 0;
+        try {
+            Method m = u.getClass().getMethod("getHintsUsed");
+            Object hm = m.invoke(u);
+            if (hm instanceof Map) {
+                Map<?,?> map = (Map<?,?>) hm;
+                // Sum integer values (keys might be strings or numbers)
+                for (Object val : map.values()) {
+                    if (val instanceof Number) {
+                        hintsUsedForUser += ((Number) val).intValue();
+                    } else {
+                        try {
+                            hintsUsedForUser += Integer.parseInt(String.valueOf(val));
+                        } catch (NumberFormatException ignored) {}
+                    }
+                }
+            }
+        } catch (NoSuchMethodException nsme) {
+            // fallback: try to use facade progress summary if per-user hints not stored
+            GameSystemFacade.ProgressSummary prog = facade.getProgressCurrent();
+            if (prog != null && prog.hintsUsedByPuzzle != null) {
+                // count only hints for puzzles the user has completed (roomLogicMathIds or userCompleted)
+                for (Integer pid : userCompleted) {
+                    hintsUsedForUser += prog.hintsUsedByPuzzle.getOrDefault(pid, 0);
+                }
+            }
+        } catch (Exception ex) {
+            // any other reflection error: just ignore and treat hints as zero
+        }
+
+        // 5) Determine difficulty multiplier (if room has any HARD puzzles => 2)
+        int multiplier = 1;
+        if (room != null && room.getPuzzles() != null) {
+            for (Puzzle p : room.getPuzzles()) {
+                if (p != null && p.getDifficulty() == Difficulty.HARD) {
+                    multiplier = 2;
+                    break;
+                }
+            }
+        }
+
+        // 6) Compute score: (#completed_in_room * 250 * multiplier) - (#hints_used * 125)
+        int score = Math.max(0, (completedCount * 250 * multiplier) - (hintsUsedForUser * 125));
+
+        entries.add(new Entry(username, score));
+    }
+
+    // sort descending
+    entries.sort(Comparator.comparingInt((Entry e) -> e.score).reversed());
+
+    // print nicely
+    System.out.println();
+    System.out.println("=========================================");
+    System.out.println("               LEADERBOARD");
+    System.out.println("=========================================");
+    System.out.printf("%-4s %-20s %10s%n", "Rank", "Username", "Score");
+    System.out.println("-----------------------------------------");
+
+    int rank = 1;
+    for (Entry e : entries) {
+        System.out.printf("%-4d %-20s %10d%n", rank, e.username, e.score);
+        rank++;
+    }
+
+    System.out.println("=========================================");
+    System.out.println();
+    }
 }

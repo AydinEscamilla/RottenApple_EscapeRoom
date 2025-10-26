@@ -15,7 +15,7 @@
                 "maxAttempts": 3,
                 "scoreValue": 10,
                 "hintUsedCount": 0,
-                "difficulty": "EASY",
+                "difficulty": "HARD",
                 "item": "key",
                 "itemNeeded": ""                
             },
@@ -30,7 +30,7 @@
                 "maxAttempts": 3,
                 "scoreValue": 10,
                 "hintUsedCount": 0,
-                "difficulty": "EASY",
+                "difficulty": "HARD",
                 "item": "",
                 "itemNeeded": ""
             },
@@ -45,7 +45,7 @@
                 "maxAttempts": 3,
                 "scoreValue": 10,
                 "hintUsedCount": 0,
-                "difficulty": "EASY",
+                "difficulty": "HARD",
                 "item": "magnifying glass",
                 "itemNeeded": "key"
 
@@ -53,7 +53,7 @@
             {
                 "puzzleID": 202,
                 "puzzleType": "Math",
-                "question": "Let me inspect these tags carefully looks like someone tampered with them...'Ammo log: Mags with ammo of 10, 7, 12 respectivley were checked out ; report says only 5 shots were used in the firing range.  (10 + 7 + 12) − 5' How many unused bullets are left?' ",
+                "question": "Let me inspect the tags carefully with my magnifying glass. It looks like someone tampered with them...'Ammo log: Mags with ammo of 10, 7, 12 respectivley were checked out ; report says only 5 shots were used in the firing range.  (10 + 7 + 12) minus 5' How many unused bullets are left?' ",
                 "solution": "24",
                 "hints":["Add first, then subtract"],
                 "isSolved": false,
@@ -61,9 +61,9 @@
                 "maxAttempts": 3,
                 "scoreValue": 10,
                 "hintUsedCount": 0,
-                "difficulty": "EASY",
+                "difficulty": "HARD",
                 "item": "",
-                "itemNeeded": ""
+                "itemNeeded": "magnifying glass"
             },
             {
                 "puzzleID": 301,
@@ -77,7 +77,7 @@
                 "maxAttempts": 3,
                 "scoreValue": 10,
                 "hintUsedCount": 0,
-                "difficulty": "EASY",
+                "difficulty": "HARD",
                 "item": "",
                 "itemNeeded": ""
             },
@@ -93,7 +93,7 @@
                 "maxAttempts": 3,
                 "scoreValue": 10,
                 "hintUsedCount": 0,
-                "difficulty": "EASY",
+                "difficulty": "HARD",
                 "item": "",
                 "itemNeeded": ""
             },
@@ -109,7 +109,7 @@
                 "maxAttempts": 3,
                 "scoreValue": 10,
                 "hintUsedCount": 0,
-                "difficulty": "EASY",
+                "difficulty": "HARD",
                 "item": "",
                 "itemNeeded": ""
             }

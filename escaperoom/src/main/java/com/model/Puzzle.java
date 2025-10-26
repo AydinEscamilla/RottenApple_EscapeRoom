@@ -28,7 +28,7 @@ public abstract class Puzzle {
     private int maxAttempts = 3;
     private int scoreValue = 0;
     private int hintUsedCount = 0;
-    private Difficulty difficulty = Difficulty.EASY;
+    private Difficulty difficulty = Difficulty.HARD;
     private String item;
         
     public Puzzle(int puzzleID,
@@ -236,23 +236,6 @@ public abstract class Puzzle {
      * Checks if the player can attempt the given puzzle based on their inventory
      * @return true if the player has all required items, false otherwise
      */
-    public boolean canAttempt(Inventory inventory) {
-        if (itemsRequired == null || itemsRequired.isEmpty()) return true;
-        if (inventory == null) return false;
-        for (String id : itemsRequired) {
-            if (!inventory.hasItem(id)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public void reward(Inventory inventory) {
-        if (inventory == null || itemsGranted == null) return;
-        for (String id : itemsGranted) {
-            inventory.addItem(id);
-        }
-    }
 
 
 
