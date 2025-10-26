@@ -4,25 +4,39 @@ import java.util.List;
 
 public class Progress {
     private String UUID;
-    private User user;
+    private String username; // prev private User user;
     private int score;
-    private long timeTaken;
     private Date dateAchieved;
     private int rank;
+    
+    private Game currentGame;
+
+    //Goals
+    /*
+     * Percent through game
+     * Questions they answered
+     * What hints they used on which questions
+     */
+    
+   
+
+    //Deleting For the scenario, a lot could be cut off Progress, since she wants to see Percentage, Questions Answered, and Hints used
     private List<Room> roomsCleared = new ArrayList<>();
     private List<Puzzle> puzzlesSolved = new ArrayList<>();
-    private Game currentGame;
-    private Room currentRoom;
     private String lastPuzzle;
-
+    private Room currentRoom;
+    private long timeTaken;
     Game game = new Game();
+    //
 
     // constructor stub
-    public Progress(User user, int score, double timeTaken, Date date) {
-        this.user = user;
-        this.score = score;
-        this.timeTaken = (long) timeTaken;
-        this.dateAchieved = date;
+    public Progress(String username, Game currentGame) {
+        this.username = username;
+        this.currentGame = currentGame;
+        //this.timeTaken = (long) timeTaken;
+        this.dateAchieved = new Date();
+        this.score = 0;
+        this.rank = 0;
 
         
     }
@@ -34,6 +48,12 @@ public class Progress {
     public void setUser(User user) {}
 
     public int getScore() {
+        Puzzle p;
+        for (p : puzzlesSolved) {
+            score += p.getScoreValue();
+            return score;
+
+        }
         return 0;
     }
 
@@ -70,8 +90,14 @@ public class Progress {
 
     }
 
+    //  incorrect
     public List<Puzzle> getPuzzlesSolved() {
-        Puzzle p = roomsCleared.get(i.get)
+        int index = roomsCleared.size() - 1;
+        Puzzle p = roomsCleared.get(index).getPuzzles().get(index);
+        if (p.getStatus() == p.getStatus().SOLVED) {
+            puzzlesSolved.add(p);
+            return puzzlesSolved;
+        }
 
         return null;
     }
