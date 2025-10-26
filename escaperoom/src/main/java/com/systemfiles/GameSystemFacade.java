@@ -18,10 +18,8 @@ public class GameSystemFacade {
         added = Users.getInstance().addUser(newUser);
 
         if (added == true) {
-            System.out.println("Failed");
             return newUser;
         } else {
-            System.out.println("Checkpoint");
             return null;
         }
     }

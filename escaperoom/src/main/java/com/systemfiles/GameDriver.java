@@ -17,7 +17,7 @@ public class GameDriver {
     
     public void run() { 
         DuplicateAccount(); 
-        //CreateAccount(); 
+        CreateAccount(); 
         //EnterRoom();
         //ThreePuzzles();
         //DataPersistence();
@@ -34,25 +34,20 @@ public class GameDriver {
 
         User result = facade.signup(username, password);
 
-        if (result == null) {
-            System.out.println("Account creation failed due to existing LRivers.");
-            System.out.println("Account creation failed due to duplicate user (1/6)\n"); 
-        } else {
-            System.out.println("Unexpected; account creation succeeded");
-        }
-        
+        System.out.println(result + "; account creation failed due to existing LRivers.");
+        System.out.println("Account creation failed due to duplicate user (1/6)\n");      
     } 
     
     public void CreateAccount() { 
+        String username = "LeniRivers";
+        String password = "password4";
+
         System.out.println("Leni is attempting to create an account with username LeniRivers.");
 
-        /*
-        facade.signup(LeniRivers, password1);
-        */
-
-        System.out.println("Unique username used; account creation succeeded.");
+        User newUser = facade.signup(username, password);
+        System.out.println("Unique username used; account creation succeeded: " + newUser);
         System.out.println("Account creation succeeded (2/6)\n"); 
-        return;
+        
     } 
 
     public void EnterRoom() {
