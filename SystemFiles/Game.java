@@ -30,10 +30,16 @@ public class Game {
         }
     }
 
+    public Game getCurrentGame() {
+        return this;
+    }
+
+    
     //  Initializes the game with default rooms
     public void initRooms() {
         rooms.clear();
         rooms.add(Room.EvidenceRoom());
+        
     }
 
     public void roomSelection () {
@@ -55,6 +61,9 @@ public class Game {
 
 
     }
+
+    
+
 
 
     /*
@@ -277,8 +286,12 @@ public class Game {
         Game g = new Game();
         g.initRooms();
         g.roomSelection();
+        
 
         g.start();
+        //for (String s : g.getCurrentRoomPuzzles()) System.out.println(" " + s);
+        
+        
         System.out.println("Game started. Current room: " + g.getCurrentRoom().getRoomName());
 
     }

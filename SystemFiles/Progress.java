@@ -41,6 +41,20 @@ public class Progress {
         
     }
 
+    public double getPercentageCompletion() {
+        int total = 0;
+        int solved = 0;
+
+        for (Room room : currentGame.getRooms()) {
+            total += room.getPuzzles().size();
+            for (Puzzle puzzle : room.getPuzzles()) {
+                if (puzzle.solved()) {
+                    solved++;
+                }
+        }
+        reutrn total 
+    }
+
     public User getUser() {
         return null;
     }
