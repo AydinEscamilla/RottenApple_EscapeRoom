@@ -1,4 +1,7 @@
 {
-    "java.configuration.updateBuildConfiguration": "interactive",
-    "java.debug.settings.onBuildFailureProceed": true
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "java.debug.settings.onBuildFailureProceed": true,
+    "java.project.referencedLibraries": [
+    "escaperoom/lib/**/*.jar"
+    ]
 }

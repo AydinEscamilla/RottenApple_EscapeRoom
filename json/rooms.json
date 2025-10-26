@@ -1,83 +1,118 @@
 [
     {
-        
         "roomID": 101,
         "roomName": "Evidence Room",
-        "description": "We have Police officer that might be a criminal...find clues to sniff him out.",
+        "description": "A trusted protector of the law may be hiding a dark secret. Somewhere within the force, a police officer is living a double life. Sworn to uphold justice by day, but tied to crime by night. It is up to you to uncover the truth. Search for clues, interrogate suspects, and follow the trail of deceit before the criminal escapes justice. Every decision you make brings you closer to the truth.",
         "puzzles": [
             {
-                "puzzleID": 201,
-                "puzzleType": "Picture",
-                "question": "What could this picture mean? - 'I don't make U+00A2(cent symbol)",
-                "solution": "I don't make sense.",
-                "hints":["What's change called?", "If someone is talking crazy they don't make...change?"],
-                "imagePath": "images/i-dont-make-sense",
-                "isSolved": true,
-                "attemps": 2,
-                "maxAttemps": 3,
-                "scoreValue": 25,
+                "puzzleID": 101,
+                "puzzleType": "Logic",
+                "question": "The fact that one of us don't have the same justice code is disheartening. Wait you notice that the check-in log for the evidence room has writing all over it, and there's a key under it...\n'The day before two days after the day before tomorrow is Saturday. What day is it today?'",
+                "solution": "Friday",
+                "hints":["Day before tomorrow is today.", "The day before two days after' is really one day after"],
+                "isSolved": false,
+                "attempts": 0,
+                "maxAttempts": 3,
+                "scoreValue": 10,
                 "hintUsedCount": 0,
-                "Difficulty": "EASY"
-            }
-        ],
+                "difficulty": "HARD",
+                "item": "key",
+                "itemNeeded": ""                
+            },
+            {
+                "puzzleID": 102,
+                "puzzleType": "Logic",
+                "question": "It's so hard to believe that someone might be a traitor. But they've left some sort of games behind to track them. The next thing they left is a note on the check in desk...\n'There are two ducks in front of a duck, two ducks behind a duck and a duck in the middle. How many ducks are there?'",
+                "solution": "Three",
+                "hints":["Consider the amount of ducks that ACTUALLY exist."],
+                "isSolved": false,
+                "attempts": 0,
+                "maxAttempts": 3,
+                "scoreValue": 10,
+                "hintUsedCount": 0,
+                "difficulty": "HARD",
+                "item": "",
+                "itemNeeded": ""
+            },
+            {
+                "puzzleID": 201,
+                "puzzleType": "Math",
+                "question": "It's just a bunch of numbers and days so far... What does it all mean? Does it peace itself together? Maybe I should check the computer -- wait, the toolbox! I need my magnifying glass!\n'Solve the problems and use the key to get in the lock. 10+10+5'",
+                "solution": "25",
+                "hints":["10+10 is 20", "10+5 is 15"],
+                "isSolved": false,
+                "attempts": 0,
+                "maxAttempts": 3,
+                "scoreValue": 10,
+                "hintUsedCount": 0,
+                "difficulty": "HARD",
+                "item": "magnifying glass",
+                "itemNeeded": "key"
 
-        "isCleared": true,
-        "roomOrder": 1,
-        "prerequisiteRooms": []
-    },
-
-    {
-        "roomID": 102,
-        "roomName": "Abandoned House",
-        "description": "This house has been abandoned for years, lets figured out what happend here.",
-        "puzzles": [
+            },
             {
                 "puzzleID": 202,
                 "puzzleType": "Math",
-                "question": "Solve the problems to get in the lock. 18 / 3 - 7 + 2 * 5, 12^2 / 3 - 2 * 7, 4^2 * 3 * (11 - 9) ",
-                "solution": "9-3-4-9-6",
-                "hints": ["Remember PEMDAS", "The P in Pemdas stands for Parentheseas"],
+                "question": "Let me inspect the tags carefully with my magnifying glass. It looks like someone tampered with them...'Ammo log: Mags with ammo of 10, 7, 12 respectivley were checked out ; report says only 5 shots were used in the firing range.  (10 + 7 + 12) minus 5' How many unused bullets are left?' ",
+                "solution": "24",
+                "hints":["Add first, then subtract"],
                 "isSolved": false,
-                "attemps": 1,
-                "maxAttemps": 3,
-                "scoreValue": 50,
-                "hintUsedCount": 3,
-                "Difficulty": "MEDIUM"
-            }
-        ],
-        "isCleared": false,
-        "roomOrder": 2,
-        "prerequisiteRooms": [101]
-        
-
-    },
-
-    {
-        "roomID": 103,
-        "roomName": "The Shed",
-        "description": "The shed behind the house what secrets it has inside?",
-        "puzzles": [
+                "attempts": 0,
+                "maxAttempts": 3,
+                "scoreValue": 10,
+                "hintUsedCount": 0,
+                "difficulty": "HARD",
+                "item": "",
+                "itemNeeded": "magnifying glass"
+            },
             {
-                "puzzleID": 203,
-                "puzzleType": "Logic",
-                "question": "There are two ducks in front of a duck, two ducks behind a duck and a duck in the middle. How many ducks are there?",
-                "solution": "Three.",
-                "hints": ["Consider the amount of ducks that ACTUALLY exist.", "Consider every point of view."],
+                "puzzleID": 301,
+                "puzzleType": "Picture",
+                "question": "Based on the sample print, which fingerprint mathces?",
+                "solution": "B",
+                "hints":["Look at the ridge patterns.", "Focus on the center area of the prints."],
+                "imagePath":["images/Question-Print.png", "images/Incorrect-Print-1", "images/Correct-Print", "images/Incorrect-Print-2"],
                 "isSolved": false,
-                "attemps": 1,
-                "maxAttemps": 3,
-                "scoreValue": 75,
-                "hintUsedCount": 1,
-                "Difficulty": "HARD"
+                "attempts": 0,
+                "maxAttempts": 3,
+                "scoreValue": 10,
+                "hintUsedCount": 0,
+                "difficulty": "HARD",
+                "item": "",
+                "itemNeeded": ""
+            },
+            {
+                "puzzleID": 302,
+                "puzzleType": "Picture",
+                "question": "Which color car has the plate 395833?",
+                "solution": "White",
+                "hints":["Look closely at the license plates.", "Focus on the numbers"],
+                "imagePath":["images/Correct-Car.png", "Incorrect-Car-1.png", "Incorrect-Car-2.png"],
+                "isSolved": false,
+                "attempts": 0,
+                "maxAttempts": 3,
+                "scoreValue": 10,
+                "hintUsedCount": 0,
+                "difficulty": "HARD",
+                "item": "",
+                "itemNeeded": ""
+            },
+            {
+                "puzzleID": 303,
+                "puzzleType": "Picture",
+                "question": "Who's missing their badge?",
+                "solution": "Left",
+                "hints":["Look towards the right side of the chest."],
+                "imagePath":["images/cop-badge.png"],
+                "isSolved": false,
+                "attempts": 0,
+                "maxAttempts": 3,
+                "scoreValue": 10,
+                "hintUsedCount": 0,
+                "difficulty": "HARD",
+                "item": "",
+                "itemNeeded": ""
             }
-        ],
-
-        "isCleared": false,
-        "roomOrder": 3,
-        "prerequisiteRooms": [101, 102]
-        
-
+        ]
     }
-
-
 ]
