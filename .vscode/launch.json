@@ -8,6 +8,13 @@
             "type": "java",
             "name": "GameDriver",
             "request": "launch",
+            "mainClass": "com.model.GameDriver",
+            "projectName": "com.example-demo"
+        },
+        {
+            "type": "java",
+            "name": "GameDriver",
+            "request": "launch",
             "mainClass": "com.systemfiles.GameDriver",
             "projectName": ""
         },
