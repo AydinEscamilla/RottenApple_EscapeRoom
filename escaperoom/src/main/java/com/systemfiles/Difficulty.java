@@ -1,4 +1,4 @@
-package systemfiles;
+package com.systemfiles;
 
 public enum Difficulty {
     EASY,

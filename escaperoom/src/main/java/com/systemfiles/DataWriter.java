@@ -1,22 +1,24 @@
-package systemfiles;
+package com.systemfiles;
 
-import java.io.*;
-import java.util.*;
-import org.json.simple.*;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 public class DataWriter extends DataConstants {
 
     public static void saveUsers() {
-        Users users = Users.getInstance();
-        ArrayList<User> userList = users.getUsers();
+        UserList userList = UserList.getInstance();
+        ArrayList<User> users = userList.getAllUsers();
 
         JSONArray jsonUsers = new JSONArray();
 
-        for(int i=0; i<userList.size(); i++) {
-            jsonUsers.add(getUserJSON(userList.get(i)));
+        for (User user : users) {
+            jsonUsers.add(getUserJSON(user));
         }
 
-        try (FileWriter file = new FileWriter(USER_FILE_NAME)) {
+        try (FileWriter file = new FileWriter(USER_TEMP_FILE_NAME)) {
             file.write(jsonUsers.toJSONString());
             file.flush();
         } catch (IOException e) {
@@ -24,13 +26,26 @@ public class DataWriter extends DataConstants {
         }
     }
 
-    public static JSONObject getUserJSON(User user) {
-        userDetails.put(USER_ID, user.getID().toString());
-        userDetails.put(USERNAME, user.getUsername().toString());
-        userDetails.put(PASSWORD, user.getPassword().toString());
+    private static JSONObject getUserJSON(User user) {
+        JSONObject userDetails = new JSONObject();
+
+        userDetails.put("UUID", user.getId().toString());
+        userDetails.put("username", user.getUsername());
+        userDetails.put("password", user.getPassword());
+        userDetails.put("currentGame", user.getCurrentGame());
+        userDetails.put("currentRoom", user.getCurrentRoom());
+        userDetails.put("lastPuzzle", user.getLastPuzzle());
+
+        JSONArray itemsArray = new JSONArray();
+        for (String item : user.getItems()) {
+            itemsArray.add(item);
+        }
+        userDetails.put("items", itemsArray);
 
         return userDetails;
     }
 
+    public static void main(String[] args) {
+        DataWriter.saveUsers();
+    }
 }
-

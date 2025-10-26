@@ -1,9 +1,8 @@
-package systemfiles;
+package com.systemfiles;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.*;
 
 public class GameSystemFacade {
 
@@ -14,22 +13,19 @@ public class GameSystemFacade {
     }
 
     public User signup(String username, String password) {
-        if (username == null || username.isBlank() || password == null) {
-            return null;
-        }
-
         User newUser = new User(username, password);
-        Users users = Users.getInstance();
-        boolean added = users.addUser(newUser);
+        boolean added = true;
+        added = Users.getInstance().addUser(newUser);
 
-
-        if (added) {
+        if (added == true) {
+            System.out.println("Failed");
             return newUser;
         } else {
+            System.out.println("Checkpoint");
             return null;
         }
     }
-    
+
     public User loadUser(String username) {return null;}
     
     public User getCurrentUser() {

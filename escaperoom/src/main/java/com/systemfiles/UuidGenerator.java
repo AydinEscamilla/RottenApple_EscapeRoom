@@ -1,3 +1,5 @@
+package com.systemfiles;
+
 import java.util.UUID;
 
 public class UuidGenerator {
@@ -7,7 +9,5 @@ public class UuidGenerator {
 
         // Convert the UUID to its standard string representation
         String uuidString = uuid.toString();
-
-        System.out.println("Generated UUID: " + uuidString);
     }
 }

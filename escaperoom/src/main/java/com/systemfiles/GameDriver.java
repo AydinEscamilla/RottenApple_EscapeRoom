@@ -1,9 +1,9 @@
-package systemfiles;
+package com.systemfiles;
+
+import java.util.Scanner;
 
 public class GameDriver {     
-
-    public String username = "LRivers";
-    public String password = "password1";
+    
     public GameSystemFacade facade;
 
     public GameDriver() {
@@ -17,16 +17,19 @@ public class GameDriver {
     
     public void run() { 
         DuplicateAccount(); 
-        CreateAccount(); 
-        EnterRoom();
-        ThreePuzzles();
-        DataPersistence();
-        GameCompletion();
+        //CreateAccount(); 
+        //EnterRoom();
+        //ThreePuzzles();
+        //DataPersistence();
+        //GameCompletion();
 
         System.out.println("Thank you for watching our backend presentation!");
     } 
     
     public void DuplicateAccount() { 
+        String username = "LRivers";
+        String password = "password1";
+        
         System.out.println("Leni is attempting to create an account with username LRivers.");
 
         User result = facade.signup(username, password);

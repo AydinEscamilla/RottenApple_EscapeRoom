@@ -1,4 +1,4 @@
-package systemfiles;
+package com.systemfiles;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ public class Users {
     private Users() {
         // instantiate DataLoader (its loadUsers() is non-static)
         DataLoader loader = new DataLoader();
-        List<User> loaded = loader.loadUsers();
+        List<User> loaded = loader.getUsers();
         userList = new ArrayList<>(loaded);
     }
 

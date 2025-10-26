@@ -1,4 +1,4 @@
-package systemfiles;
+package com.systemfiles;
 
 public abstract class Puzzle {
 

@@ -1,7 +1,7 @@
-package systemfiles;
+package com.systemfiles;
 
 public abstract class DataConstants {
-    public static final class User {
+    public static final class UserFields {
         protected static final String USER_FILE_NAME = "user.json";
         protected static final String UUID = "UUID";
         protected static final String USERNAME = "username";
