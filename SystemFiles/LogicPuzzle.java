@@ -21,11 +21,12 @@ public  class LogicPuzzle extends Puzzle {
         return playerAnswer.equals(correctAnswer); //  compare the answers
     }
 
+    //  Puzzles from: https://parade.com/970343/parade/logic-puzzles/
     
     public static LogicPuzzle DuckPuzzle() {
         var lp1 = new LogicPuzzle(
-            101,
-            "There are two ducks in front of a duck, two ducks behind a duck and a duck in the middle. How many ducks are there?",
+            102,
+            "I can't believe, there might be a dirty cop. Wait what's this? Someone left a note on the check in desk...'There are two ducks in front of a duck, two ducks behind a duck and a duck in the middle. How many ducks are there?'",
             "Three"
         );
         lp1.grantItem(ItemRegistry.Camera_Passcode.getItemID());
@@ -36,8 +37,8 @@ public  class LogicPuzzle extends Puzzle {
 
     public static LogicPuzzle DayPuzzle() {
          var lp2 = new LogicPuzzle (
-            102,
-            "The day before two days after the day before tomorrow is Saturday. What day is it today?",
+            101,
+            "The fact that one of us don't have the same justice code, wait the log has writing all over it...'The day before two days after the day before tomorrow is Saturday. What day is it today?'",
            "Friday"
         );
 

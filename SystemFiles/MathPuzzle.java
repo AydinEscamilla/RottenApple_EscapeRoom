@@ -25,13 +25,13 @@ public class MathPuzzle extends Puzzle {
     public static MathPuzzle PemdasLock() {
         var mp1 = new MathPuzzle(
         201,
-        "Solve the problems to get in the lock. 18 / 3 - 7 + 2 * 5, 12^2 / 3 - 2 * 7, 4^2 * 3 * (11 - 9) ",
-        "93496"
+        "I'm going to need a tool to track this guy, let me open the lock on the toolbox...'Solve the problems to get in the lock. 10+10+5' ",
+        "25"
         );
         mp1.grantItem(ItemRegistry.Magnifying_Glass.getItemID());
         
-        mp1.addHint("Remember PEMDAS");
-        mp1.addHint("The P in Pemdas stands for Parentheseas");
+        mp1.addHint("10+10 is 20");
+        mp1.addHint("10+5 is 15");
         return mp1;
 
     }
@@ -39,8 +39,8 @@ public class MathPuzzle extends Puzzle {
     public static MathPuzzle AmmoBox() {
         var mp2 = new MathPuzzle(
         202,
-        "Ammo log: boxes 10, 7, 12; report says 5 were used. Enter (10 + 7 + 12) − 5",
-        "2"
+        "Let me inspect these tags carefully looks like someone tampered with them...'Ammo log: Mags with ammo of 10, 7, 12 respectivley were checked out ; report says only 5 shots were used in the firing range.  (10 + 7 + 12) − 5' How many unused bullets are left?' ",
+        "24"
         );
         mp2.requireItem(ItemRegistry.Magnifying_Glass.getItemID());
 
