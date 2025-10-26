@@ -1,13 +1,6 @@
 
-import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-
 public class MathPuzzle extends Puzzle {
-private List <String> hints = new ArrayList<>();
+
 
     public MathPuzzle(int puzzleID, String question, String solution) {
         super(puzzleID, PuzzleType.MATH, question, solution);
@@ -28,37 +21,14 @@ private List <String> hints = new ArrayList<>();
     }
 
 
-    public void addHint (String hint) {
-         if (hint != null && !hint.isBlank()) 
-            hints.add(hint);
-    }
-
-    public List<String> getHints () {
-        return hints;
-        
-    }
-
-    /*
-     * 
-     * @return the next hint based on how many user already used or null if there are no more
-     */
-    public String nextHint() {
-        if (hints.isEmpty()) return null;
-        int used = getHintsUsed();
-        if (used >= hints.size()) return null; //  checks to see if user didn't reach max hints
-
-        String h = hints.get(used); //  returns the hint at that value
-        super.increaseHintUsed(); //  increments the amount of hints used when user ask for hint
-        return h; //  returns hint
-    }
 
     public static MathPuzzle PemdasLock() {
         var mp1 = new MathPuzzle(
-        102,
+        201,
         "Solve the problems to get in the lock. 18 / 3 - 7 + 2 * 5, 12^2 / 3 - 2 * 7, 4^2 * 3 * (11 - 9) ",
         "93496"
         );
-        // .grants(ItemRegistry.Magnifying_Glass.getItemID());
+        mp1.grantItem(ItemRegistry.Magnifying_Glass.getItemID());
         
         mp1.addHint("Remember PEMDAS");
         mp1.addHint("The P in Pemdas stands for Parentheseas");
@@ -68,11 +38,11 @@ private List <String> hints = new ArrayList<>();
 
     public static MathPuzzle AmmoBox() {
         var mp2 = new MathPuzzle(
-        102,
+        202,
         "Ammo log: boxes 10, 7, 12; report says 5 were used. Enter (10 + 7 + 12) − 5",
-        "6"
+        "2"
         );
-        // .requires(ItemRegistry.Magnifying_Glass.getItemID());
+        mp2.requireItem(ItemRegistry.Magnifying_Glass.getItemID());
 
         mp2.addHint("Add first, then subtract");
         return mp2;

@@ -1,5 +1,4 @@
 
-import java.net.http.WebSocket.Listener;
 import java.time.Instant; //  better for tracking time
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +16,6 @@ public class Game {
     private Instant startTime;
     private Instant pausedAt;
     private long accumlatedTime = 0; //  total time spent paused
-    private int totalScore = 0;
 
     private Inventory inventory = new Inventory();
 
@@ -59,8 +57,9 @@ public class Game {
     }
 
 
-
-
+    /*
+     * Starts the game, sets status to RUNNING and records start time
+     */
     public void start() {
         if (rooms.isEmpty()) {
             throw new IllegalStateException("Cannot start a game with no rooms.");
@@ -73,6 +72,9 @@ public class Game {
 
     }
 
+    /*
+     * Pauses the game if it is running
+     */
      public void pause() {
       
         if (status == GameStatus.RUNNING) {
@@ -174,11 +176,18 @@ public class Game {
 
         Puzzle p = Puzzles.get(index);
         
-        // if (!canAttempt(p)) {
-        //     System.out.println("Cannot attempt puzzle, missing required items.");
-        //     return false;
+        if (!p.canAttempt(inventory)) {
+            System.out.println("Cannot attempt puzzle, missing required items: " + p.getRequiredItems());
+            return false;
+        }
 
-        // } 
+        if (solution != null && solution.equals(p.getSolution())) {
+            if (p.getGrantedItems() != null && !p.getGrantedItems().isEmpty()) {
+                System.out.println("Puzzle solved! Granted items: " + p.getGrantedItems());
+            }
+            p.reward(inventory);
+            return true;
+        }
 
         
         boolean result = p.attempt(solution); 
@@ -230,14 +239,9 @@ public class Game {
         return totalScore;
     }
 
-    
-
-
-    public void addPuzzle(Puzzle puzzle) {
-
-
-    }
-
+    /*
+     * Adds a room to the game
+     */
     public void addRoom(Room room) {
         if (room != null) {
             rooms.add(room);
@@ -276,7 +280,7 @@ public class Game {
 
         g.start();
         System.out.println("Game started. Current room: " + g.getCurrentRoom().getRoomName());
-        
+
     }
 
  }
