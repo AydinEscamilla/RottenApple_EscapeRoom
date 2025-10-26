@@ -3,7 +3,7 @@
         
         "roomID": 101,
         "roomName": "Evidence Room",
-        "description": "We have Police officer that might be a criminal...find clues to sniff him out.",
+        "description": "A trusted protector of the law may be hiding a dark secret. Somewhere within the force, a police officer is living a double life. Sworn to uphold justice by day, but tied to crime by night. It’s up to you to uncover the truth. Search for clues, interrogate suspects, and follow the trail of deceit before the criminal escapes justice. Every decision you make brings you closer to the truth.",
         "puzzles": [
             {
                 "puzzleID": 201,
