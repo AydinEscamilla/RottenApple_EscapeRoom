@@ -1,5 +1,11 @@
 package com.model;
-
+/*
+ * Author: Rotten Apple
+ * CSCE247
+ * A basic puzzle child class, that stores Puzzle details such as
+ * question, solution, hints, images, attempts, scoring and difficultu
+ * 
+ */
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -37,6 +43,10 @@ public class BasicPuzzle extends Puzzle {
         );
     }
 
+    /*
+     * Checks if hint is null, trims leading/trailing space
+     * checks if hint is not blank, adds to list.
+     */
     @Override
     public void addHint(String hint) {
         if (hint == null || hint.trim().isEmpty()) return;
