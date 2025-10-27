@@ -1,6 +1,30 @@
+/**
+ * @Author: Rotten Apple
+ * CSCE247
+ */
+
 package com.model;
 
+/**
+ * DataConstants centralizes string constants for JSON file names and JSON accessors for
+ * DataLoader and DataWriter
+ * 
+ * Keeping them in a single place is just what we've learned to be best practice this semseter
+ * in order to reduce dupes and typos (i.e. DataLoader/DataWriter accessing JSON)
+ * 
+ * Abstract to prevent instantiating, all classes and members are static final constants
+ * 
+ * UserFields -- keys and file names for user persistence
+ * RoomFields -- keys and file name for room data/puzzle data
+ * Puzzles -- keys used for individual puzzle attributes
+ */
 public abstract class DataConstants {
+    /**
+     * UserFields contains constants used when serializing and deserializing User objects
+     * to-from JSON
+     * 
+     * Includes user JSON file names and JSON keys for user attributes such as username and uuid
+     */
     public static final class UserFields {
         protected static final String USER_FILE_NAME = "json/user.json";
         protected static final String USER_TEMP_FILE_NAME = "json/user_temp.json";
@@ -13,27 +37,12 @@ public abstract class DataConstants {
         protected static final String COMPLETED = "puzzlesComplete";
         protected static final String ITEMS = "items";
     }
-    
-    public static final class Preferences {
-        protected static final String AUDIO_VOLUME = "audioVolume";
-        protected static final String MUSIC_ON = "musicOn";
-        protected static final String SOUND_EFFECTS_ON = "soundEffectsOn";
-        protected static final String TEXT_SIZE = "textSize";
-    }
 
-    public static final class Progress {
-        protected static final String SCORE = "score";
-        protected static final String TIME_TAKEN = "timeTaken";
-        protected static final String DATE_ACHIEVED = "dateAchieved";
-        protected static final String RANK = "rank";
-        protected static final String ROOMS_CLEARED = "roomsCleared";
-        protected static final String PUZZLES_SOLVED = "puzzlesSolved";
-        protected static final String CURRENT_GAME = "currentGame";
-        protected static final String CURRENT_ROOM = "currentRoom";
-        protected static final String LAST_PUZZLE  = "lastPuzzle";
-        
-    }
-
+    /**
+     * RoomFields groups constants used for reading/writing room level JSON data with rooms.json
+     * 
+     * Keys are for Room attributes such as roomID and description
+     */
     public static final class RoomFields {
         protected static final String ROOM_FILE = "json/rooms.json";
         protected static final String ROOM_ID = "roomID";
@@ -45,6 +54,12 @@ public abstract class DataConstants {
         protected static final String PREREQUISITE_ROOMS = "prerequisiteRooms";
     }
 
+    /**
+     * Puzzles defines keys used to represent individual puzzle attributes within a room's 
+     * puzzles array
+     * 
+     * Keys are good for puzzle ID, type, question, solution, and more
+     */
     public static final class Puzzles {
         protected static final String PUZZLE_ID = "puzzleID";
         protected static final String PUZZLE_TYPE = "puzzleType";
