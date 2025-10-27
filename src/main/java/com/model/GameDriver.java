@@ -1,3 +1,8 @@
+/**
+ * @Author: Rotten Apple
+ * CSCE247
+ */
+
 package com.model;
 
 import java.lang.reflect.Method;
@@ -10,21 +15,54 @@ import java.util.stream.Collectors;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * {@code GameDriver} demonstrates and tests the functionality of the
+ * {@link GameSystemFacade} backend system for an escape room-style game.
+ * 
+ * This class simulates the actions of a user named Leni Rivers as she:
+ *  Creates and logs into an account</li>
+ *  Enters a room and plays through several puzzles</li>
+ *  Demonstrates data persistence</li>
+ *  Completes the game and receives a certificate</li>
+ *  Prints the leaderboard of all users</li>
+ * 
+ * The purpose is to show key backend interactions such as signup, login,
+ * puzzle progression, hint usage, and scoring.
+ */
 public class GameDriver {     
     
+
+    /** Facade providing access to system-level game operations. */
     public GameSystemFacade facade;
+    /** Currently active user in the demo. */
     public User user;
+    /** Currently active room for gameplay. */
     public Room room;
 
+    /**
+     * Constructs a new {@code GameDriver} and initializes the
+     * {@link GameSystemFacade}.
+     */
     public GameDriver() {
         this.facade = new GameSystemFacade();
     }
 
+    
+    /**
+     * Main entry point for running the game demo.
+     * 
+     * @param args command-line arguments (unused)
+     */
     public static void main(String[] args) { 
         GameDriver driver = new GameDriver(); 
         driver.run(); 
     } 
     
+    /**
+     * Runs the entire backend demonstration sequence in order:
+     * account creation, entering room, solving puzzles,
+     * persistence, and completion.
+     */
     public void run() { 
         DuplicateAccount(); 
         AwaitEnter();
@@ -51,6 +89,10 @@ public class GameDriver {
         System.out.println("Thank you for watching our backend presentation!");
     } 
     
+    /**
+     * Demonstrates the system preventing duplicate account creation by
+     * attempting to sign up with existing username
+     */
     public void DuplicateAccount() { 
         String username = "LRivers";
         String password = "password1";
@@ -63,6 +105,9 @@ public class GameDriver {
         System.out.println("Account creation failed due to duplicate user (1/6)\n");   
     } 
     
+    /**
+     * Demonstrates successful account creation with a new unique username
+     */
     public void CreateAccount() { 
         String username = "LeniRivers";
         String password = "password4";
@@ -76,6 +121,10 @@ public class GameDriver {
         System.out.println("Account creation succeeded (2/6)\n"); 
     } 
 
+    /**
+     * Demonstrates selecting and entering an escape room.
+     * Retrieves room details and starts a new game session.
+     */
     public void EnterRoom() {
         System.out.println("Leni is entering an escape room for the first time.");
 
@@ -83,7 +132,6 @@ public class GameDriver {
 
         System.out.println("Leni has chosen " + roomChoice);
 
-        // USE TTS HERE
         if (roomChoice != null) {
             System.out.println(roomChoice.getDescription(roomChoice));
         } else {
@@ -96,6 +144,10 @@ public class GameDriver {
         System.out.println("Starting story heard (3/6)\n");
     }
 
+    /**
+     * Demonstrates solving three different puzzles (with and without hints).
+     * Shows item collection and puzzle-solving logic.
+     */
     public void ThreePuzzles() {
         String userAnswer;
         Integer currentPuzzle;
@@ -133,7 +185,11 @@ public class GameDriver {
             System.out.println("Items collected so far: " + cu.getItems());
         }
     }
-    
+
+    /**
+     * Demonstrates persistence of user progress across sessions.
+     * Saves, logs out, and logs back in to verify data restoration.
+     */
     public void DataPersistence() {
         String username = "LeniRivers";
         String password = "password4";
@@ -230,6 +286,10 @@ public class GameDriver {
         return;
     }
 
+    /**
+     * Demonstrates final puzzle completion and generation of a certificate
+     * of completion with score/leaderboard
+     */
     public void GameCompletion() {
         String userAnswer = "24";
         Integer currentPuzzle = 202;
@@ -253,7 +313,7 @@ public class GameDriver {
             return;
         }
 
-        // --- build certificate variables from facade/user/rooms ---
+        // Build certificate variables from facade/user/rooms
         User cu = facade.getCurrentUser();
         String username = (cu != null) ? cu.getUsername() : "Player";
 
@@ -354,6 +414,7 @@ public class GameDriver {
         System.out.println("Congratulations on stomping out corruption!");
         System.out.println("**********************************************");
 
+        // Leaderboard output created here; meant to do the same for certificate above, couldn't
         printLeaderboard();
 
         System.out.println("Leni has finished the game and been given her certificate.");
@@ -361,6 +422,7 @@ public class GameDriver {
         return;
     }
 
+    // Pauses the demonstration until extra Enter is pressed to allow speaking roles
     public void AwaitEnter() {
         try {
             System.in.read();
@@ -369,6 +431,11 @@ public class GameDriver {
         }
     }
 
+    /**
+     * Requests a hint for a specific puzzle through the {@link GameSystemFacade}.
+     * 
+     * @param currentPuzzle puzzle ID for which a hint is requested
+     */
     public void RequestHint(int currentPuzzle) {
         System.out.println("Using hint.");
         String hint = facade.getHint(currentPuzzle);
@@ -379,6 +446,11 @@ public class GameDriver {
         }
     }
 
+    /**
+     * Checks if solving a puzzle yields a collectible item.
+     * 
+     * @param currentPuzzle puzzle ID being checked
+     */
     public void CheckForItem(int currentPuzzle) {
         System.out.println("Checking for item...");
         String item = facade.checkItem(currentPuzzle);
@@ -389,6 +461,14 @@ public class GameDriver {
         }
     }
 
+    /**
+     * Handles logic for attempting and answering a specific puzzle.
+     * Includes hint usage, correctness checking, and item acquisition.
+     * 
+     * @param puzzleID the unique ID of the puzzle
+     * @param userAnswer the player's answer submission
+     * @param useHint true if a hint should be used before answering
+     */
     private void playPuzzle(int puzzleID, String userAnswer, boolean useHint) {
         Puzzle puzzle = facade.getPuzzle(puzzleID);
         if (puzzle == null) {
@@ -431,7 +511,13 @@ public class GameDriver {
         System.out.println();
     }
 
-
+    /**
+     * Determines if the current user can attempt a given puzzle
+     * based on required item possession.
+     * 
+     * @param puzzle the {@link Puzzle} to check
+     * @return true if all required items are held, false otherwise
+     */
     private boolean canAttemptCurrent(Puzzle puzzle) {
 
         if (puzzle == null) return false;
@@ -464,7 +550,12 @@ public class GameDriver {
 
         return hasAll;
     }
-    
+
+    /**
+     * Prints a leaderboard of all users sorted by score.
+     * Scores are calculated based on completed puzzles,
+     * hints used, and difficulty multiplier.
+     */
     private void printLeaderboard() {
         List<User> allUsers = Users.getInstance().getUsers();
         if (allUsers == null || allUsers.isEmpty()) {
@@ -487,7 +578,7 @@ public class GameDriver {
             if (u == null) continue;
             String username = u.getUsername();
 
-            // 1) Find the room for this user (prefer currentRoom, fallback by lastPuzzle)
+            // Find the room for this user
             Room room = null;
             try {
                 int roomId = u.getCurrentRoom();
@@ -514,7 +605,7 @@ public class GameDriver {
             }
         }
 
-        // 2) Build the set of logic+math puzzle IDs in that room
+        // Build the set of logic+math puzzle IDs in that room
         List<Integer> roomLogicMathIds = new ArrayList<>();
         if (room != null && room.getPuzzles() != null) {
             for (Puzzle p : room.getPuzzles()) {
@@ -526,14 +617,14 @@ public class GameDriver {
             }
         }
 
-        // 3) Count how many of those puzzles this user has completed
+        // Count how many of those puzzles this user has completed
         List<Integer> userCompleted = u.getPuzzlesComplete() == null ? List.of() : u.getPuzzlesComplete();
         int completedCount = 0;
         for (Integer pid : roomLogicMathIds) {
             if (userCompleted.contains(pid)) completedCount++;
         }
 
-        // 4) Read hints used for this user (if available) via reflection to support your JSON shape
+        // Read hints used for this user (if available) via reflection
         int hintsUsedForUser = 0;
         try {
             Method m = u.getClass().getMethod("getHintsUsed");
@@ -564,7 +655,7 @@ public class GameDriver {
             // any other reflection error: just ignore and treat hints as zero
         }
 
-        // 5) Determine difficulty multiplier (if room has any HARD puzzles => 2)
+        // Determine difficulty multiplier
         int multiplier = 1;
         if (room != null && room.getPuzzles() != null) {
             for (Puzzle p : room.getPuzzles()) {
@@ -575,7 +666,7 @@ public class GameDriver {
             }
         }
 
-        // 6) Compute score: (#completed_in_room * 250 * multiplier) - (#hints_used * 125)
+        // Compute score: (#completed_in_room * 250 * multiplier) - (#hints_used * 125)
         int score = Math.max(0, (completedCount * 250 * multiplier) - (hintsUsedForUser * 125));
 
         entries.add(new Entry(username, score));
