@@ -1,3 +1,8 @@
+/**
+ * @Author: Rotten Apple
+ * CSCE247
+ */
+
 package com.model;
 
 import org.json.simple.JSONArray;
@@ -12,12 +17,27 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
- * DataLoader: reads users and rooms from JSON files defined in DataConstants / *Fields.
- * - Loads users including puzzlesComplete, items, and hintsUsed (map puzzleID -> count).
- * - Loads rooms and puzzles, supports itemNeeded and imagePath arrays.
+ * {@code DataLoader} reads persistent game data (users and rooms) from JSON files
+ * as defined by {@link DataConstants} 
+ * 
+ * Loads users from {@link UserFields#USER_FILE_NAME} and all of their info found within
+ * Loads rooms from {@link RoomFields#ROOM_FILE}, constructing Room and BasicPuzzle with info within
+ * 
+ * Purely data access utility, not modifying or persisting any data returned
  */
+
 public class DataLoader extends DataConstants {
 
+    /**
+     * Loads and parses the user JSON, returning a list of User objects
+     * 
+     * Method reads each JSON and populates the user fields listed below
+     * 
+     * The loader is designed to catch incorrectly instantiated fields where appropriate, but for now
+     * this is merely a formality
+     * 
+     * @return an ArrayList of loaded User objects (which can be empty if none found)
+     */
     public static ArrayList<User> getUsers() {
         ArrayList<User> userList = new ArrayList<>();
 
@@ -93,6 +113,15 @@ public class DataLoader extends DataConstants {
         return userList;
     }
 
+    /**
+     * Loads and parses the room JSON file, returning {@link Room} objects in  a list
+     * 
+     * The loader will read for all expected fields as depicted in rooms.json
+     * 
+     * Difficulty specifically is passed to the enum for Difficulty (tentative, fallback to EASY)
+     * 
+     * @return an ArrayList of loaded Room objects (can similarly be empty)
+     */
     public static ArrayList<Room> getRooms() {
         ArrayList<Room> roomList = new ArrayList<>();
 
@@ -129,7 +158,7 @@ public class DataLoader extends DataConstants {
                             }
                         }
 
-                        // Parse imagePath array (optional)
+                        // Parse imagePath array (not necessary yet)
                         ArrayList<String> imagePaths = new ArrayList<>();
                         JSONArray imagePathJSON = (JSONArray) pJSON.get("imagePath");
                         if (imagePathJSON != null) {
@@ -155,7 +184,7 @@ public class DataLoader extends DataConstants {
                             difficulty = Difficulty.EASY;
                         }
 
-                        // Construct BasicPuzzle (matches your constructor)
+                        // Construct BasicPuzzle
                         BasicPuzzle bp = new BasicPuzzle(
                                 puzzleID,
                                 puzzleType,
@@ -172,7 +201,7 @@ public class DataLoader extends DataConstants {
                                 item
                         );
 
-                        // itemNeeded -> required item
+                        // itemNeeded becomes requireItem
                         if (itemNeeded != null && !itemNeeded.isBlank()) {
                             bp.requireItem(itemNeeded);
                         }
