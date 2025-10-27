@@ -7,14 +7,6 @@ public class MathPuzzle extends Puzzle {
        
     }
 
-    public MathPuzzle requires (int... ids) {
-       for (int id : ids) {
-            requireItem(id);
-       }
-       return this;
-    }
-
-
     @Override
     protected boolean isCorrect (String fixedAnswer) {
         return solution.contains(fixedAnswer);
