@@ -6,6 +6,23 @@
     "configurations": [
         {
             "type": "java",
+<<<<<<< Updated upstream
+=======
+            "name": "GameDriver",
+            "request": "launch",
+            "mainClass": "com.model/com.model.GameDriver",
+            "projectName": "demo"
+        },
+        {
+            "type": "java",
+            "name": "GameDriver",
+            "request": "launch",
+            "mainClass": "com.model.GameDriver",
+            "projectName": "demo"
+        },
+        {
+            "type": "java",
+>>>>>>> Stashed changes
             "name": "GameSystemFacade",
             "request": "launch",
             "mainClass": "com.model.GameSystemFacade",
