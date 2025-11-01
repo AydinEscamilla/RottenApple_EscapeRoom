@@ -17,7 +17,7 @@
 
   <dependencies>
 
-    <!-- JUnit 5 (Jupiter) -->
+    <!-- ✅ JUnit 5 (Jupiter) -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
@@ -28,6 +28,14 @@
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>
+      <version>5.10.0</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- ✅ Add JUnit Vintage Engine so JUnit 4 tests run -->
+    <dependency>
+      <groupId>org.junit.vintage</groupId>
+      <artifactId>junit-vintage-engine</artifactId>
       <version>5.10.0</version>
       <scope>test</scope>
     </dependency>
@@ -84,11 +92,14 @@
         </executions>
       </plugin>
 
-      <!-- JUnit 5 runner -->
+      <!-- ✅ JUnit test runner (handles both JUnit 4 + 5) -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.0.0-M7</version>
+        <configuration>
+          <useModulePath>false</useModulePath>
+        </configuration>
       </plugin>
 
     </plugins>

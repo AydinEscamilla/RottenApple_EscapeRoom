@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.model.TestTesting" time="0.024" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.model.UsersTest" time="0.047" tests="9" errors="0" skipped="0" failures="2">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -58,5 +58,29 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testTesting" classname="com.model.TestTesting" time="0.014"/>
+  <testcase name="testPersistence" classname="com.model.UsersTest" time="0.035"/>
+  <testcase name="testAddBlankUsername" classname="com.model.UsersTest" time="0.003">
+    <failure message="Expected blank username addition to fail" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Expected blank username addition to fail
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at com.model.UsersTest.testAddBlankUsername(UsersTest.java:74)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+]]></failure>
+  </testcase>
+  <testcase name="testHaveUserInvalid" classname="com.model.UsersTest" time="0"/>
+  <testcase name="testHaveUserValid" classname="com.model.UsersTest" time="0.001"/>
+  <testcase name="testAddBlankPassword" classname="com.model.UsersTest" time="0">
+    <failure message="Expected user creation to fail with blank password" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Expected user creation to fail with blank password
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at com.model.UsersTest.testAddBlankPassword(UsersTest.java:84)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+]]></failure>
+  </testcase>
+  <testcase name="testAddValidUser" classname="com.model.UsersTest" time="0"/>
+  <testcase name="TestTesting" classname="com.model.UsersTest" time="0"/>
+  <testcase name="testGetUser_WhenUserDoesNotExist_ReturnsNull" classname="com.model.UsersTest" time="0"/>
+  <testcase name="testAddDuplicateUser" classname="com.model.UsersTest" time="0"/>
 </testsuite>
