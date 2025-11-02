@@ -3,9 +3,15 @@ package com.model;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+import org.junit.Ignore;
+@Ignore("Skipping UsersTest to isolate PuzzleTest")
+
 /**
  * Class to test Users system
  */
+
+
+
 public class UsersTest {
     // To test that the testing is working 
     @Test

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.model.UsersTest" time="0.047" tests="9" errors="0" skipped="0" failures="2">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.model.PuzzleTest" time="0.027" tests="13" errors="0" skipped="0" failures="5">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="/opt/homebrew/Cellar/openjdk@21/21.0.8/libexec/openjdk.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/dariuswashington/RottenApple_EscapeRoom-1/RottenApple_EscapeRoom-5/target/surefire/surefirebooter-20251101131204576_3.jar /Users/dariuswashington/RottenApple_EscapeRoom-1/RottenApple_EscapeRoom-5/target/surefire 2025-11-01T13-12-04_409-jvmRun1 surefire-20251101131204576_1tmp surefire_0-20251101131204576_2tmp"/>
+    <property name="sun.java.command" value="/Users/dariuswashington/RottenApple_EscapeRoom-1/RottenApple_EscapeRoom-5/target/surefire/surefirebooter-20251102125257062_3.jar /Users/dariuswashington/RottenApple_EscapeRoom-1/RottenApple_EscapeRoom-5/target/surefire 2025-11-02T12-52-56_868-jvmRun1 surefire-20251102125257062_1tmp surefire_0-20251102125257062_2tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/dariuswashington/RottenApple_EscapeRoom-1/RottenApple_EscapeRoom-5/target/test-classes:/Users/dariuswashington/RottenApple_EscapeRoom-1/RottenApple_EscapeRoom-5/target/classes:/Users/dariuswashington/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.0/junit-jupiter-api-5.10.0.jar:/Users/dariuswashington/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/dariuswashington/.m2/repository/org/junit/platform/junit-platform-commons/1.10.0/junit-platform-commons-1.10.0.jar:/Users/dariuswashington/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/dariuswashington/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.0/junit-jupiter-engine-5.10.0.jar:/Users/dariuswashington/.m2/repository/org/junit/platform/junit-platform-engine/1.10.0/junit-platform-engine-1.10.0.jar:/Users/dariuswashington/.m2/repository/org/junit/vintage/junit-vintage-engine/5.10.0/junit-vintage-engine-5.10.0.jar:/Users/dariuswashington/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/Users/dariuswashington/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/dariuswashington/.m2/repository/org/openjfx/javafx-controls/13/javafx-controls-13.jar:/Users/dariuswashington/.m2/repository/org/openjfx/javafx-controls/13/javafx-controls-13-mac.jar:/Users/dariuswashington/.m2/repository/org/openjfx/javafx-graphics/13/javafx-graphics-13.jar:/Users/dariuswashington/.m2/repository/org/openjfx/javafx-graphics/13/javafx-graphics-13-mac.jar:/Users/dariuswashington/.m2/repository/org/openjfx/javafx-base/13/javafx-base-13.jar:/Users/dariuswashington/.m2/repository/org/openjfx/javafx-base/13/javafx-base-13-mac.jar:/Users/dariuswashington/.m2/repository/org/openjfx/javafx-fxml/13/javafx-fxml-13.jar:/Users/dariuswashington/.m2/repository/org/openjfx/javafx-fxml/13/javafx-fxml-13-mac.jar:/Users/dariuswashington/.m2/repository/com/googlecode/json-simple/json-simple/1.1.1/json-simple-1.1.1.jar:"/>
@@ -29,7 +29,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Users/dariuswashington/RottenApple_EscapeRoom-1/RottenApple_EscapeRoom-5/target/surefire/surefirebooter-20251101131204576_3.jar"/>
+    <property name="surefire.real.class.path" value="/Users/dariuswashington/RottenApple_EscapeRoom-1/RottenApple_EscapeRoom-5/target/surefire/surefirebooter-20251102125257062_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="21.0.8"/>
@@ -58,29 +58,77 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testPersistence" classname="com.model.UsersTest" time="0.035"/>
-  <testcase name="testAddBlankUsername" classname="com.model.UsersTest" time="0.003">
-    <failure message="Expected blank username addition to fail" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Expected blank username addition to fail
-	at org.junit.Assert.fail(Assert.java:89)
-	at org.junit.Assert.assertTrue(Assert.java:42)
-	at org.junit.Assert.assertFalse(Assert.java:65)
-	at com.model.UsersTest.testAddBlankUsername(UsersTest.java:74)
+  <testcase name="testCannotSolveWithoutRequiredItems" classname="com.model.PuzzleTest" time="0.007">
+    <failure message="Puzzle was solved without required items present — logic bug! ==&gt; expected: &lt;false&gt; but was: &lt;true&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: Puzzle was solved without required items present — logic bug! ==> expected: <false> but was: <true>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertFalse.failNotFalse(AssertFalse.java:63)
+	at org.junit.jupiter.api.AssertFalse.assertFalse(AssertFalse.java:36)
+	at org.junit.jupiter.api.Assertions.assertFalse(Assertions.java:235)
+	at com.model.PuzzleTest.testCannotSolveWithoutRequiredItems(PuzzleTest.java:154)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 ]]></failure>
   </testcase>
-  <testcase name="testHaveUserInvalid" classname="com.model.UsersTest" time="0"/>
-  <testcase name="testHaveUserValid" classname="com.model.UsersTest" time="0.001"/>
-  <testcase name="testAddBlankPassword" classname="com.model.UsersTest" time="0">
-    <failure message="Expected user creation to fail with blank password" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Expected user creation to fail with blank password
-	at org.junit.Assert.fail(Assert.java:89)
-	at org.junit.Assert.assertTrue(Assert.java:42)
-	at org.junit.Assert.assertFalse(Assert.java:65)
-	at com.model.UsersTest.testAddBlankPassword(UsersTest.java:84)
+  <testcase name="testAttemptWithNullAnswer" classname="com.model.PuzzleTest" time="0.002">
+    <failure message="Attempt count should not increase for null input. ==&gt; expected: &lt;0&gt; but was: &lt;1&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: Attempt count should not increase for null input. ==> expected: <0> but was: <1>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:559)
+	at com.model.PuzzleTest.testAttemptWithNullAnswer(PuzzleTest.java:97)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 ]]></failure>
   </testcase>
-  <testcase name="testAddValidUser" classname="com.model.UsersTest" time="0"/>
-  <testcase name="TestTesting" classname="com.model.UsersTest" time="0"/>
-  <testcase name="testGetUser_WhenUserDoesNotExist_ReturnsNull" classname="com.model.UsersTest" time="0"/>
-  <testcase name="testAddDuplicateUser" classname="com.model.UsersTest" time="0"/>
+  <testcase name="testNoFurtherAttemptsAfterSolved" classname="com.model.PuzzleTest" time="0.001"/>
+  <testcase name="testCaseInsensitiveAnswerCheck" classname="com.model.PuzzleTest" time="0.001"/>
+  <testcase name="testAnswerWithWhitespace" classname="com.model.PuzzleTest" time="0"/>
+  <testcase name="testAttemptWithEmptyAnswer" classname="com.model.PuzzleTest" time="0.001">
+    <failure message="Blank input should not increase attempts. ==&gt; expected: &lt;0&gt; but was: &lt;1&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: Blank input should not increase attempts. ==> expected: <0> but was: <1>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:559)
+	at com.model.PuzzleTest.testAttemptWithEmptyAnswer(PuzzleTest.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+  </testcase>
+  <testcase name="testGrantAndRequireItemsNotDuplicated" classname="com.model.PuzzleTest" time="0.001"/>
+  <testcase name="testAttemptCorrectAnswer" classname="com.model.PuzzleTest" time="0.001"/>
+  <testcase name="testGetHintReturnsNullIsPotentialBug" classname="com.model.PuzzleTest" time="0.002">
+    <failure message="getHint() should probably return a hint string or empty string, not null. ==&gt; expected: not &lt;null&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: getHint() should probably return a hint string or empty string, not null. ==> expected: not <null>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:152)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertNotNull.failNull(AssertNotNull.java:49)
+	at org.junit.jupiter.api.AssertNotNull.assertNotNull(AssertNotNull.java:35)
+	at org.junit.jupiter.api.Assertions.assertNotNull(Assertions.java:308)
+	at com.model.PuzzleTest.testGetHintReturnsNullIsPotentialBug(PuzzleTest.java:111)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+  </testcase>
+  <testcase name="testScoreValueBasic" classname="com.model.PuzzleTest" time="0.001"/>
+  <testcase name="testGetStatusTransitions" classname="com.model.PuzzleTest" time="0.001"/>
+  <testcase name="testAttemptWrongAnswer" classname="com.model.PuzzleTest" time="0.001"/>
+  <testcase name="testRewardsNotDuplicated" classname="com.model.PuzzleTest" time="0.001">
+    <failure message="Rewards were duplicated after granting the same item twice! ==&gt; expected: &lt;1&gt; but was: &lt;2&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: Rewards were duplicated after granting the same item twice! ==> expected: <1> but was: <2>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:559)
+	at com.model.PuzzleTest.testRewardsNotDuplicated(PuzzleTest.java:165)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+  </testcase>
 </testsuite>
