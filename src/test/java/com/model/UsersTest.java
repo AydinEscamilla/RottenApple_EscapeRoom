@@ -4,13 +4,10 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 import org.junit.Ignore;
-@Ignore("Ignore UsersTest to isolate Other Tests")
 
 /**
  * Class to test Users system
  */
-
-
 
 public class UsersTest {
     // To test that the testing is working 

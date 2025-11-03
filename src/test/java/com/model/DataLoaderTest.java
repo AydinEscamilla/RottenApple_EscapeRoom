@@ -7,7 +7,6 @@ import java.util.*;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-@Disabled("Ignore DataLoaderTest to isolate other tests")
 
 class DataLoaderTest {
 

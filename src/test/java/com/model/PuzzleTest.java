@@ -7,7 +7,6 @@ import java.util.*;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-@Disabled("Ignore PuzzleTest to isolate other tests")
 
 // Class to test the Puzzle system
 

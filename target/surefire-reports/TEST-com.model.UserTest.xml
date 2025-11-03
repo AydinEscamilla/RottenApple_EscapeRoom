@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.model.DataWriterTest" time="0.096" tests="8" errors="0" skipped="0" failures="3">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.model.UserTest" time="0.017" tests="21" errors="1" skipped="4" failures="5">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -58,51 +58,79 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testEmptyUsername" classname="com.model.DataWriterTest" time="0.058">
-    <failure message="expected: &lt;0&gt; but was: &lt;1&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <0> but was: <1>
-	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
-	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
-	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
-	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
-	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
-	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1141)
-	at com.model.DataWriterTest.testEmptyUsername(DataWriterTest.java:74)
+  <testcase name="" classname="com.model.TestTesting" time="0">
+    <skipped message="Ignore TestTesting to isolate other tests"/>
+  </testcase>
+  <testcase name="" classname="com.model.PuzzleTest" time="0">
+    <skipped message="Ignore PuzzleTest to isolate other tests"/>
+  </testcase>
+  <testcase name="" classname="com.model.DataLoaderTest" time="0">
+    <skipped message="Ignore DataLoaderTest to isolate other tests"/>
+  </testcase>
+  <testcase name="" classname="com.model.UsersTest" time="0">
+    <skipped message="Ignore UsersTest to isolate Other Tests"/>
+  </testcase>
+  <testcase name="testHintUsageMap" classname="com.model.UserTest" time="0.001"/>
+  <testcase name="testFrameworkSanity" classname="com.model.UserTest" time="0"/>
+  <testcase name="testAddItem" classname="com.model.UserTest" time="0"/>
+  <testcase name="testGetHintsUsedExtremePuzzleID" classname="com.model.UserTest" time="0"/>
+  <testcase name="testPuzzleListDefensiveCopy" classname="com.model.UserTest" time="0.001">
+    <failure message="Puzzle list should be unique per user" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Puzzle list should be unique per user
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at com.model.UserTest.testPuzzleListDefensiveCopy(UserTest.java:196)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 ]]></failure>
   </testcase>
-  <testcase name="testOverwriteNotAppend" classname="com.model.DataWriterTest" time="0.001"/>
-  <testcase name="testWritingEmptyUser" classname="com.model.DataWriterTest" time="0.001"/>
-  <testcase name="testEmptyPassword" classname="com.model.DataWriterTest" time="0.002">
-    <failure message="expected: &lt;0&gt; but was: &lt;1&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <0> but was: <1>
-	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
-	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
-	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
-	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
-	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
-	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1141)
-	at com.model.DataWriterTest.testEmptyPassword(DataWriterTest.java:63)
+  <testcase name="testUserMatchBehavior" classname="com.model.UserTest" time="0"/>
+  <testcase name="testIncrementHintUsedNegativeId" classname="com.model.UserTest" time="0.001">
+    <failure message="Hints map should not accept negative IDs" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Hints map should not accept negative IDs
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at com.model.UserTest.testIncrementHintUsedNegativeId(UserTest.java:150)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 ]]></failure>
   </testcase>
-  <testcase name="testDuplicateUsernames" classname="com.model.DataWriterTest" time="0.003">
-    <failure message="expected: &lt;1&gt; but was: &lt;2&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <1> but was: <2>
-	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
-	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
-	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
-	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
-	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
-	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:527)
-	at com.model.DataWriterTest.testDuplicateUsernames(DataWriterTest.java:112)
+  <testcase name="testNullUUIDAccessSafety" classname="com.model.UserTest" time="0.002">
+    <failure message="getUUID should never return null" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: getUUID should never return null
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertNotNull(Assert.java:713)
+	at com.model.UserTest.testNullUUIDAccessSafety(UserTest.java:138)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 ]]></failure>
   </testcase>
-  <testcase name="testWritingZeroUsers" classname="com.model.DataWriterTest" time="0.001"/>
-  <testcase name="testWritingOneUser" classname="com.model.DataWriterTest" time="0.001"/>
-  <testcase name="testDoubleSaves" classname="com.model.DataWriterTest" time="0.002"/>
+  <testcase name="testUserMatchWithNullInternalFields" classname="com.model.UserTest" time="0.001">
+    <error message="Cannot invoke &quot;String.equals(Object)&quot; because &quot;this.username&quot; is null" type="java.lang.NullPointerException"><![CDATA[java.lang.NullPointerException: Cannot invoke "String.equals(Object)" because "this.username" is null
+	at com.model.User.userMatch(User.java:70)
+	at com.model.UserTest.testUserMatchWithNullInternalFields(UserTest.java:124)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+]]></error>
+  </testcase>
+  <testcase name="testUserMatchNullSafety" classname="com.model.UserTest" time="0"/>
+  <testcase name="testAddNullItemHandledGracefully" classname="com.model.UserTest" time="0.001">
+    <failure message="Null item should not be added to inventory" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Null item should not be added to inventory
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at com.model.UserTest.testAddNullItemHandledGracefully(UserTest.java:106)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+]]></failure>
+  </testcase>
+  <testcase name="testDuplicateItemsNotAllowed" classname="com.model.UserTest" time="0.001">
+    <failure message="Duplicate items should not exist in inventory expected:&lt;1&gt; but was:&lt;2&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Duplicate items should not exist in inventory expected:<1> but was:<2>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at com.model.UserTest.testDuplicateItemsNotAllowed(UserTest.java:179)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+]]></failure>
+  </testcase>
+  <testcase name="testConstructorStoresFields" classname="com.model.UserTest" time="0.001"/>
+  <testcase name="testBlankUsernameAndPasswordAllowed" classname="com.model.UserTest" time="0"/>
+  <testcase name="testUniqueUUIDs" classname="com.model.UserTest" time="0.001"/>
+  <testcase name="testUserMatchCaseSensitivity" classname="com.model.UserTest" time="0"/>
+  <testcase name="testInitialCompletedPuzzlesEmpty" classname="com.model.UserTest" time="0.001"/>
 </testsuite>

@@ -7,7 +7,6 @@ import java.util.*;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-@Disabled("Ignore TestTesting to isolate other tests")
 
 public class TestTesting {
     @Test

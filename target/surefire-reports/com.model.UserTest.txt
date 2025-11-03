@@ -1,0 +1,50 @@
+-------------------------------------------------------------------------------
+Test set: com.model.UserTest
+-------------------------------------------------------------------------------
+Tests run: 21, Failures: 5, Errors: 1, Skipped: 4, Time elapsed: 0.017 s <<< FAILURE! - in com.model.UserTest
+com.model.UserTest.testPuzzleListDefensiveCopy  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError: Puzzle list should be unique per user
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at com.model.UserTest.testPuzzleListDefensiveCopy(UserTest.java:196)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+
+com.model.UserTest.testIncrementHintUsedNegativeId  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError: Hints map should not accept negative IDs
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at com.model.UserTest.testIncrementHintUsedNegativeId(UserTest.java:150)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+
+com.model.UserTest.testNullUUIDAccessSafety  Time elapsed: 0.002 s  <<< FAILURE!
+java.lang.AssertionError: getUUID should never return null
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertNotNull(Assert.java:713)
+	at com.model.UserTest.testNullUUIDAccessSafety(UserTest.java:138)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+
+com.model.UserTest.testUserMatchWithNullInternalFields  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "String.equals(Object)" because "this.username" is null
+	at com.model.User.userMatch(User.java:70)
+	at com.model.UserTest.testUserMatchWithNullInternalFields(UserTest.java:124)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+
+com.model.UserTest.testAddNullItemHandledGracefully  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError: Null item should not be added to inventory
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at com.model.UserTest.testAddNullItemHandledGracefully(UserTest.java:106)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+
+com.model.UserTest.testDuplicateItemsNotAllowed  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError: Duplicate items should not exist in inventory expected:<1> but was:<2>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at com.model.UserTest.testDuplicateItemsNotAllowed(UserTest.java:179)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+
