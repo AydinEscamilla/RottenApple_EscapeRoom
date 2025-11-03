@@ -7,15 +7,11 @@ import java.util.*;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-@Disabled("Ignore PuzzleTest to isolate other tests")
+@Disabled("Ignore GameSystemFacadeTest to isolate other tests")
 
 // Class to test the Puzzle system
+public class GameSystemFacadeTest {
 
-public class PuzzleTest {
-
-    /**
-     * Puzzle used for testing the Puzzle class
-     */
     static class TestPuzzle extends Puzzle {
         public TestPuzzle(int id, PuzzleType type, String question, String solution) {
             super(id, type, question, solution);
@@ -40,20 +36,18 @@ public class PuzzleTest {
 
         @Override
         public Puzzle grantItem(String item) {
-            if (item == null || item.isBlank()) return this;
-            try {
-                List<String> granted = this.getGrantedItems();
-                if (granted == null) {
+            List<String> items = this.getGrantedItems();
+            if (items == null) {
+                try {
                     java.lang.reflect.Field f = Puzzle.class.getDeclaredField("grantedItems");
                     f.setAccessible(true);
                     f.set(this, new ArrayList<String>());
+                    items = this.getGrantedItems();
+                } catch (Exception e) {
+                    fail("Reflection error initializing grantedItems: " + e.getMessage());
                 }
-                if (!this.getGrantedItems().contains(item)) {
-                    this.getGrantedItems().add(item);
-                }
-            } catch (Exception e) {
-                fail("Reflection error initializing grantedItems: " + e.getMessage());
             }
+            if (!items.contains(item)) items.add(item);
             return this;
         }
     }
@@ -70,7 +64,6 @@ public class PuzzleTest {
         );
     }
 
-    // Test to confirm that correct answers mark the puzzle as solved
     @Test
     public void testAttemptCorrectAnswer() {
         assertTrue(puzzle.attempt("Piano"), "Answer 'Piano' should solve the puzzle (case insensitive).");

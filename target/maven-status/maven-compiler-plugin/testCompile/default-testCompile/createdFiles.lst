@@ -1,4 +1,9 @@
 com/model/TestTesting.class
+com/model/GameSystemFacadeTest.class
+com/model/DataWriterTest.class
+com/model/DataLoaderTest.class
 com/model/PuzzleTest$TestPuzzle.class
+com/model/Item.class
 com/model/UsersTest.class
 com/model/PuzzleTest.class
+com/model/GameSystemFacadeTest$TestPuzzle.class

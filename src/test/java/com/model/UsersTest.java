@@ -4,7 +4,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 import org.junit.Ignore;
-@Ignore("Skipping UsersTest to isolate PuzzleTest")
+@Ignore("Ignore UsersTest to isolate Other Tests")
 
 /**
  * Class to test Users system
