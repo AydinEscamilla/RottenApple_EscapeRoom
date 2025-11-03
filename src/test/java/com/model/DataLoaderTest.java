@@ -20,6 +20,7 @@ class DataLoaderTest {
     }
     /**
      * Checks that each username is unique
+     * Currently: Passes
      */
     @Test
     void testDuplicateUsernames() {
@@ -31,6 +32,7 @@ class DataLoaderTest {
     }
     /**
      * Checks that the user is in a valid room 
+     * Currently: Passes
      */
     @Test
     void testInvalidCurrentRoomReferences() {
@@ -43,6 +45,7 @@ class DataLoaderTest {
     }
     /**
      * Checks that progress numbers are not negative
+     * Currently: Passes
      */
     @Test
     void testUsersHaveValidProgression() {
@@ -53,6 +56,7 @@ class DataLoaderTest {
     }
     /**
      * Checks negative values in the hints used map
+     * Currently: Passes
      */
     @Test
     void testHintsUsedMapIntegrity() {
@@ -66,6 +70,7 @@ class DataLoaderTest {
     }
     /**
      * Ensures every item the user has is a string
+     * Currently: Passes
      */
     @Test
     void testUserInventoryConsistency() {
@@ -78,7 +83,8 @@ class DataLoaderTest {
     }
 
     /**
-     * Checks that the room has a ID
+     * Checks that the room has a unique ID
+     * Currently: Passes
      */
     @Test
     void testRoomIDsAreUnique() {
@@ -90,6 +96,7 @@ class DataLoaderTest {
 
     /**
      * Checks that each room has a name and description
+     * Currently: Passes
      */
     @Test
     void testRoomHasDescriptionAndName() {
@@ -103,6 +110,7 @@ class DataLoaderTest {
 
     /**
      * Checks that all rooms have puzzles and that the puzzle works
+     * Currently: Passes
      */
     @Test
     void testPuzzlesExistInRooms() {
@@ -119,6 +127,7 @@ class DataLoaderTest {
     }
     /**
      * Checks that every room has at least one puzzle
+     * Currently: Passes
      */
     @Test
     void testEmptyRoomsHaveFallbackBehavior() {
@@ -130,7 +139,7 @@ class DataLoaderTest {
     }
     /**
      * Checks that every puzzle has a difficulty
-     * 
+     * Currently: Passes
      */
     @Test
     void testPuzzleDifficultyIntegrity() {
@@ -144,6 +153,7 @@ class DataLoaderTest {
     /**
      * Ensures that puzzle lists the items required properly
      * Also checks null
+     * Currently: Passes
      */
     @Test
     void testItemDependenciesMakeSense() {
