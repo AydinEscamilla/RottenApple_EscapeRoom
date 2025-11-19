@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="323.0" prefWidth="856.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.UserHomeController">
+   <children>
+      <Label fx:id="lbl_title" layoutX="24.0" layoutY="24.0" text="Welcome! Select a Difficulty">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+      <!-- https://stackoverflow.com/questions/53394592/how-do-we-define-the-context-menu-in-fxml -->
+     <TextField fx:id="tf">
+        <contextMenu>
+            <ContextMenu fx:id="difficulty-menu"> 
+                <items>
+                    <MenuItem text="Easy"/>
+                    <MenuItem text="Medium"/>
+                    <MenuItem text="Hard"/>
+                </items>
+            </ContextMenu>
+        </contextMenu>
+    </TextField>
+      
+   </children>
+   <stylesheets>
+      <URL value="@styles.css" />
+   </stylesheets>
+</AnchorPane>

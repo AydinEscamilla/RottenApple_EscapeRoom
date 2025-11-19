@@ -18,12 +18,22 @@ import java.util.Map;
  * persistence and data. 
  */
 public class GameSystemFacade {
+    private static GameSystemFacade facade;
 
     // The currently logged-in user (may be {@code null} if no user is logged in)
     private User currentUser;
 
     // Creates a new {@code GameSystemFacade} instance.
     public GameSystemFacade() {}
+
+    //  FX method
+    public static GameSystemFacade getInstance() {
+        if (facade == null) {
+            facade = new GameSystemFacade();
+        }
+
+        return facade;
+    }
 
     /**
      * Attempts to create a new user account and sets that user as the current user
