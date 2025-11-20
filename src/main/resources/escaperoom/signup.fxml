@@ -16,16 +16,8 @@
       </Label>
       <Label alignment="TOP_LEFT" layoutX="124.0" layoutY="97.0" text="Username:" />
       <Label alignment="TOP_LEFT" layoutX="131.0" layoutY="146.0" text="Password:" />
-      <Label alignment="TOP_LEFT" layoutX="121.0" layoutY="196.0" text="First Name:" />
-      <Label alignment="TOP_LEFT" layoutX="127.0" layoutY="242.0" text="Last Name:" />
-      <Label alignment="TOP_LEFT" layoutX="171.0" layoutY="289.0" text="Age:" />
-      <Label alignment="TOP_LEFT" layoutX="101.0" layoutY="335.0" text="Phone Number:" />
       <TextField fx:id="txt_username" layoutX="283.0" layoutY="94.0" />
       <TextField fx:id="txt_password" layoutX="283.0" layoutY="142.0" />
-      <TextField fx:id="txt_first_name" layoutX="283.0" layoutY="192.0" />
-      <TextField fx:id="txt_last_name" layoutX="283.0" layoutY="238.0" />
-      <TextField fx:id="txt_age" layoutX="283.0" layoutY="285.0" />
-      <TextField fx:id="txt_phone_number" layoutX="283.0" layoutY="331.0" />
       <Button layoutX="283.0" layoutY="378.0" mnemonicParsing="false" onMouseClicked="#btnSignupClicked" prefHeight="24.0" prefWidth="174.0" text="Signup" />
       <Label fx:id="lbl_error" layoutX="127.0" layoutY="416.0" prefHeight="16.0" prefWidth="452.0" textFill="#e80404" />
       <Button layoutX="14.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#back" text="back" />

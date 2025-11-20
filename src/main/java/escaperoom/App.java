@@ -32,7 +32,7 @@ public class App extends Application {
         });
     }
 
-     public static void setRoot(String fxml) throws IOException {
+    public static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
 
@@ -42,6 +42,6 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        launch(args);
+        launch();
     }
 }

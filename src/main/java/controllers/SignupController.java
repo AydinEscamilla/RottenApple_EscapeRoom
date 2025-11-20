@@ -51,7 +51,7 @@ public class SignupController implements Initializable {
         }
 
         escapeRoom.login(username, password);
-        // User user = escapeRoom.getCurrentUser();
+        User user = escapeRoom.getCurrentUser();
 
         //  escapeRoom current user is set at
         App.setRoot("user_home");
