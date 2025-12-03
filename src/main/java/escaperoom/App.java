@@ -18,7 +18,7 @@ public class App extends Application {
 
     @Override
     public void start (Stage stage) throws Exception {
-        scene = new Scene(loadFXML("home"),800, 400);
+        scene = new Scene(loadFXML("home"),985, 522); //  set the window to img size
         stage.setScene(scene);
         stage.setTitle("Rotten Apple Escape Room");
         stage.show();
