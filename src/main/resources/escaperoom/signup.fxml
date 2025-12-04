@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="signup_pane" prefHeight="553.0" prefWidth="812.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SignupController">
+<AnchorPane id="AnchorPane" fx:id="signup_pane" prefHeight="552.0" prefWidth="983.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SignupController">
    <children>
       <Label layoutX="371.0" layoutY="51.0" style="-fx-background-color: #0099ff; -fx-label-padding: 10px; -fx-background-radius: 5px;" text="Signup">
          <font>
@@ -18,12 +18,15 @@
       <TextField fx:id="txt_username" layoutX="300.0" layoutY="169.0" promptText="username...." />
       <TextField fx:id="txt_password" layoutX="300.0" layoutY="254.0" promptText="password...." />
       <Button layoutX="345.0" layoutY="334.0" mnemonicParsing="false" onMouseClicked="#btnSignupClicked" prefHeight="24.0" prefWidth="174.0" style="-fx-background-color: navy;" text="Signup" />
-      <Label fx:id="lbl_error" layoutX="190.0" layoutY="410.0" prefHeight="42.0" prefWidth="266.0" style="-fx-background-color: #cc9900; -fx-label-padding: 5px; -fx-background-radius: 2px;" text="Already have an account?" textFill="#e80404" />
+      <Label fx:id="lbl_error" layoutX="579.0" layoutY="159.0" prefHeight="79.0" prefWidth="237.0" style="-fx-font-size: 10px;" textFill="#e80404" />
       <Button layoutX="14.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#back" text="back" />
-      <Button layoutX="468.0" layoutY="409.0" mnemonicParsing="false" style="-fx-background-color: navy;" text="Login" />
-      <Label layoutX="586.0" layoutY="133.0" prefHeight="86.0" prefWidth="190.0" style="-fx-background-color: #cc9900; -fx-label-padding: 10px; -fx-font-size: 15px; -fx-background-radius: 5px;" text="Username Requirements:&#10;At least 4 characters." />
-      <Label layoutX="586.0" layoutY="249.0" prefHeight="86.0" prefWidth="190.0" style="-fx-background-color: #cc9900; -fx-label-padding: 10px; -fx-font-size: 15px; -fx-background-radius: 5px;" text="Password Requirements:&#10;At least 8 characters&#10;At least 1 number" />
+      <Button layoutX="468.0" layoutY="409.0" mnemonicParsing="false" onAction="#onLoginClicked" style="-fx-background-color: navy;" text="Login" />
+      <Label layoutX="14.0" layoutY="159.0" prefHeight="68.0" prefWidth="136.0" style="-fx-background-color: #cc9900; -fx-label-padding: 10px; -fx-font-size: 10px; -fx-background-radius: 5px;" text="Username Requirements:&#10;At least 4 characters." />
+      <Label layoutX="14.0" layoutY="254.0" prefHeight="68.0" prefWidth="136.0" style="-fx-background-color: #cc9900; -fx-label-padding: 10px; -fx-font-size: 10px; -fx-background-radius: 5px;" text="Password Requirements:&#10;At least 8 characters&#10;At least 1 number" />
       <Label alignment="TOP_LEFT" layoutX="178.0" layoutY="255.0" style="-fx-background-color: #0099ff; -fx-label-padding: 5px; -fx-background-radius: 2px;" text="Password:" />
+      <Button layoutX="724.0" layoutY="28.0" mnemonicParsing="false" onMouseClicked="#settings" style="-fx-background-color: black;" text="Settings" />
+      <Label layoutX="203.0" layoutY="410.0" style="-fx-background-color: #cc9900; -fx-label-padding: 5px; -fx-background-radius: 2px;" text="Already have an account?" />
+
       
    </children>
    <stylesheets>

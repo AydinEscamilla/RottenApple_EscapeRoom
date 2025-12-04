@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane id="AnchorPane" prefHeight="552.0" prefWidth="985.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LeaderboardController">
+
+   <stylesheets>
+      <URL value="@styles.css" />
+   </stylesheets>
+   <children>
+
+      <TableView layoutX="301.0" layoutY="139.0" prefHeight="274.0" prefWidth="386.0" style="-fx-background-color: grey;">
+        <columns>
+          <TableColumn prefWidth="123.19999694824219" style="-fx-background-color: navy;" text="Username" />
+          <TableColumn prefWidth="111.20001220703125" style="-fx-background-color: navy;" text="Puzzles&#10;Cleared" />
+            <TableColumn prefWidth="75.0" style="-fx-background-color: navy;" text="Time&#10;Taken" />
+            <TableColumn prefWidth="75.0" style="-fx-background-color: navy;" text="Score" />
+        </columns>
+      </TableView>
+      <!-- Buttons not popping up on Scene Builder -->
+        <Button layoutX="14.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#back" text="back" />
+      <Button layoutX="844.0" layoutY="23.0" mnemonicParsing="false" onMouseClicked="#settings" style="-fx-background-color: black;" text="Settings" />
+   </children>
+         
+
+</AnchorPane>

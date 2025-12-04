@@ -1,33 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
-<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="323.0" prefWidth="856.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.UserHomeController">
+<AnchorPane id="AnchorPane" prefHeight="552.0" prefWidth="985.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.UserHomeController">
    <children>
-      <Label fx:id="lbl_title" layoutX="24.0" layoutY="24.0" text="Welcome! Select a Difficulty">
+      <Pane layoutX="398.0" layoutY="150.0" prefHeight="155.0" prefWidth="123.0" style="-fx-background-color: navy; -fx-background-radius: 5px;">
+         <children>
+            <ImageView fitHeight="96.0" fitWidth="87.0" layoutX="18.0" layoutY="30.0">
+               <image>
+                  <Image url="@../images/Police-Badge.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Label fx:id="lbl_title" layoutX="372.0" layoutY="82.0" prefHeight="55.0" prefWidth="174.0" style="-fx-background-color: #0099ff; -fx-label-padding: 10px; -fx-background-radius: 5px;" text="Corrupt Cop">
          <font>
             <Font size="27.0" />
          </font>
       </Label>
-      <!-- https://stackoverflow.com/questions/53394592/how-do-we-define-the-context-menu-in-fxml -->
-     <TextField fx:id="tf">
-        <contextMenu>
-            <ContextMenu fx:id="difficulty-menu"> 
-                <items>
-                    <MenuItem text="Easy"/>
-                    <MenuItem text="Medium"/>
-                    <MenuItem text="Hard"/>
-                </items>
-            </ContextMenu>
-        </contextMenu>
-    </TextField>
+      <Pane layoutX="136.0" layoutY="326.0" prefHeight="123.0" prefWidth="688.0" style="-fx-background-color: black;">
+         <children>
+            <Text fill="WHITE" layoutX="16.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 15px; -fx-font-weight: bold;" text="A trusted protector of the law may be hiding a dark secret. &#10;Somewhere within the force, a police officer is living a double life. &#10;Sworn to uphold justice by day, but tied to crime by night. It is up to you to uncover the truth. Search for clues, and follow the trail of deceit before the criminal escapes justice. &#10;Every decision you make brings you closer to the truth.&#10;" wrappingWidth="655.8697814941406" />
+         </children>
+      </Pane>
+      <Button layoutX="14.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#back" text="back" />
+      <Button layoutX="170.0" layoutY="478.0" mnemonicParsing="false" style="-fx-background-color: navy;" text="Load Save" />
+      <Button layoutX="414.0" layoutY="478.0" mnemonicParsing="false" style="-fx-background-color: blue;" text="New Game" />
+      <Button layoutX="656.0" layoutY="478.0" mnemonicParsing="false" onMouseClicked="#leaderboard" style="-fx-background-color: navy;" text="Leaderboard" />
+      <Button layoutX="844.0" layoutY="23.0" mnemonicParsing="false" onMouseClicked="#settings" style="-fx-background-color: #cc9900;" text="Settings" />
+
+     
       
    </children>
    <stylesheets>

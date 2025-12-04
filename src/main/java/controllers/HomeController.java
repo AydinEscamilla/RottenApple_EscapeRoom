@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.input.MouseEvent;
 import escaperoom.App;
 
 public class HomeController implements Initializable {
@@ -21,8 +22,13 @@ public class HomeController implements Initializable {
     }
 
     @FXML
-    private void onGuestClick(ActionEvent event) throws IOException {
-        return;
+    private void settings(MouseEvent event) throws IOException {
+        App.setRoot("settings");
+    }
+
+    @FXML
+    private void guest(MouseEvent event) throws IOException {
+        App.setRoot("difficulty");
     }
 
     @Override

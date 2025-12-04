@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="login_pane" prefHeight="553.0" prefWidth="885.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
+<AnchorPane id="AnchorPane" fx:id="login_pane" prefHeight="552.0" prefWidth="983.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
    <children>
       <Label layoutX="392.0" layoutY="35.0" prefHeight="66.0" prefWidth="103.0" style="-fx-background-color: #0099ff; -fx-label-padding: 10px; -fx-background-radius: 5px;" text="Login">
          <font>
@@ -19,9 +19,13 @@
       <Button layoutX="361.0" layoutY="306.0" mnemonicParsing="false" onMouseClicked="#btnLoginClicked" prefHeight="24.0" prefWidth="173.0" style="-fx-background-color: navy;" text="Login" />
       <TextField fx:id="txt_username" layoutX="327.0" layoutY="118.0" promptText="username...." style="-fx-background-color: white;" />
       <TextField fx:id="txt_password" layoutX="327.0" layoutY="224.0" promptText="password..." style="-fx-background-color: white;" />
-      <Label fx:id="lbl_error" layoutX="243.0" layoutY="375.0" prefHeight="42.0" prefWidth="239.0" style="-fx-background-color: #cc9900; -fx-label-padding: 5px; -fx-background-radius: 2px;" text="Don't have an account?" />
+      <!-- Controller writes to this label -->
+      <Label fx:id="lbl_error" layoutX="615.0" layoutY="118.0" prefHeight="92.0" prefWidth="216.0" style="-fx-background-radius: 2px; -fx-font-size: 10px;" />
       <Button layoutX="14.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#back" text="back" />
-      <Button layoutX="498.0" layoutY="368.0" mnemonicParsing="false" style="-fx-background-color: navy;" text="Sign Up" />
+      <Button layoutX="498.0" layoutY="368.0" mnemonicParsing="false" onAction="#onSignupClicked" style="-fx-background-color: navy;" text="Sign Up" />
+      <Button layoutX="844.0" layoutY="23.0" mnemonicParsing="false" onMouseClicked="#settings" style="-fx-background-color: black;" text="Settings" />
+      <Label layoutX="246.0" layoutY="369.0" style="-fx-label-padding: 5px; -fx-background-color: cc9900; -fx-background-radius: 2px;" text="Don't have a acccount?" />
+
    </children>
    <stylesheets>
       <URL value="@styles.css" />
