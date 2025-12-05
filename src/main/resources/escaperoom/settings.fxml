@@ -11,18 +11,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/25"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="controllers.SettingsController"
-            stylesheets="@styles.css">
+<BorderPane stylesheets="@styles.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SettingsController">
 
     <!-- TOP: toolbar -->
     <top>
-        <ToolBar prefHeight="63.0">
+        <ToolBar prefHeight="63.0" style="-fx-background-color: transparent;">
             <items>
-                <Button mnemonicParsing="false"
-                        onMouseClicked="#back"
-                        text="Back" />
+                <Button mnemonicParsing="false" onMouseClicked="#back" text="Back" />
             </items>
         </ToolBar>
     </top>
@@ -31,49 +26,41 @@
     <center>
         <StackPane id="StackPane" fx:id="settings_pane" alignment="CENTER">
             <children>
-                <VBox spacing="20.0"
-                      alignment="CENTER"
-                      prefWidth="600.0"
-                      style="-fx-padding: 40;">
+                <VBox alignment="CENTER" prefWidth="600.0" spacing="20.0" style="-fx-padding: 40;">
                     <children>
 
                         <!-- Title -->
-                        <Label text="Settings"
-                               style="-fx-background-color: #0099ff; -fx-label-padding: 10px; -fx-background-radius: 5px;">
+                        <Label style="-fx-background-color: #0099ff; -fx-label-padding: 10px; -fx-background-radius: 5px;" text="Settings">
                             <font>
                                 <Font size="30.0" />
                             </font>
                         </Label>
 
                         <!-- AUDIO GROUP -->
-                        <VBox spacing="10.0" alignment="CENTER_LEFT">
+                        <VBox alignment="CENTER_LEFT" spacing="10.0">
                             <children>
-                                <Label text="Audio"
-                                       style="-fx-background-color: #0099ff; -fx-label-padding: 5px; -fx-background-radius: 2px;" />
+                                <Label style="-fx-background-color: #0099ff; -fx-label-padding: 5px; -fx-background-radius: 2px;" text="Audio" />
 
                                 <!-- Music row -->
-                                <HBox spacing="10.0" alignment="CENTER_LEFT">
+                                <HBox alignment="CENTER_LEFT" spacing="10.0">
                                     <children>
-                                        <Label text="Music"
-                                               style="-fx-background-color: grey; -fx-label-padding: 5px; -fx-background-radius: 2px; -fx-font-size: 15px;" />
+                                        <Label style="-fx-background-color: grey; -fx-label-padding: 5px; -fx-background-radius: 2px; -fx-font-size: 15px;" text="Music" />
                                         <Slider fx:id="musicSlider" prefWidth="200.0" />
                                     </children>
                                 </HBox>
 
                                 <!-- Sound effects row -->
-                                <HBox spacing="10.0" alignment="CENTER_LEFT">
+                                <HBox alignment="CENTER_LEFT" spacing="10.0">
                                     <children>
-                                        <Label text="Sound Effects"
-                                               style="-fx-background-color: grey; -fx-label-padding: 5px; -fx-background-radius: 2px; -fx-font-size: 15px;" />
+                                        <Label style="-fx-background-color: grey; -fx-label-padding: 5px; -fx-background-radius: 2px; -fx-font-size: 15px;" text="Sound Effects" />
                                         <Slider fx:id="sfxSlider" prefWidth="200.0" />
                                     </children>
                                 </HBox>
 
                                 <!-- Narration row -->
-                                <HBox spacing="10.0" alignment="CENTER_LEFT">
+                                <HBox alignment="CENTER_LEFT" spacing="10.0">
                                     <children>
-                                        <Label text="Narration"
-                                               style="-fx-background-color: grey; -fx-label-padding: 5px; -fx-background-radius: 2px; -fx-font-size: 15px;" />
+                                        <Label style="-fx-background-color: grey; -fx-label-padding: 5px; -fx-background-radius: 2px; -fx-font-size: 15px;" text="Narration" />
                                         <CheckBox fx:id="narrationCheckBox" mnemonicParsing="false" />
                                     </children>
                                 </HBox>
@@ -81,30 +68,16 @@
                         </VBox>
 
                         <!-- VISUAL GROUP -->
-                        <VBox spacing="10.0" alignment="CENTER_LEFT">
+                        <VBox alignment="CENTER_LEFT" spacing="10.0">
                             <children>
-                                <Label text="Visual"
-                                       style="-fx-background-color: #0099ff; -fx-label-padding: 5px; -fx-background-radius: 2px;" />
+                                <Label style="-fx-background-color: #0099ff; -fx-label-padding: 5px; -fx-background-radius: 2px;" text="Visual" />
 
-                                <HBox spacing="10.0" alignment="CENTER_LEFT">
+                                <HBox alignment="CENTER_LEFT" spacing="10.0">
                                     <children>
-                                        <Label text="Font Size:"
-                                               style="-fx-background-color: grey; -fx-label-padding: 5px; -fx-background-radius: 2px; -fx-font-size: 15px;" />
-                                        <Button fx:id="smallFontButton"
-                                                mnemonicParsing="false"
-                                                prefHeight="33.0" prefWidth="50.0"
-                                                style="-fx-font-size: 10px; -fx-background-color: navy;"
-                                                text="Text" />
-                                        <Button fx:id="mediumFontButton"
-                                                mnemonicParsing="false"
-                                                prefHeight="33.0" prefWidth="50.0"
-                                                style="-fx-font-size: 15px; -fx-background-color: navy;"
-                                                text="Text" />
-                                        <Button fx:id="largeFontButton"
-                                                mnemonicParsing="false"
-                                                prefHeight="34.0" prefWidth="89.0"
-                                                style="-fx-font-size: 20px; -fx-background-color: navy;"
-                                                text="Text" />
+                                        <Label style="-fx-background-color: grey; -fx-label-padding: 5px; -fx-background-radius: 2px; -fx-font-size: 15px;" text="Font Size:" />
+                                        <Button fx:id="smallFontButton" mnemonicParsing="false" prefHeight="33.0" prefWidth="50.0" style="-fx-font-size: 10px; -fx-background-color: navy;" text="Text" />
+                                        <Button fx:id="mediumFontButton" mnemonicParsing="false" prefHeight="33.0" prefWidth="50.0" style="-fx-font-size: 15px; -fx-background-color: navy;" text="Text" />
+                                        <Button fx:id="largeFontButton" mnemonicParsing="false" prefHeight="34.0" prefWidth="89.0" style="-fx-font-size: 20px; -fx-background-color: navy;" text="Text" />
                                     </children>
                                 </HBox>
                             </children>

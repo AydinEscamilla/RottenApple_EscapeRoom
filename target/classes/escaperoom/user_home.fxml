@@ -17,7 +17,7 @@
 
     <!-- TOP: toolbar -->
     <top>
-        <ToolBar prefHeight="63.0">
+        <ToolBar prefHeight="63.0" style="-fx-background-color: transparent;">
             <items>
                 <Button mnemonicParsing="false" onMouseClicked="#back" text="Back" />
                    <Button mnemonicParsing="false" onMouseClicked="#settings" style="-fx-background-color: black;" text="Settings" />
