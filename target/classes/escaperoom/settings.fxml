@@ -19,7 +19,7 @@
             <Font size="27.0" />
          </font>
       </Label>
-      <Button layoutX="14.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#back" text="back" />
+      <Button layoutX="14.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#back" text="Back" />
       <Label layoutX="42.0" layoutY="127.0" style="-fx-background-color: #0099ff; -fx-label-padding: 5px; -fx-background-radius: 2px;" text="Audio" />
       <Label layoutX="42.0" layoutY="337.0" style="-fx-background-color: #0099ff; -fx-label-padding: 5px; -fx-background-radius: 2px;" text="Visual" />
       <Slider layoutX="131.0" layoutY="182.0" />

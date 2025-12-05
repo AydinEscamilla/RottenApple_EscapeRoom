@@ -7,10 +7,10 @@
 
 <AnchorPane id="AnchorPane" fx:id="home_pane" prefHeight="551.0" prefWidth="965.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomeController">
       <children>
-         <Button fx:id="button" layoutX="442.0" layoutY="220.0" onAction="#onLoginClicked" style="-fx-background-color: navy; -fx-cursor: hand;" text="Login" textFill="#dfd6d6" />
+         <Button fx:id="button" layoutX="425.0" layoutY="220.0" onAction="#onLoginClicked" prefHeight="45.0" prefWidth="115.0" style="-fx-background-color: navy; -fx-cursor: hand;" text="Login" textFill="#dfd6d6" />
          <Label fx:id="label" layoutX="376.0" layoutY="176.0" minHeight="16" minWidth="69" text="By: Rotten Apple Games" />
-      <Button fx:id="button1" layoutX="425.0" layoutY="288.0" onAction="#onSignupClicked" prefHeight="46.0" prefWidth="115.0" style="-fx-background-color: navy; -fx-cursor: hand;" text="Signup" />
-      <Button layoutX="441.0" layoutY="358.0" mnemonicParsing="false" onMouseClicked="#guest" style="-fx-background-color: navy; -fx-cursor: hand;" text="Guest" />
+      <Button fx:id="button1" layoutX="425.0" layoutY="282.0" onAction="#onSignupClicked" prefHeight="46.0" prefWidth="115.0" style="-fx-background-color: navy; -fx-cursor: hand;" text="Signup" />
+      <Button layoutX="425.0" layoutY="348.0" mnemonicParsing="false" onMouseClicked="#guest" prefHeight="45.0" prefWidth="115.0" style="-fx-background-color: navy; -fx-cursor: hand;" text="Guest" />
       <Label layoutX="228.0" layoutY="93.0" style="-fx-background-radius: 5px; -fx-label-padding: 10px; -fx-background-color: #0099ff; -fx-font-size: 35px;" text="The Way Out: Crude Corruption" />
       <Button layoutX="844.0" layoutY="23.0" mnemonicParsing="false" onMouseClicked="#settings" style="-fx-background-color: black; -fx-cursor: hand;" text="Settings" />
       </children>

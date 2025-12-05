@@ -17,11 +17,11 @@
             <Font size="27.0" />
          </font>
       </Label>
-      <Button layoutX="14.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#back" text="back" />
-      <Button layoutX="447.0" layoutY="177.0" mnemonicParsing="false" onMouseClicked="#easy" style="-fx-background-color: #009933;" text="Easy" />
+      <Button layoutX="14.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#back" text="Back" />
+      <Button layoutX="429.0" layoutY="177.0" mnemonicParsing="false" onMouseClicked="#easy" prefHeight="45.0" prefWidth="107.0" style="-fx-background-color: #009933;" text="Easy" />
       <Button layoutX="429.0" layoutY="244.0" mnemonicParsing="false" onMouseClicked="#medium" style="-fx-background-color: #cc9900;" text="Medium" />
-      <Button layoutX="448.0" layoutY="306.0" mnemonicParsing="false" onMouseClicked="#hard" style="-fx-background-color: #990000;" text="Hard" />
-      <Button layoutX="844.0" layoutY="23.0" mnemonicParsing="false"  onMouseClicked="#settings" style="-fx-background-color: black;" text="Settings" />
+      <Button layoutX="429.0" layoutY="307.0" mnemonicParsing="false" onMouseClicked="#hard" prefHeight="45.0" prefWidth="107.0" style="-fx-background-color: #990000;" text="Hard" />
+      <Button layoutX="844.0" layoutY="23.0" mnemonicParsing="false" onMouseClicked="#settings" style="-fx-background-color: black;" text="Settings" />
       
    </children>
 </AnchorPane>
