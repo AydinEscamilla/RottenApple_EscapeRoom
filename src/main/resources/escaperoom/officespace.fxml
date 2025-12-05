@@ -29,7 +29,7 @@
           <children>
                <AnchorPane layoutX="174.0" layoutY="33.0" prefHeight="486.0" prefWidth="637.0" style="-fx-background-color: navy; -fx-background-radius: 5px; -fx-border-color: #ffcc00;">
                   <children>
-                  <Label layoutX="271.0" layoutY="39.0" style="-fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold;" text="LockBox" />
+                  <Label layoutX="198.0" layoutY="48.0" style="-fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold;" text="Officer Mason's Desk" />
                      <HBox id="hbox_for_buttons" layoutX="126.0" layoutY="363.0" prefHeight="100.0" prefWidth="387.0" style="-fx-spacing: 10px; -fx-alignment: center; -fx-padding: 5px; -fx-background-radius: 5px;">
                         <children>
                            <Button fx:id="incorrect_button_1" mnemonicParsing="false" onAction="#completePuzzle" style="-fx-background-color: #0099ff;" text="Incorrect" textFill="WHITE" />
@@ -82,7 +82,7 @@
                <Pane id="inventory_space_3" layoutX="831.0" layoutY="29.0" prefHeight="119.0" prefWidth="110.0" style="-fx-background-color: beige; -fx-border-color: black;" />
                <Pane id="inventory_space_2" layoutX="688.0" layoutY="31.0" prefHeight="116.0" prefWidth="121.0" style="-fx-background-color: beige; -fx-border-color: black;">
                <children>
-                  <Button fx:id = "officer_mason_key_button" accessibleText="Officer Mason's Key" onAction = "#itemUnlocksPuzzle" layoutX="9.0" layoutY="9.0" mnemonicParsing="false" prefHeight="97.0" prefWidth="103.0" style="-fx-background-color: clear;">
+                  <Button fx:id="officer_mason_key_button" accessibleText="Officer Mason's Key" layoutX="9.0" layoutY="9.0" mnemonicParsing="false" onAction="#itemUnlocksPuzzle" prefHeight="97.0" prefWidth="103.0" style="-fx-background-color: clear;">
                      <graphic>
                         <ImageView fx:id="key_inventory_space_2" fitHeight="70.0" fitWidth="65.0" visible="true">
                            <image>

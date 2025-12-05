@@ -12,14 +12,14 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane stylesheets="@officespace.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.OfficeSpaceController">
+<BorderPane stylesheets="@interrogationroom.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.InterrogationRoomController">
    <center>
       <StackPane>
-          <AnchorPane id="AnchorPane" fx:id="officespace_pane" prefHeight="552.0" prefWidth="983.0">
+          <AnchorPane id="AnchorPane" fx:id="interogationroom_pane" prefHeight="552.0" prefWidth="983.0">
               
               <children>
                <!-- This brings up the puzzleOverlay -->
-               <Button fx:id="desk_button" layoutX="608.0" layoutY="353.0" mnemonicParsing="false" onAction="#handlePuzzle" prefHeight="82.0" prefWidth="79.0" style="-fx-background-color: black; -fx-cursor: hand;" visible="hidden" />
+               <Button fx:id="paper_button" layoutX="610.0" layoutY="352.0" mnemonicParsing="false" onAction="#handlePuzzle" prefHeight="82.0" prefWidth="79.0" style="-fx-background-color: clear; -fx-cursor: hand;" />
                <!-- This moves to the next room -->
                <Button fx:id="next_room" layoutX="755.0" layoutY="330.0" mnemonicParsing="false" onMouseClicked="#nextRoom" style="-fx-background-color: navy;" text="Move to next Room" textFill="#f5f5f5" visible="hidden" />
               </children>
@@ -29,7 +29,7 @@
           <children>
                <AnchorPane layoutX="174.0" layoutY="33.0" prefHeight="486.0" prefWidth="637.0" style="-fx-background-color: navy; -fx-background-radius: 5px; -fx-border-color: #ffcc00;">
                   <children>
-                  <Label layoutX="198.0" layoutY="48.0" style="-fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold;" text="Officer Mason's Desk" />
+                  <Label layoutX="234.0" layoutY="48.0" style="-fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold;" text="Random Paper" />
                      <HBox id="hbox_for_buttons" layoutX="126.0" layoutY="363.0" prefHeight="100.0" prefWidth="387.0" style="-fx-spacing: 10px; -fx-alignment: center; -fx-padding: 5px; -fx-background-radius: 5px;">
                         <children>
                            <Button fx:id="incorrect_button_1" mnemonicParsing="false" onAction="#completePuzzle" style="-fx-background-color: #0099ff;" text="Incorrect" textFill="WHITE" />
@@ -76,23 +76,25 @@
          <children>
                <Pane id="dialog_pane" layoutX="24.0" layoutY="-14.0" prefHeight="180.0" prefWidth="467.0" style="-fx-background-color: beige; -fx-border-color: black;">
                    <children>
-                       <Text fx:id="dialog_text" layoutX="14.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 14px;" text="You find yourself now by the various desks in the main room of the station. Officer Mason's key should specifically open the key to a drawer in his desk. Will you find what you need there?" wrappingWidth="381.46575927734375" />
+                       <Text fx:id="dialog_text" layoutX="14.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 14px;" text="You find yourself in front of the holding cell now. There's a lockbox to contain what should be the cell key, but you think Officer Mason's key is in there now." wrappingWidth="381.46575927734375" />
                    </children>
             </Pane>
-               <Pane id="inventory_space_3" layoutX="831.0" layoutY="29.0" prefHeight="119.0" prefWidth="110.0" style="-fx-background-color: beige; -fx-border-color: black;" />
+               <Pane id="inventory_space_3" layoutX="831.0" layoutY="29.0" prefHeight="119.0" prefWidth="110.0" style="-fx-background-color: beige; -fx-border-color: black;">
+               <children>
+                  <ImageView fx:id="evidence_inventory_space_3" fitHeight="104.0" fitWidth="91.0" layoutX="11.0" layoutY="10.0" visible="false">
+                     <image>
+                        <Image url="@../images/EvidenceForWin.png" />
+                     </image>
+                  </ImageView>
+               </children></Pane>
                <Pane id="inventory_space_2" layoutX="688.0" layoutY="31.0" prefHeight="116.0" prefWidth="121.0" style="-fx-background-color: beige; -fx-border-color: black;">
                <children>
-                  <Button fx:id="officer_mason_key_button" accessibleText="Officer Mason's Key" layoutX="9.0" layoutY="9.0" mnemonicParsing="false" onAction="#itemUnlocksPuzzle" prefHeight="97.0" prefWidth="103.0" style="-fx-background-color: clear;">
-                     <graphic>
-                        <ImageView fx:id="key_inventory_space_2" fitHeight="70.0" fitWidth="65.0" visible="true">
-                           <image>
-                              <Image url="@../images/MasonKey.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     </Button>
-               </children>
-               </Pane>
+                  <ImageView fx:id="key_inventory_space_2" fitHeight="70.0" fitWidth="65.0" layoutX="28.0" layoutY="23.0" visible="false">
+                     <image>
+                        <Image url="@../images/MasonKey.png" />
+                     </image>
+                  </ImageView>
+               </children></Pane>
                <Pane fx:id="inventory_space_1" layoutX="547.0" layoutY="31.0" prefHeight="115.0" prefWidth="119.0" style="-fx-background-color: beige; -fx-border-color: black;">
                <children>
                   <ImageView fx:id="key_inventory_space_1" fitHeight="67.0" fitWidth="68.0" layoutX="30.0" layoutY="22.0" visible="true">
