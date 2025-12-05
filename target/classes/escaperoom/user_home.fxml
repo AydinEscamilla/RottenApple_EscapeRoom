@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ToolBar?>
@@ -40,14 +41,17 @@
                         </Label>
 
                         <!-- Badge card -->
-                        <Pane prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: navy; -fx-background-radius: 5px;">
+                        <Pane prefHeight="150.0" prefWidth="363.0" style="-fx-background-color: navy; -fx-background-radius: 5px;">
                             <children>
-                                <ImageView fitHeight="96.0" fitWidth="87.0" layoutX="31.0" layoutY="27.0" preserveRatio="true">
+                                <ImageView fitHeight="96.0" fitWidth="87.0" layoutX="272.0" layoutY="27.0" preserveRatio="true">
                                     <image>
                                         <Image url="@../images/Police-Badge.png" />
                                     </image>
                                 </ImageView>
                             </children>
+                     <opaqueInsets>
+                        <Insets left="100.0" right="100.0" />
+                     </opaqueInsets>
                         </Pane>
 
                         <!-- Description text block -->
