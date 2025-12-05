@@ -9,9 +9,11 @@ import org.w3c.dom.Text;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import escaperoom.App;
 import com.model.GameSystemFacade;
 import java.net.URL;
@@ -26,9 +28,20 @@ public class ShortHoldingRoomController implements Initializable {
     @FXML
     private Text dialog_text;
     @FXML
+    private Button cabinet_button;
+    @FXML
     private Pane inventory_space_2;
     @FXML
+    private Button next_room;
+    @FXML
+    private StackPane puzzleOverlay;
+    @FXML
     private AnchorPane pauseOverlay;
+
+    @FXML
+    private void nextRoom(MouseEvent event) throws IOException {
+        App.setRoot("officespace");
+    }
 
     @FXML
     private void home(MouseEvent event) throws IOException {

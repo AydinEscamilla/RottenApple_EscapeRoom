@@ -26,6 +26,8 @@ public class GameSystemFacade {
     // Creates a new {@code GameSystemFacade} instance.
     public GameSystemFacade() {}
 
+    
+
     //  FX method
     public static GameSystemFacade getInstance() {
         if (facade == null) {
@@ -33,6 +35,17 @@ public class GameSystemFacade {
         }
 
         return facade;
+    }
+
+    private boolean guest = false;
+
+    
+    public void setGuest(boolean guest) {
+        this.guest = guest;
+    }
+
+    public boolean isGuest() {
+        return guest;
     }
 
     /**

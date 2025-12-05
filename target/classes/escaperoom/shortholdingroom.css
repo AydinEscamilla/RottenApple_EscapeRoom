@@ -6,6 +6,7 @@
   /* -fx-text-fill: #fff; */
   /* img 985 x 552 */
   -fx-background-image: url("../images/ShortHoldingRoom.png"); 
+  -fx-background-size: cover;
 }
 
 .home-buttons {

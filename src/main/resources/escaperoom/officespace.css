@@ -3,11 +3,10 @@
   -fx-font-family: "Helvetica";
   /*-fx-base: #87c7d1;*/
   /*-fx-background: #f2f2f2;*/
-  -fx-text-fill: #fff;
+  /* -fx-text-fill: #fff; */
   /* img 985 x 552 */
-  -fx-background-image: url("../images/dark-station-image.png"); 
-      -fx-background-size: cover;
-
+  -fx-background-image: url("../images/OfficeSpace.png"); 
+  -fx-background-size: cover;
 }
 
 .home-buttons {
@@ -24,4 +23,3 @@
   -fx-text-fill: #fff;
   -fx-cursor: hand;
 }
-

@@ -11,6 +11,8 @@ import org.w3c.dom.Text;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderStroke;
@@ -18,6 +20,7 @@ import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import escaperoom.App;
 import com.model.GameSystemFacade;
@@ -36,7 +39,18 @@ public class OfficeSpaceController implements Initializable {
     private Pane dialog_pane;
     @FXML
     private Text dialog_text;
-   
+    @FXML
+    private Pane inventory_space_1;
+    @FXML
+    private Button cabinet_button;
+    @FXML
+    private StackPane puzzleOverlay;
+    @FXML
+    private Button key_button;
+    @FXML
+    private ImageView key_inventory_space_1;
+    @FXML
+    private Button next_room;
     @FXML
     private AnchorPane pauseOverlay;
 

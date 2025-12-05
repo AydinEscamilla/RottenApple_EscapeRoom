@@ -8,8 +8,22 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
 import escaperoom.App;
+import com.model.GameSystemFacade;
 
 public class HomeController implements Initializable {
+
+    private GameSystemFacade facade = GameSystemFacade.getInstance();
+
+    @FXML
+    private void handleGuest(ActionEvent event) throws IOException {
+        // Tell the system we're in guest mode
+        facade.setGuest(true);  
+
+        facade.logout();
+
+        // Go to difficulty selection screen
+        App.setRoot("difficulty");   
+    }
 
     @FXML
     private void onLoginClicked(ActionEvent event) throws IOException {
