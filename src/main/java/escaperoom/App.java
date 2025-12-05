@@ -18,9 +18,15 @@ public class App extends Application {
 
     @Override
     public void start (Stage stage) throws Exception {
-        scene = new Scene(loadFXML("home"),800, 400);
+        scene = new Scene(loadFXML("home"), 985, 552); //  set the window to img size
+        //  Apply stylesheet universally
+        // scene.getStylesheets().add(
+        //     App.class.getResource("styles.css").toExternalForm()
+        // );
         stage.setScene(scene);
         stage.setTitle("Rotten Apple Escape Room");
+        
+        
         stage.show();
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override

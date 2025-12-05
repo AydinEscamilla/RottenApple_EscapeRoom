@@ -3,6 +3,8 @@ package controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -32,7 +34,7 @@ public class LoginController implements Initializable {
 
         
         if (username.isEmpty() || password.isEmpty()) {
-            lbl_error.setText("Please enter a username and password.");
+            lbl_error.setText("Please enter a username \n and password.");
             return;
         }
 
@@ -46,8 +48,18 @@ public class LoginController implements Initializable {
     }
 
     @FXML
+    private void onSignupClicked(ActionEvent event) throws IOException {
+        App.setRoot("signup");
+    }
+
+    @FXML
     private void back(MouseEvent event) throws IOException {
         App.setRoot("home");
+    }
+
+    @FXML
+    private void settings(MouseEvent event) throws IOException {
+        App.setRoot("settings");
     }
 
     @Override

@@ -4,7 +4,15 @@
   /*-fx-base: #87c7d1;*/
   /*-fx-background: #f2f2f2;*/
   -fx-text-fill: #fff;
-  /* -fx-background-image: url("../images/background.jpg"); */
+  /* img 985 x 552 */
+  -fx-background-image: url("../images/dark-station-image.png"); 
+      -fx-background-size: cover;
+
+}
+
+.home-buttons {
+  -fx-display: flex;
+  -fx-flex-direction: column;
 }
 
 .label {
@@ -14,5 +22,6 @@
 .button {
   -fx-background-color: black;
   -fx-text-fill: #fff;
+  -fx-cursor: hand;
 }
 

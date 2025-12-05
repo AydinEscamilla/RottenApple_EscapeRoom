@@ -3,6 +3,8 @@ package controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -38,7 +40,7 @@ public class SignupController implements Initializable {
         // check for empty fields
         if (username.equals("") || password.equals("") ) 
         {
-            lbl_error.setText("Username and Password are required.");
+            lbl_error.setText("Username and Password \nare required.");
             return;
         }
 
@@ -46,7 +48,7 @@ public class SignupController implements Initializable {
 
         
         if (newUser == null) {
-            lbl_error.setText("Username is already taken. Try another");
+            lbl_error.setText("Username is already taken. \nTry another");
             return;
         }
 
@@ -57,9 +59,19 @@ public class SignupController implements Initializable {
         App.setRoot("user_home");
     }
 
+     @FXML
+    private void onLoginClicked(ActionEvent event) throws IOException {
+        App.setRoot("login");
+    }
+
     @FXML
     private void back(MouseEvent event) throws IOException {
         App.setRoot("home");
+    }
+
+    @FXML
+    private void settings(MouseEvent event) throws IOException {
+        App.setRoot("settings");
     }
 
        @Override

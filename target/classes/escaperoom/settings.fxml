@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.SettingsController"
+            stylesheets="@styles.css">
+
+    <!-- TOP: toolbar -->
+    <top>
+        <ToolBar prefHeight="63.0">
+            <items>
+                <Button mnemonicParsing="false"
+                        onMouseClicked="#back"
+                        text="Back" />
+            </items>
+        </ToolBar>
+    </top>
+
+    <!-- CENTER: centered settings card -->
+    <center>
+        <StackPane id="StackPane" fx:id="settings_pane" alignment="CENTER">
+            <children>
+                <VBox spacing="20.0"
+                      alignment="CENTER"
+                      prefWidth="600.0"
+                      style="-fx-padding: 40;">
+                    <children>
+
+                        <!-- Title -->
+                        <Label text="Settings"
+                               style="-fx-background-color: #0099ff; -fx-label-padding: 10px; -fx-background-radius: 5px;">
+                            <font>
+                                <Font size="30.0" />
+                            </font>
+                        </Label>
+
+                        <!-- AUDIO GROUP -->
+                        <VBox spacing="10.0" alignment="CENTER_LEFT">
+                            <children>
+                                <Label text="Audio"
+                                       style="-fx-background-color: #0099ff; -fx-label-padding: 5px; -fx-background-radius: 2px;" />
+
+                                <!-- Music row -->
+                                <HBox spacing="10.0" alignment="CENTER_LEFT">
+                                    <children>
+                                        <Label text="Music"
+                                               style="-fx-background-color: grey; -fx-label-padding: 5px; -fx-background-radius: 2px; -fx-font-size: 15px;" />
+                                        <Slider fx:id="musicSlider" prefWidth="200.0" />
+                                    </children>
+                                </HBox>
+
+                                <!-- Sound effects row -->
+                                <HBox spacing="10.0" alignment="CENTER_LEFT">
+                                    <children>
+                                        <Label text="Sound Effects"
+                                               style="-fx-background-color: grey; -fx-label-padding: 5px; -fx-background-radius: 2px; -fx-font-size: 15px;" />
+                                        <Slider fx:id="sfxSlider" prefWidth="200.0" />
+                                    </children>
+                                </HBox>
+
+                                <!-- Narration row -->
+                                <HBox spacing="10.0" alignment="CENTER_LEFT">
+                                    <children>
+                                        <Label text="Narration"
+                                               style="-fx-background-color: grey; -fx-label-padding: 5px; -fx-background-radius: 2px; -fx-font-size: 15px;" />
+                                        <CheckBox fx:id="narrationCheckBox" mnemonicParsing="false" />
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+
+                        <!-- VISUAL GROUP -->
+                        <VBox spacing="10.0" alignment="CENTER_LEFT">
+                            <children>
+                                <Label text="Visual"
+                                       style="-fx-background-color: #0099ff; -fx-label-padding: 5px; -fx-background-radius: 2px;" />
+
+                                <HBox spacing="10.0" alignment="CENTER_LEFT">
+                                    <children>
+                                        <Label text="Font Size:"
+                                               style="-fx-background-color: grey; -fx-label-padding: 5px; -fx-background-radius: 2px; -fx-font-size: 15px;" />
+                                        <Button fx:id="smallFontButton"
+                                                mnemonicParsing="false"
+                                                prefHeight="33.0" prefWidth="50.0"
+                                                style="-fx-font-size: 10px; -fx-background-color: navy;"
+                                                text="Text" />
+                                        <Button fx:id="mediumFontButton"
+                                                mnemonicParsing="false"
+                                                prefHeight="33.0" prefWidth="50.0"
+                                                style="-fx-font-size: 15px; -fx-background-color: navy;"
+                                                text="Text" />
+                                        <Button fx:id="largeFontButton"
+                                                mnemonicParsing="false"
+                                                prefHeight="34.0" prefWidth="89.0"
+                                                style="-fx-font-size: 20px; -fx-background-color: navy;"
+                                                text="Text" />
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+
+                    </children>
+                </VBox>
+            </children>
+        </StackPane>
+    </center>
+</BorderPane>
