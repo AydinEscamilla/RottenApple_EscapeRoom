@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane stylesheets="@frontroom.css"
+            xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.FrontRoomController">
+
+    <center>
+        <StackPane>
+
+            <!-- MAIN ROOM BACKGROUND -->
+            <AnchorPane id="evidenceroom_pane"
+                        fx:id="evidenceroom_pane"
+                        prefHeight="552.0"
+                        prefWidth="983.0">
+                <children>
+                    <!-- Opens the puzzle overlay -->
+                    <Button fx:id="cabinet_button"
+                            layoutX="610.0"
+                            layoutY="352.0"
+                            mnemonicParsing="false"
+                            onAction="#handlePuzzle"
+                            prefHeight="82.0"
+                            prefWidth="79.0"
+                            style="-fx-background-color: black; -fx-cursor: hand;" />
+
+                    <!-- End game button (shown after puzzle solved) -->
+                    <Button fx:id="next_room"
+                            layoutX="755.0"
+                            layoutY="330.0"
+                            mnemonicParsing="false"
+                            onMouseClicked="#nextRoom"
+                            style="-fx-background-color: navy;"
+                            text="End Game"
+                            textFill="#f5f5f5"
+                            visible="false" />
+                </children>
+            </AnchorPane>
+
+            <!-- PUZZLE OVERLAY (LOCKBOX) -->
+            <AnchorPane fx:id="puzzleOverlay"
+                        managed="false"
+                        prefHeight="200.0"
+                        prefWidth="300.0"
+                        style="-fx-background-color: rgba(0, 0, 0, 0.7); -fx-cursor: hand;"
+                        visible="false">
+                <children>
+                    <AnchorPane layoutX="174.0"
+                                layoutY="33.0"
+                                prefHeight="486.0"
+                                prefWidth="637.0"
+                                style="-fx-background-color: navy; -fx-background-radius: 5px; -fx-border-color: #ffcc00;">
+                        <children>
+                            <Label layoutX="271.0"
+                                   layoutY="39.0"
+                                   style="-fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold;"
+                                   text="LockBox" />
+
+                            <HBox id="hbox_for_buttons"
+                                  layoutX="126.0"
+                                  layoutY="363.0"
+                                  prefHeight="100.0"
+                                  prefWidth="387.0"
+                                  style="-fx-spacing: 10px; -fx-alignment: center; -fx-padding: 5px; -fx-background-radius: 5px;">
+                                <children>
+                                    <!-- Incorrect option: 13 -->
+                                    <Button fx:id="incorrect_button_1"
+                                            mnemonicParsing="false"
+                                            onAction="#completePuzzle"
+                                            style="-fx-background-color: #0099ff;"
+                                            text="13"
+                                            textFill="WHITE" />
+
+                                    <!-- Correct option: 41 -->
+                                    <Button fx:id="correct_button"
+                                            mnemonicParsing="false"
+                                            onAction="#completePuzzle"
+                                            style="-fx-background-color: #0099ff;"
+                                            text="41"
+                                            textFill="WHITE" />
+
+                                    <!-- Incorrect option: 26 -->
+                                    <Button fx:id="incorrect_button_2"
+                                            mnemonicParsing="false"
+                                            onAction="#completePuzzle"
+                                            prefHeight="45.0"
+                                            prefWidth="132.0"
+                                            style="-fx-background-color: #0099ff;"
+                                            text="26"
+                                            textFill="WHITE" />
+                                </children>
+                            </HBox>
+
+                            <!-- Puzzle image area -->
+                            <AnchorPane id="puzzle_overlay_picture"
+                                        layoutX="23.0"
+                                        layoutY="84.0"
+                                        prefHeight="247.0"
+                                        prefWidth="589.0"
+                                        style="-fx-background-color: transparent;">
+                                <children>
+                                    <ImageView fx:id="puzzle_image"
+                                               fitHeight="247.0"
+                                               fitWidth="589.0"
+                                               pickOnBounds="true"
+                                               preserveRatio="true">
+                                        <image>
+                                            <Image url="@../images/FrontRoomPuzzle.png" />
+                                        </image>
+                                    </ImageView>
+                                </children>
+                            </AnchorPane>
+                        </children>
+                    </AnchorPane>
+                </children>
+            </AnchorPane>
+
+            <!-- PAUSE OVERLAY -->
+            <AnchorPane fx:id="pauseOverlay"
+                        layoutX="341.0"
+                        layoutY="176.0"
+                        managed="false"
+                        prefHeight="200.0"
+                        prefWidth="300.0"
+                        style="-fx-background-color: rgba(0, 0, 0, 0.7);
+                               -fx-background-radius: 10;
+                               -fx-padding: 20;
+                               -fx-alignment: center;"
+                        visible="false">
+                <children>
+                    <Pane id="pause_background_pane"
+                          layoutX="392.0"
+                          layoutY="176.0"
+                          prefHeight="200.0"
+                          prefWidth="200.0"
+                          style="-fx-background-color: transparent;">
+                        <children>
+                            <Label layoutX="60.0"
+                                   layoutY="25.0"
+                                   style="-fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold;"
+                                   text="Paused" />
+
+                            <Button layoutX="48.0"
+                                    layoutY="77.0"
+                                    onAction="#handleResume"
+                                    style="-fx-background-color: #0099ff; -fx-cursor: hand;"
+                                    text="Resume" />
+
+                            <Button layoutX="20.0"
+                                    layoutY="131.0"
+                                    onAction="#handleSaveQuit"
+                                    style="-fx-background-color: #0099ff; -fx-cursor: hand;"
+                                    text="Save and Quit" />
+                        </children>
+                    </Pane>
+                </children>
+            </AnchorPane>
+
+        </StackPane>
+    </center>
+
+    <top>
+        <ToolBar id="game-toolbar"
+                 prefHeight="63.0"
+                 prefWidth="984.0"
+                 style="-fx-background-color: navy;"
+                 BorderPane.alignment="CENTER">
+            <items>
+                <Button id="pause-button"
+                        mnemonicParsing="false"
+                        onAction="#handlePause"
+                        style="-fx-background-color: #0099ff;"
+                        text="Pause"
+                        textFill="#0f0f0f" />
+                <Button id="hint_button"
+                        mnemonicParsing="false"
+                        onAction="#handleHint"
+                        style="-fx-background-color: #0099ff;"
+                        text="Hint"
+                        textFill="#0f0f0f" />
+                <Button layoutX="844.0"
+                        layoutY="23.0"
+                        mnemonicParsing="false"
+                        onMouseClicked="#settings"
+                        style="-fx-background-color: #ffcc00;"
+                        text="Settings" />
+                <Button id="home-button"
+                        mnemonicParsing="false"
+                        onMouseClicked="#home"
+                        text="Home" />
+            </items>
+        </ToolBar>
+    </top>
+
+    <bottom>
+        <AnchorPane BorderPane.alignment="CENTER">
+            <children>
+
+                <!-- DIALOG / NARRATION AREA -->
+                <Pane id="dialog_pane"
+                      layoutX="24.0"
+                      layoutY="-14.0"
+                      prefHeight="180.0"
+                      prefWidth="467.0"
+                      style="-fx-background-color: beige; -fx-border-color: black;">
+                    <children>
+                        <!-- Intro text -->
+                        <Text fx:id="dialog_text_intro"
+                              layoutX="14.0"
+                              layoutY="29.0"
+                              strokeType="OUTSIDE"
+                              strokeWidth="0.0"
+                              style="-fx-font-size: 14px;"
+                              text="You step into the front room of the station. The holding cell is just ahead, but a strange lockbox on the desk blocks your progress."
+                              wrappingWidth="381.46575927734375" />
+
+                        <!-- Outro text (after puzzle solved) -->
+                        <Text fx:id="dialog_text_outro"
+                              layoutX="14.0"
+                              layoutY="29.0"
+                              strokeType="OUTSIDE"
+                              strokeWidth="0.0"
+                              style="-fx-font-size: 14px;"
+                              text="The lockbox clicks open, revealing the key you need. With the puzzle solved, the path to the holding cell is finally clear."
+                              wrappingWidth="381.46575927734375"
+                              visible="false" />
+                    </children>
+                </Pane>
+
+                <!-- INVENTORY SLOTS -->
+                <Pane id="inventory_space_3"
+                      layoutX="831.0"
+                      layoutY="29.0"
+                      prefHeight="119.0"
+                      prefWidth="110.0"
+                      style="-fx-background-color: beige; -fx-border-color: black;" />
+
+                <Pane id="inventory_space_2"
+                      fx:id="inventory_space_2"
+                      layoutX="688.0"
+                      layoutY="31.0"
+                      prefHeight="116.0"
+                      prefWidth="121.0"
+                      style="-fx-background-color: beige; -fx-border-color: black;">
+                    <children>
+                        <ImageView fx:id="key_inventory_space_2"
+                                   fitHeight="70.0"
+                                   fitWidth="65.0"
+                                   layoutX="28.0"
+                                   layoutY="23.0"
+                                   visible="false">
+                            <image>
+                                <Image url="@../images/MasonKey.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </Pane>
+
+                <Pane fx:id="inventory_space_1"
+                      layoutX="547.0"
+                      layoutY="31.0"
+                      prefHeight="115.0"
+                      prefWidth="119.0"
+                      style="-fx-background-color: beige; -fx-border-color: black;">
+                    <children>
+                        <ImageView fx:id="key_inventory_space_1"
+                                   fitHeight="67.0"
+                                   fitWidth="68.0"
+                                   layoutX="30.0"
+                                   layoutY="22.0"
+                                   visible="true">
+                            <image>
+                                <Image url="@../images/EvidenceRoomKey.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </Pane>
+
+            </children>
+        </AnchorPane>
+    </bottom>
+
+</BorderPane>

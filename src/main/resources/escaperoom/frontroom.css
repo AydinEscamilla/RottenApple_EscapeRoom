@@ -1,0 +1,36 @@
+/* Global defaults for the scene */
+.root {
+  -fx-font-size: 16pt;
+  -fx-font-family: "Helvetica";
+}
+
+/* Main room background (AnchorPane with id="evidenceroom_pane") */
+#evidenceroom_pane {
+  -fx-background-image: url("../images/FrontRoom.png");
+  -fx-background-size: cover;
+  -fx-background-position: center center;
+}
+
+/* Pause overlay inner pane background (Pane with id="pause_background_pane") */
+#pause_background_pane {
+  -fx-background-image: url("../images/FrontRoomPause.png");
+  -fx-background-size: cover;
+  -fx-background-position: center center;
+  -fx-background-radius: 5px;
+}
+
+/* Optional class-based styles */
+.home-buttons {
+  -fx-display: flex;
+  -fx-flex-direction: column;
+}
+
+.label {
+  -fx-text-fill: #fff;
+}
+
+.button {
+  -fx-background-color: black;
+  /* -fx-text-fill: #fff; */
+  -fx-cursor: hand;
+}
