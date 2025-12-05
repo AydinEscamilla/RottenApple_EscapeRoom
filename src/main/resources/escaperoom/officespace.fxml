@@ -7,30 +7,39 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane stylesheets="@officespace.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.OfficeSpaceAreaController">
+<BorderPane stylesheets="@officespace.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.OfficeSpaceController">
    <center>
       <StackPane>
-          <AnchorPane id="AnchorPane" fx:id="evidenceroom_pane" prefHeight="552.0" prefWidth="983.0">
+          <AnchorPane id="AnchorPane" fx:id="officespace_pane" prefHeight="552.0" prefWidth="983.0">
               
               <children>
                <!-- This brings up the puzzleOverlay -->
-               <Button fx:id="cabinet_button" layoutX="682.0" layoutY="455.0" mnemonicParsing="false" onAction="#handlePuzzle" prefHeight="82.0" prefWidth="79.0" style="-fx-background-color: clear; -fx-cursor: hand;" />
+               <Button fx:id="desk_button" layoutX="608.0" layoutY="353.0" mnemonicParsing="false" onAction="#handlePuzzle" prefHeight="82.0" prefWidth="79.0" style="-fx-background-color: black; -fx-cursor: hand;" visible="hidden" />
                <!-- This moves to the next room -->
-               <Button fx:id="next_room" layoutX="722.0" layoutY="253.0" mnemonicParsing="false" onMouseClicked="#nextRoom" style="-fx-background-color: navy;" text="Move to next Room" visible="hidden" />
+               <Button fx:id="next_room" layoutX="755.0" layoutY="330.0" mnemonicParsing="false" onMouseClicked="#nextRoom" style="-fx-background-color: navy;" text="Move to next Room" textFill="#f5f5f5" visible="hidden" />
               </children>
           </AnchorPane>
       
           <AnchorPane fx:id="puzzleOverlay" managed="false" prefHeight="200.0" prefWidth="300.0" style="-fx-background-color: rgba(0, 0, 0, 0.7); -fx-cursor: hand;" visible="false">
           <children>
-               <Pane id="puzzlePane" layoutX="316.0" layoutY="124.0" prefHeight="319.0" prefWidth="364.0" style="-fx-background-color: navy; -fx-background-radius: 5px;">
+               <AnchorPane layoutX="174.0" layoutY="33.0" prefHeight="486.0" prefWidth="637.0" style="-fx-background-color: navy; -fx-background-radius: 5px; -fx-border-color: #ffcc00;">
                   <children>
-                  <Label layoutX="123.0" layoutY="25.0" style="-fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold;" text="LockBox" />
+                  <Label layoutX="271.0" layoutY="39.0" style="-fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold;" text="LockBox" />
+                     <HBox id="hbox_for_buttons" layoutX="126.0" layoutY="363.0" prefHeight="100.0" prefWidth="387.0" style="-fx-spacing: 10px; -fx-alignment: center; -fx-padding: 5px; -fx-background-radius: 5px;">
+                        <children>
+                           <Button fx:id="incorrect_button_1" mnemonicParsing="false" onAction="#completePuzzle" style="-fx-background-color: #0099ff;" text="Incorrect" textFill="WHITE" />
+                           <Button fx:id="correct_button" mnemonicParsing="false" onAction="#completePuzzle" style="-fx-background-color: #0099ff;" text="Correct" textFill="WHITE" />
+                           <Button fx:id="incorrect_button_2" mnemonicParsing="false" onAction="#completePuzzle" prefHeight="45.0" prefWidth="132.0" style="-fx-background-color: #0099ff;" text="Incorrect" textFill="WHITE" />
+                        </children>
+                     </HBox>
+                     <AnchorPane id="puzzle_overlay_picture" layoutX="23.0" layoutY="84.0" prefHeight="247.0" prefWidth="589.0" style="-fx-background-color: clear;" />
                   </children>
-               </Pane>
+               </AnchorPane>
           </children>
       
           </AnchorPane>
@@ -70,11 +79,23 @@
                        <Text fx:id="dialog_text" layoutX="14.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 14px;" text="You find yourself now by the various desks in the main room of the station. Officer Mason's key should specifically open the key to a drawer in his desk. Will you find what you need there?" wrappingWidth="381.46575927734375" />
                    </children>
             </Pane>
-               <Pane id="inventory_space_3" layoutX="694.0" layoutY="29.0" prefHeight="119.0" prefWidth="110.0" style="-fx-background-color: beige; -fx-border-color: black;" />
-               <Pane id="inventory_space_2" layoutX="834.0" layoutY="31.0" prefHeight="116.0" prefWidth="121.0" style="-fx-background-color: beige; -fx-border-color: black;" />
+               <Pane id="inventory_space_3" layoutX="831.0" layoutY="29.0" prefHeight="119.0" prefWidth="110.0" style="-fx-background-color: beige; -fx-border-color: black;" />
+               <Pane id="inventory_space_2" layoutX="688.0" layoutY="31.0" prefHeight="116.0" prefWidth="121.0" style="-fx-background-color: beige; -fx-border-color: black;">
+               <children>
+                  <Button fx:id = "officer_mason_key_button" accessibleText="Officer Mason's Key" onAction = "#itemUnlocksPuzzle" layoutX="9.0" layoutY="9.0" mnemonicParsing="false" prefHeight="97.0" prefWidth="103.0" style="-fx-background-color: clear;">
+                     <graphic>
+                        <ImageView fx:id="key_inventory_space_2" fitHeight="70.0" fitWidth="65.0" visible="true">
+                           <image>
+                              <Image url="@../images/MasonKey.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     </Button>
+               </children>
+               </Pane>
                <Pane fx:id="inventory_space_1" layoutX="547.0" layoutY="31.0" prefHeight="115.0" prefWidth="119.0" style="-fx-background-color: beige; -fx-border-color: black;">
                <children>
-                  <ImageView fx:id="key_inventory_space_1" fitHeight="63.0" fitWidth="59.0" layoutX="30.0" layoutY="26.0" visible="true">
+                  <ImageView fx:id="key_inventory_space_1" fitHeight="67.0" fitWidth="68.0" layoutX="30.0" layoutY="22.0" visible="true">
                      <image>
                         <Image url="@../images/EvidenceRoomKey.png" />
                      </image>
