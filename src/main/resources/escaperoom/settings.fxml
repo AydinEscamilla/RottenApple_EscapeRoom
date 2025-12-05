@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="library_pane" prefHeight="551.0" prefWidth="965.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SettingsController">
+<AnchorPane id="AnchorPane" fx:id="settings_pane" prefHeight="551.0" prefWidth="965.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SettingsController">
       
    <stylesheets>
       <URL value="@styles.css" />

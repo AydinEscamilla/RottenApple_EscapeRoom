@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Text?>
+
+<StackPane xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.OfficeSpaceController">
+    <AnchorPane id="AnchorPane" fx:id="officespace_pane" prefHeight="552.0" prefWidth="983.0">
+        
+        <children>
+            <Pane id="inventory_space_1" layoutX="706.0" layoutY="469.0" prefHeight="69.0" prefWidth="77.0" style="-fx-background-color: beige; -fx-border-color: black;" />
+            <Pane id="inventory_space_2" layoutX="791.0" layoutY="469.0" prefHeight="69.0" prefWidth="77.0" style="-fx-background-color: beige; -fx-border-color: black;" />
+            <Pane id="inventory_space_3" layoutX="877.0" layoutY="469.0" prefHeight="69.0" prefWidth="77.0" style="-fx-background-color: beige; -fx-border-color: black;" />
+            <Pane id="dialog_pane" layoutX="168.0" layoutY="339.0" prefHeight="200.0" prefWidth="519.0" style="-fx-background-color: beige; -fx-border-color: black;">
+                <children>
+                    <Text id="dialog_text" layoutX="14.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 14px;" text="You know that you shouldn't be here right now, but this is the only time you could think to find evidence. You suspect Officer Mason has been working against the interests of the force, but nobody believes you. You stand now in the evidence room, looking for the key to Officer Mason's desk. Is it in the filing cabinet?" wrappingWidth="381.46575927734375" />
+                </children></Pane>
+            <ToolBar id="game-toolbar" prefHeight="63.0" prefWidth="984.0" style="-fx-background-color: navy;">
+                <items>
+                <Button id="pause-button" mnemonicParsing="false" onAction="#handlePause" style="-fx-background-color: #0099ff;" text="Pause" textFill="#0f0f0f" />
+                    <Button id="hint-button" mnemonicParsing="false" style="-fx-background-color: #0099ff;" text="Hint" textFill="#0f0f0f" />
+                    <Button layoutX="844.0" layoutY="23.0" mnemonicParsing="false" onMouseClicked="#settings" style="-fx-background-color: black;" text="Settings" />
+                    <Button id="home-button" mnemonicParsing="false" onMouseClicked="#home" text="Home" />
+
+                </items>
+            </ToolBar>
+        </children>
+    </AnchorPane>
+    <!-- Change managed and visible to true to edit in scenebuilder -->
+     <AnchorPane fx:id="pauseOverlay" layoutX="341.0" layoutY="176.0" managed="false" prefHeight="200.0" prefWidth="300.0" style="-fx-background-color: rgba(0, 0, 0, 0.7);          -fx-background-radius: 10;          -fx-padding: 20;         -fx-alignment: center;" visible="false">
+    <children>
+         <Pane layoutX="392.0" layoutY="176.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: navy; -fx-background-radius: 5px;">
+            <children>
+            <Label layoutX="60.0" layoutY="25.0" style="-fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold;" text="Paused" />
+              <Button layoutX="48.0" layoutY="77.0" onAction="#handleResume" style="-fx-background-color: #0099ff; -fx-cursor: hand;" text="Resume" />
+              <Button layoutX="20.0" layoutY="131.0" onAction="#handleSaveQuit" style="-fx-background-color: #0099ff; -fx-cursor: hand;" text="Save and Quit" />
+            </children>
+         </Pane>
+    </children>
+    </AnchorPane>
+    <stylesheets>
+            <URL value="@shortholdingroom.css" />
+        </stylesheets>
+</StackPane>

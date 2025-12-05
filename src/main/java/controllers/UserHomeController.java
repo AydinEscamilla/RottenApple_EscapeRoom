@@ -27,6 +27,13 @@ public class UserHomeController implements Initializable {
     }
 
     @FXML
+    private void newGame(MouseEvent event) throws IOException {
+        App.setRoot("evidenceroom");
+    }
+
+
+
+    @FXML
     private void leaderboard(MouseEvent event) throws IOException {
         App.setRoot("leaderboard"); 
     }

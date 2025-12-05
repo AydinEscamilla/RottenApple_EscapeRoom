@@ -10,7 +10,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="552.0" prefWidth="985.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.UserHomeController">
+<AnchorPane id="AnchorPane" 
+fx:id="user_home_pane" 
+prefHeight="552.0" 
+prefWidth="985.0" 
+xmlns="http://javafx.com/javafx/25" 
+xmlns:fx="http://javafx.com/fxml/1" 
+fx:controller="controllers.UserHomeController">
    <children>
       <Pane layoutX="398.0" layoutY="150.0" prefHeight="155.0" prefWidth="123.0" style="-fx-background-color: navy; -fx-background-radius: 5px;">
          <children>
@@ -33,7 +39,7 @@
       </Pane>
       <Button layoutX="14.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#back" text="back" />
       <Button layoutX="170.0" layoutY="478.0" mnemonicParsing="false" style="-fx-background-color: navy;" text="Load Save" />
-      <Button layoutX="414.0" layoutY="478.0" mnemonicParsing="false" style="-fx-background-color: blue;" text="New Game" />
+      <Button layoutX="414.0" layoutY="478.0" mnemonicParsing="false" onMouseClicked = "#newGame" style="-fx-background-color: blue;" text="New Game" />
       <Button layoutX="656.0" layoutY="478.0" mnemonicParsing="false" onMouseClicked="#leaderboard" style="-fx-background-color: navy;" text="Leaderboard" />
       <Button layoutX="844.0" layoutY="23.0" mnemonicParsing="false" onMouseClicked="#settings" style="-fx-background-color: #cc9900;" text="Settings" />
 
