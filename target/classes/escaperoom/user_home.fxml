@@ -6,6 +6,7 @@
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -39,26 +40,30 @@
                                 <Font size="27.0" />
                             </font>
                         </Label>
-
-                        <!-- Badge card -->
-                        <Pane prefHeight="150.0" prefWidth="363.0" style="-fx-background-color: navy; -fx-background-radius: 5px;">
-                            <children>
-                                <ImageView fitHeight="96.0" fitWidth="87.0" layoutX="272.0" layoutY="27.0" preserveRatio="true">
-                                    <image>
-                                        <Image url="@../images/Police-Badge.png" />
-                                    </image>
-                                </ImageView>
-                            </children>
-                     <opaqueInsets>
-                        <Insets left="100.0" right="100.0" />
-                     </opaqueInsets>
-                        </Pane>
+                  <AnchorPane prefHeight="150.0" prefWidth="370.0">
+                     <children>
+      
+                              <!-- Badge card -->
+                              <Pane layoutX="373.0" prefHeight="150.0" prefWidth="167.0" style="-fx-background-color: navy; -fx-background-radius: 5px;">
+                                  <children>
+                                      <ImageView fitHeight="96.0" fitWidth="87.0" layoutX="46.0" layoutY="27.0" preserveRatio="true">
+                                          <image>
+                                              <Image url="@../images/Police-Badge.png" />
+                                          </image>
+                                      </ImageView>
+                                  </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                              </Pane>
+                     </children>
+                  </AnchorPane>
 
                         <!-- Description text block -->
-                        <Pane prefHeight="140.0" prefWidth="700.0" style="-fx-background-color: black; -fx-background-radius: 5px; -fx-padding: 10;">
-                            <children>
-                                <Text fill="WHITE" layoutX="6.0" layoutY="16.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 15px; -fx-font-weight: bold;" text="A trusted protector of the law may be hiding a dark secret. Somewhere within the force, a police officer is living a double life.&#10;Sworn to uphold justice by day, but tied to crime by night. It is up to you to uncover the truth. Search for clues, and follow the trail of deceit before the criminal escapes justice.&#10;Every decision you make brings you closer to the truth.&#10;" wrappingWidth="608.0" />
-                            </children>
+                        <Pane prefHeight="140.0" prefWidth="700.0" style="-fx-background-color: black; -fx-background-radius: 5px; -fx-padding: 10; -fx-border-color: white;">
+                     <children>
+                                <Text fill="WHITE" layoutX="6.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 15px; -fx-font-weight: bold;" text="A trusted protector of the law may be hiding a dark secret. Somewhere within the force, a police officer is living a double life. Sworn to uphold justice by day, but tied to crime by night. It is up to you to uncover the truth. Search for clues, and follow the trail of deceit before the criminal escapes justice.&#10;&#10;Every decision you make brings you closer to the truth.&#10;" wrappingWidth="608.0" />
+                     </children>
                         </Pane>
 
                         <!-- Bottom buttons row -->
@@ -67,8 +72,6 @@
                                 <Button mnemonicParsing="false" style="-fx-background-color: navy;" text="Load Save" />
 
                                 <Button mnemonicParsing="false" onMouseClicked="#newGame" style="-fx-background-color: blue;" text="New Game" />
-
-                                <Button mnemonicParsing="false" onMouseClicked="#leaderboard" style="-fx-background-color: navy;" text="Leaderboard" />
                             </children>
                         </HBox>
 

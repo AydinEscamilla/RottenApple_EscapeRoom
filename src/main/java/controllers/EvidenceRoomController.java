@@ -75,7 +75,7 @@ public class EvidenceRoomController implements Initializable {
     }
 
     @FXML
-    private void nextRoom(MouseEvent event) throws IOException {
+    private void nextRoom(ActionEvent event) throws IOException {
         App.setRoot("shortholdingroom");
     }
 
