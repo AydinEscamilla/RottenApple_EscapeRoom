@@ -21,8 +21,8 @@
       <Label layoutX="595.0" layoutY="108.0" prefHeight="63.0" prefWidth="93.0" style="-fx-alignment: center; -fx-background-color: navy; -fx-font-weight: bold;" text="Score&#10;" textAlignment="CENTER" />
       <Label layoutX="294.0" layoutY="171.0" prefHeight="213.0" prefWidth="126.0" style="-fx-background-color: navy;" text="  PPlante&#10;&#10;  Leni Rivers&#10;&#10;  LRivers&#10;" />
       <Label layoutX="420.0" layoutY="171.0" prefHeight="213.0" prefWidth="93.0" style="-fx-background-color: navy;" text="  4&#10;&#10;  4&#10;&#10;  3&#10;" />
-      <Label layoutX="513.0" layoutY="170.0" prefHeight="213.0" prefWidth="93.0" style="-fx-background-color: navy;" text="  11:20&#10;&#10;  15:34&#10;&#10;  20:00" />
-      <Label layoutX="595.0" layoutY="171.0" prefHeight="213.0" prefWidth="93.0" style="-fx-background-color: navy;" text="  2900&#10;&#10;  2500&#10;&#10;  1500" />
+      <Label layoutX="513.0" layoutY="170.0" prefHeight="213.0" prefWidth="93.0" style="-fx-background-color: navy;" text="  7:20&#10;&#10;  15:34&#10;&#10;  20:00" />
+      <Label layoutX="595.0" layoutY="171.0" prefHeight="213.0" prefWidth="93.0" style="-fx-background-color: navy;" text="  3000&#10;&#10;  2900&#10;&#10;  2000" />
       <Line endX="688.0" endY="170.99998474121094" startX="294.0" startY="171.0" stroke="WHITE" strokeWidth="2.0" />
       <Line endX="678.0" endY="226.0" layoutX="10.0" layoutY="10.0" startX="284.0" startY="226.0" stroke="WHITE" strokeWidth="2.0" />
       <Line endX="668.0" endY="289.0" layoutX="20.0" layoutY="20.0" startX="274.0" startY="289.0" stroke="WHITE" strokeWidth="2.0" />
