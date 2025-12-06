@@ -140,7 +140,7 @@ public class ShortHoldingRoomController implements Initializable {
     public void initialize(URL arg0, ResourceBundle arg1) {
         pauseOverlay.setVisible(false);
         pauseOverlay.setManaged(false);
-        // TODO Auto-generated method stub
+       
     }
     
     

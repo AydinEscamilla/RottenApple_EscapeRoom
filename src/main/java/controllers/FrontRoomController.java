@@ -17,17 +17,11 @@ import escaperoom.App;
 
 public class FrontRoomController implements Initializable {
 
-    // --- Dialog / text ---
-
-    // Intro text: shown when you first enter the room
     @FXML
     private Text dialog_text_intro;
 
-    // Outro text: shown after the puzzle is completed
     @FXML
     private Text dialog_text_outro;
-
-    // --- Main interactive elements ---
 
     @FXML
     private Button cabinet_button;
@@ -44,36 +38,29 @@ public class FrontRoomController implements Initializable {
     @FXML
     private Button next_room;
 
-    // Inventory slot where the new key will appear
     @FXML
-    private Pane inventory_space_2;  // not strictly required but kept for structure
+    private Pane inventory_space_2; 
 
     @FXML
     private ImageView key_inventory_space_2;
 
-    // Overlays
     @FXML
     private AnchorPane puzzleOverlay;
 
     @FXML
     private AnchorPane pauseOverlay;
 
-    // Optional: puzzle image placeholder from frontroom.fxml
     @FXML
     private ImageView puzzle_image;
 
-    // --- Handlers ---
-
     @FXML
     private void handlePuzzle(ActionEvent event) {
-        // Show the puzzle overlay
         puzzleOverlay.setVisible(true);
         puzzleOverlay.setManaged(true);
     }
 
     @FXML
     private void handleHint() {
-        // Highlight the cabinet button to show where to click
         cabinet_button.setStyle(
             "-fx-background-color: clear; " +
             "-fx-border-color: red; " +
@@ -87,36 +74,27 @@ public class FrontRoomController implements Initializable {
         Object source = event.getSource();
 
         if (source == correct_button) {
-            // Correct answer
-
-            // Switch from intro text to outro text
             dialog_text_intro.setVisible(false);
             dialog_text_outro.setVisible(true);
 
-            // Reveal key in inventory
             if (key_inventory_space_2 != null) {
                 key_inventory_space_2.setVisible(true);
             }
 
-            // Disable cabinet button so the puzzle can't be reopened
             cabinet_button.setDisable(true);
 
-            // Show the "next room" button
             next_room.setVisible(true);
 
-            // Hide the puzzle overlay
             puzzleOverlay.setVisible(false);
             puzzleOverlay.setManaged(false);
 
         } else if (source == incorrect_button_1 || source == incorrect_button_2) {
-            // Wrong answer: keep the overlay up and update the intro text as feedback
             dialog_text_intro.setText("That's not quite right. Try again!");
         }
     }
 
     @FXML
     private void nextRoom(MouseEvent event) throws IOException {
-        // Go to the next scene after the front room.
         App.setRoot("ending");
     }
 
@@ -147,37 +125,38 @@ public class FrontRoomController implements Initializable {
 
     @FXML
     private void handleSaveQuit() throws IOException {
-        // You can hook this into your GameSystemFacade later if you want to save.
         App.setRoot("home");
     }
-
+    // This method runs to set the initial state of the screen
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // Ensure overlays start hidden
+        // 
         if (puzzleOverlay != null) {
             puzzleOverlay.setVisible(false);
             puzzleOverlay.setManaged(false);
         }
 
+        // Make sure pause overlay is hidden 
         if (pauseOverlay != null) {
             pauseOverlay.setVisible(false);
             pauseOverlay.setManaged(false);
         }
 
-        // Text sequence: first show intro, hide outro
+        // Start with intro text visible 
         if (dialog_text_intro != null) {
             dialog_text_intro.setVisible(true);
         }
+        // and outro text hidden
         if (dialog_text_outro != null) {
             dialog_text_outro.setVisible(false);
         }
-
-        // Inventory: don't show the new key until puzzle is solved
+        
+        // At the beginning the key in inventory slot 2 is not visible
         if (key_inventory_space_2 != null) {
             key_inventory_space_2.setVisible(false);
         }
-
-        // "Next room" button should be hidden until puzzle is solved
+        
+        // The next room button is hidden until the puzzle is solved
         if (next_room != null) {
             next_room.setVisible(false);
         }
