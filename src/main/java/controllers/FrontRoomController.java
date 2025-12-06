@@ -117,8 +117,7 @@ public class FrontRoomController implements Initializable {
     @FXML
     private void nextRoom(MouseEvent event) throws IOException {
         // Go to the next scene after the front room.
-        // Adjust "shortholdingroom" to whatever your next FXML is named.
-        App.setRoot("shortholdingroom");
+        App.setRoot("ending");
     }
 
     @FXML
