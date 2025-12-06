@@ -72,6 +72,8 @@
                                 <Button mnemonicParsing="false" style="-fx-background-color: navy;" text="Load Save" />
 
                                 <Button mnemonicParsing="false" onMouseClicked="#newGame" style="-fx-background-color: blue;" text="New Game" />
+                                
+                                <Button mnemonicParsing="false" onMouseClicked="#leaderboard" style="-fx-background-color: navy;" text="Leaderboard" />
                             </children>
                         </HBox>
 
