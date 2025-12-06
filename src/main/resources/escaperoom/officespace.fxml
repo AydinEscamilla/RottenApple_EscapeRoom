@@ -20,7 +20,7 @@
               
               <children>
                <!-- This brings up the puzzleOverlay -->
-               <Button fx:id="desk_button" layoutX="629.0" layoutY="353.0" mnemonicParsing="false" onAction="#handlePuzzle" prefHeight="82.0" prefWidth="79.0" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-border-color: red; -fx-border-width: 6;" visible="true" />
+               <Button fx:id="desk_button" layoutX="629.0" layoutY="353.0" mnemonicParsing="false" onAction="#handlePuzzle" prefHeight="82.0" prefWidth="79.0" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-border-color: red; -fx-border-width: 6;" visible="false" />
                <!-- This moves to the next room -->
                <Button fx:id="next_room" layoutX="755.0" layoutY="330.0" mnemonicParsing="false" onMouseClicked="#nextRoom" style="-fx-background-color: navy;" text="Move to next Room" textFill="#f5f5f5" visible="hidden" />
               </children>
