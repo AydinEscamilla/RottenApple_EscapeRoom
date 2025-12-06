@@ -10,6 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <BorderPane stylesheets="@interrogationroom.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.InterrogationRoomController">
@@ -30,28 +31,45 @@
                <AnchorPane layoutX="174.0" layoutY="33.0" prefHeight="486.0" prefWidth="637.0" style="-fx-background-color: navy; -fx-background-radius: 5px; -fx-border-color: #ffcc00;">
                   <children>
                   <Label layoutX="234.0" layoutY="48.0" style="-fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold;" text="Random Paper" />
-                     <HBox id="hbox_for_buttons" layoutX="126.0" layoutY="363.0" prefHeight="100.0" prefWidth="387.0" style="-fx-spacing: 10px; -fx-alignment: center; -fx-padding: 5px; -fx-background-radius: 5px;">
+                     <HBox id="hbox_for_buttons" layoutX="10.0" layoutY="363.0" prefHeight="100.0" prefWidth="610.0" style="-fx-spacing: 10px; -fx-alignment: center; -fx-padding: 5px; -fx-background-radius: 5px;">
                         <children>
-                           <Button fx:id="incorrect_button_1" mnemonicParsing="false" onAction="#completePuzzle" style="-fx-background-color: #0099ff;" text="Incorrect" textFill="WHITE" />
-                           <Button fx:id="correct_button" mnemonicParsing="false" onAction="#completePuzzle" style="-fx-background-color: #0099ff;" text="Correct" textFill="WHITE" />
-                           <Button fx:id="incorrect_button_2" mnemonicParsing="false" onAction="#completePuzzle" prefHeight="45.0" prefWidth="132.0" style="-fx-background-color: #0099ff;" text="Incorrect" textFill="WHITE" />
+                           <Button fx:id="incorrect_button_1" mnemonicParsing="false" onAction="#completePuzzle" style="-fx-background-color: #0099ff;" text="&quot;I am innocent.&quot;" textFill="WHITE">
+                              <font>
+                                 <Font size="16.0" />
+                              </font></Button>
+                           <Button fx:id="correct_button" mnemonicParsing="false" onAction="#completePuzzle" prefHeight="35.0" prefWidth="260.0" style="-fx-background-color: #0099ff;" text="&quot;I tampered with the Smith case.&quot;" textFill="WHITE">
+                              <font>
+                                 <Font size="16.0" />
+                              </font></Button>
                         </children>
                      </HBox>
-                     <AnchorPane id="puzzle_overlay_picture" layoutX="23.0" layoutY="84.0" prefHeight="247.0" prefWidth="589.0" style="-fx-background-color: clear;" />
+                     <AnchorPane id="puzzle_overlay_picture" layoutX="23.0" layoutY="84.0" prefHeight="247.0" prefWidth="589.0" style="-fx-background-color: clear;">
+                        <children>
+                           <ImageView fitHeight="201.0" fitWidth="457.0" layoutX="66.0" layoutY="23.0">
+                              <image>
+                                 <Image url="@../images/InterrogationPuzzle.png" />
+                              </image>
+                           </ImageView>
+                        </children></AnchorPane>
                   </children>
                </AnchorPane>
           </children>
       
           </AnchorPane>
       
-          <!-- Change managed and visible to true to edit in scenebuilder -->
-           <AnchorPane fx:id="pauseOverlay" layoutX="341.0" layoutY="176.0" managed="false" prefHeight="200.0" prefWidth="300.0" style="-fx-background-color: rgba(0, 0, 0, 0.7); -fx-background-radius: 10; -fx-padding: 20; -fx-alignment: center;" visible="false">
+           <AnchorPane fx:id="pauseOverlay" layoutX="341.0" layoutY="176.0" managed="true" prefHeight="200.0" prefWidth="993.0" style="-fx-background-color: rgba(0, 0, 0, 0.7); -fx-background-radius: 10; -fx-padding: 20; -fx-alignment: center;" visible="false">
           <children>
                <Pane layoutX="392.0" layoutY="176.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: navy; -fx-background-radius: 5px;">
                   <children>
                   <Label layoutX="60.0" layoutY="25.0" style="-fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold;" text="Paused" />
-                    <Button layoutX="48.0" layoutY="77.0" onAction="#handleResume" style="-fx-background-color: #0099ff; -fx-cursor: hand;" text="Resume" />
-                    <Button layoutX="20.0" layoutY="131.0" onAction="#handleSaveQuit" style="-fx-background-color: #0099ff; -fx-cursor: hand;" text="Save and Quit" />
+                    <Button layoutX="20.0" layoutY="78.0" onAction="#handleResume" prefHeight="45.0" prefWidth="160.0" style="-fx-background-color: #0099ff; -fx-cursor: hand;" text="Resume">
+                        <font>
+                           <Font size="16.0" />
+                        </font></Button>
+                    <Button layoutX="20.0" layoutY="131.0" onAction="#handleSaveQuit" prefHeight="45.0" prefWidth="160.0" style="-fx-background-color: #0099ff; -fx-cursor: hand;" text="Save and Quit">
+                        <font>
+                           <Font size="16.0" />
+                        </font></Button>
                   </children>
                </Pane>
           </children>
@@ -65,7 +83,6 @@
              <items>
              <Button id="pause-button" mnemonicParsing="false" onAction="#handlePause" style="-fx-background-color: #0099ff;" text="Pause" textFill="#0f0f0f" />
                  <Button id="hint_button" mnemonicParsing="false" onAction="#handleHint" style="-fx-background-color: #0099ff;" text="Hint" textFill="#0f0f0f" />
-                 <Button layoutX="844.0" layoutY="23.0" mnemonicParsing="false" onMouseClicked="#settings" style="-fx-background-color: #ffcc00;" text="Settings" />
                  <Button id="home-button" mnemonicParsing="false" onMouseClicked="#home" text="Home" />
 
                    </items>
@@ -76,7 +93,7 @@
          <children>
                <Pane id="dialog_pane" layoutX="24.0" layoutY="-14.0" prefHeight="180.0" prefWidth="467.0" style="-fx-background-color: beige; -fx-border-color: black;">
                    <children>
-                       <Text fx:id="dialog_text" layoutX="14.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 14px;" text="You find yourself in front of the holding cell now. There's a lockbox to contain what should be the cell key, but you think Officer Mason's key is in there now." wrappingWidth="381.46575927734375" />
+                       <Text fx:id="dialog_text" layoutX="14.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 14px;" text="You do remember Officer Mason spending quite some time here, but there's nowhere to hide anything like a cabinet or a drawer. The only thing you can find out-of-place is a bunch of gibberish on a random piece of paper." wrappingWidth="381.46575927734375" />
                    </children>
             </Pane>
                <Pane id="inventory_space_3" layoutX="831.0" layoutY="29.0" prefHeight="119.0" prefWidth="110.0" style="-fx-background-color: beige; -fx-border-color: black;">
